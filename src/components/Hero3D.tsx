@@ -134,7 +134,10 @@ const Hero3D = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block"
             >
-              <span className="text-sm font-semibold text-cyan-400 tracking-wider uppercase px-4 py-2 bg-cyan-500/10 rounded-full border border-cyan-500/30">
+              <span className="text-sm font-semibold text-cyan-400 tracking-wider uppercase px-4 py-2 m-1 bg-cyan-500/10 rounded-full border border-cyan-500/30">
+                Software Engineer
+              </span>
+              <span className="text-sm font-semibold text-cyan-400 tracking-wider uppercase px-4 py-2 m-1 bg-cyan-500/10 rounded-full border border-cyan-500/30">
                 Full Stack Developer
               </span>
             </motion.div>
@@ -145,7 +148,7 @@ const Hero3D = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="text-5xl lg:text-7xl font-bold leading-tight text-white"
             >
-              Criando
+              Felippe Toscano Nalim
               <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-pulse">
                 Experiências Digitais
               </span>
