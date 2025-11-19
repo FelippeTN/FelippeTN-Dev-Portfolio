@@ -1,47 +1,327 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float, MeshDistortMaterial } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Float, Text, Sphere, Ring } from '@react-three/drei';
 import { motion } from 'framer-motion';
+import { useRef, useMemo } from 'react';
+import * as THREE from 'three';
 
-function AnimatedSphere() {
+// Partículas Estelares - Melhoradas
+function StarField() {
+  const count = 2000;
+  const positions = useMemo(() => {
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i += 3) {
+      pos[i] = (Math.random() - 0.5) * 30;
+      pos[i + 1] = (Math.random() - 0.5) * 30;
+      pos[i + 2] = (Math.random() - 0.5) * 30;
+    }
+    return pos;
+  }, []);
+
+  const colors = useMemo(() => {
+    const col = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i += 3) {
+      const colorChoice = Math.random();
+      if (colorChoice < 0.33) {
+        col[i] = 0; col[i + 1] = 0.85; col[i + 2] = 1; // Cyan
+      } else if (colorChoice < 0.66) {
+        col[i] = 0.66; col[i + 1] = 0.36; col[i + 2] = 0.97; // Purple
+      } else {
+        col[i] = 1; col[i + 1] = 1; col[i + 2] = 1; // White
+      }
+    }
+    return col;
+  }, []);
+
+  const pointsRef = useRef<THREE.Points>(null);
+
+  useFrame((state) => {
+    if (pointsRef.current) {
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.03;
+      pointsRef.current.rotation.x = state.clock.elapsedTime * 0.02;
+    }
+  });
+
   return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh>
-        <icosahedronGeometry args={[1, 4]} />
-        <MeshDistortMaterial
+    <points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          array={positions}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-color"
+          count={count}
+          array={colors}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        size={0.025}
+        vertexColors
+        transparent
+        opacity={0.9}
+        sizeAttenuation
+      />
+    </points>
+  );
+}
+
+// Planeta Dev Principal - Melhorado
+function DevPlanet() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const glowRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+    }
+    if (glowRef.current) {
+      glowRef.current.scale.setScalar(1.15 + Math.sin(state.clock.elapsedTime * 2) * 0.05);
+    }
+  });
+
+  return (
+    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1.5}>
+      <mesh ref={meshRef}>
+        <sphereGeometry args={[1.5, 128, 128]} />
+        <meshStandardMaterial
           color="#00D9FF"
-          attach="material"
-          distort={0.4}
-          speed={2}
           roughness={0.2}
-          metalness={0.8}
+          metalness={0.9}
+          emissive="#00D9FF"
+          emissiveIntensity={0.3}
         />
       </mesh>
-      <mesh position={[0, 0, 0]}>
-        <torusGeometry args={[1.5, 0.1, 16, 100]} />
-        <meshStandardMaterial color="#A855F7" emissive="#A855F7" emissiveIntensity={0.5} />
+      
+      {/* Atmosfera brilhante */}
+      <mesh ref={glowRef} scale={1.15}>
+        <sphereGeometry args={[1.5, 64, 64]} />
+        <meshBasicMaterial
+          color="#00D9FF"
+          transparent
+          opacity={0.15}
+          side={THREE.BackSide}
+        />
+      </mesh>
+
+      {/* Núcleo interno luminoso */}
+      <mesh scale={0.3}>
+        <sphereGeometry args={[1.5, 32, 32]} />
+        <meshBasicMaterial
+          color="#ffffff"
+          transparent
+          opacity={0.8}
+        />
       </mesh>
     </Float>
   );
 }
 
+// Anéis Orbitais com Código - Melhorados
+function CodeRings() {
+  const ring1Ref = useRef<THREE.Mesh>(null);
+  const ring2Ref = useRef<THREE.Mesh>(null);
+  const ring3Ref = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (ring1Ref.current) ring1Ref.current.rotation.z = state.clock.elapsedTime * 0.4;
+    if (ring2Ref.current) ring2Ref.current.rotation.z = -state.clock.elapsedTime * 0.3;
+    if (ring3Ref.current) ring3Ref.current.rotation.z = state.clock.elapsedTime * 0.5;
+  });
+
+  return (
+    <group>
+      <mesh ref={ring1Ref} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[2.5, 0.025, 32, 150]} />
+        <meshStandardMaterial 
+          color="#A855F7" 
+          emissive="#A855F7" 
+          emissiveIntensity={0.6}
+          metalness={0.8}
+          roughness={0.2}
+        />
+      </mesh>
+      
+      <mesh ref={ring2Ref} rotation={[Math.PI / 2.5, 0, 0]}>
+        <torusGeometry args={[3.2, 0.02, 32, 150]} />
+        <meshStandardMaterial 
+          color="#00D9FF" 
+          emissive="#00D9FF" 
+          emissiveIntensity={0.5}
+          metalness={0.8}
+          roughness={0.2}
+        />
+      </mesh>
+
+      <mesh ref={ring3Ref} rotation={[Math.PI / 3, 0, 0]}>
+        <torusGeometry args={[3.8, 0.015, 32, 150]} />
+        <meshStandardMaterial 
+          color="#10B981" 
+          emissive="#10B981" 
+          emissiveIntensity={0.4}
+          metalness={0.8}
+          roughness={0.2}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+// Satélites de Código - Melhorados
+function CodeSatellites() {
+  const codes = ['</>', '{ }', '( )', '[ ]', 'fn', 'AI', 'API', 'CSS'];
+  
+  return (
+    <>
+      {codes.map((code, index) => {
+        const angle = (index / codes.length) * Math.PI * 2;
+        const radius = 4.5;
+        const x = Math.cos(angle) * radius;
+        const z = Math.sin(angle) * radius;
+        const y = Math.sin(angle * 2) * 0.8;
+
+        return (
+          <Float key={index} speed={2 + index * 0.3} floatIntensity={0.8}>
+            <group position={[x, y, z]}>
+              {/* Fundo do texto */}
+              <mesh>
+                <planeGeometry args={[0.8, 0.8]} />
+                <meshBasicMaterial
+                  color="#000000"
+                  transparent
+                  opacity={0.5}
+                />
+              </mesh>
+              
+              <Text
+                fontSize={0.35}
+                color="#00D9FF"
+                anchorX="center"
+                anchorY="middle"
+                outlineWidth={0.02}
+                outlineColor="#ffffff"
+              >
+                {code}
+              </Text>
+            </group>
+          </Float>
+        );
+      })}
+    </>
+  );
+}
+
+// Buraco Negro / Wormhole ao fundo - Melhorado
+function Wormhole() {
+  const ringRefs = useRef<THREE.Mesh[]>([]);
+  
+  useFrame((state) => {
+    ringRefs.current.forEach((ring, i) => {
+      if (ring) {
+        ring.rotation.z = state.clock.elapsedTime * (0.5 + i * 0.15);
+        const pulse = 1 + Math.sin(state.clock.elapsedTime * 2 + i) * 0.15;
+        ring.scale.setScalar(pulse);
+      }
+    });
+  });
+
+  return (
+    <group position={[0, 0, -10]}>
+      {/* Centro escuro do buraco negro */}
+      <mesh>
+        <sphereGeometry args={[0.8, 32, 32]} />
+        <meshBasicMaterial color="#000000" />
+      </mesh>
+
+      {/* Anéis do wormhole */}
+      {[...Array(12)].map((_, i) => (
+        <mesh
+          key={i}
+          ref={(el) => {
+            if (el) ringRefs.current[i] = el;
+          }}
+        >
+          <torusGeometry args={[1.8 + i * 0.35, 0.08, 32, 150]} />
+          <meshStandardMaterial
+            color={i % 2 === 0 ? "#6366F1" : "#8B5CF6"}
+            emissive={i % 2 === 0 ? "#6366F1" : "#8B5CF6"}
+            emissiveIntensity={0.6 - i * 0.04}
+            transparent
+            opacity={0.7 - i * 0.05}
+            metalness={0.8}
+            roughness={0.2}
+          />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+// Cena Completa
+function InterstellarDevScene() {
+  return (
+    <>
+      <StarField />
+      <Wormhole />
+      <DevPlanet />
+      <CodeRings />
+      <CodeSatellites />
+    </>
+  );
+}
+
 const Hero3D = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.1),transparent_50%)]" />
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-glow" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] animate-glow" style={{ animationDelay: '1s' }} />
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Canvas Background - Tela Cheia */}
+      <div className="absolute inset-0 w-full h-full">
+        <Canvas 
+          camera={{ position: [0, 2, 10], fov: 65 }}
+          gl={{ antialias: true, alpha: true }}
+          className="w-full h-full"
+        >
+          {/* Iluminação Aprimorada */}
+          <ambientLight intensity={0.4} />
+          <pointLight position={[0, 0, 0]} intensity={2} color="#00D9FF" distance={10} />
+          <pointLight position={[8, 5, 5]} intensity={1.5} color="#A855F7" distance={15} />
+          <pointLight position={[-8, -5, -5]} intensity={1.2} color="#10B981" distance={15} />
+          <spotLight 
+            position={[15, 15, 15]} 
+            angle={0.4} 
+            penumbra={1} 
+            intensity={1.5}
+            color="#ffffff"
+            castShadow
+          />
+          <directionalLight position={[-10, 10, 5]} intensity={0.5} color="#60A5FA" />
+          
+          <InterstellarDevScene />
+          <OrbitControls 
+            enableZoom={false} 
+            enablePan={false}
+            autoRotate
+            autoRotateSpeed={0.8}
+            maxPolarAngle={Math.PI / 1.8}
+            minPolarAngle={Math.PI / 3}
+          />
+        </Canvas>
       </div>
 
+      {/* Overlay Gradient para melhor legibilidade */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none" />
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
+          {/* Text Content com backdrop aprimorado */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 backdrop-blur-sm bg-black/20 p-8 rounded-2xl border border-white/10"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +329,7 @@ const Hero3D = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-block"
             >
-              <span className="text-sm font-semibold text-accent tracking-wider uppercase">
+              <span className="text-sm font-semibold text-cyan-400 tracking-wider uppercase px-4 py-2 bg-cyan-500/10 rounded-full border border-cyan-500/30">
                 Full Stack Developer
               </span>
             </motion.div>
@@ -58,10 +338,10 @@ const Hero3D = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-5xl lg:text-7xl font-bold leading-tight"
+              className="text-5xl lg:text-7xl font-bold leading-tight text-white"
             >
               Criando
-              <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-pulse">
                 Experiências Digitais
               </span>
             </motion.h1>
@@ -70,7 +350,7 @@ const Hero3D = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-muted-foreground max-w-xl"
+              className="text-lg text-gray-200 max-w-xl leading-relaxed"
             >
               Desenvolvedor apaixonado por tecnologia, especializado em criar soluções web modernas e interativas com foco em performance e experiência do usuário.
             </motion.p>
@@ -83,35 +363,21 @@ const Hero3D = () => {
             >
               <a
                 href="#projects"
-                className="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold hover:shadow-[0_0_40px_rgba(0,217,255,0.6)] transition-all duration-300 hover:scale-110 hover:-translate-y-1"
               >
                 Ver Projetos
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3 rounded-lg border-2 border-primary/50 text-foreground font-semibold hover:bg-primary/10 hover:border-primary transition-all duration-300 hover:scale-105"
+                className="px-8 py-4 rounded-lg border-2 border-cyan-500/50 text-white font-semibold hover:bg-cyan-500/20 hover:border-cyan-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1 backdrop-blur-sm"
               >
                 Contato
               </a>
             </motion.div>
           </motion.div>
 
-          {/* 3D Canvas */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="h-[500px] relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-3xl" />
-            <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-              <ambientLight intensity={0.5} />
-              <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-              <pointLight position={[-10, -10, -10]} intensity={0.5} />
-              <AnimatedSphere />
-              <OrbitControls enableZoom={false} enablePan={false} />
-            </Canvas>
-          </motion.div>
+          {/* Espaço vazio para melhor visualização do 3D */}
+          <div className="hidden lg:block" />
         </div>
       </div>
 
