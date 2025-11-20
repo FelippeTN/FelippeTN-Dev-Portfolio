@@ -4,7 +4,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Frontend',
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Three.js'],
+      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Bootstrap CSS'],
       color: 'from-primary to-accent',
     },
     {
@@ -14,7 +14,7 @@ const Skills = () => {
     },
     {
       title: 'Ferramentas',
-      skills: ['Git', 'Docker', 'AWS', 'Figma', 'VS Code'],
+      skills: ['Git', 'Docker', 'AWS'],
       color: 'from-secondary to-primary',
     },
   ];
