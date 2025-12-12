@@ -195,7 +195,9 @@ const Hero3D = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-gray-200 max-w-xl leading-relaxed"
             >
-              Desenvolvedor apaixonado por tecnologia, especializado em criar soluções web modernas e interativas com foco em performance e experiência do usuário.
+              Desenvolvedor Full Stack especializado em criar soluções web inovadoras e escaláveis. 
+              Com expertise em React, TypeScript, Node.js e cloud computing, transformo ideias complexas 
+              em experiências digitais impactantes e funcionais.
             </motion.p>
 
             <motion.div
