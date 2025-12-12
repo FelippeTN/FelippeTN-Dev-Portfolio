@@ -4,22 +4,52 @@ import { ExternalLink, Github } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Plataforma completa de e-commerce com painel administrativo, pagamentos integrados e gestão de estoque.',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+      title: 'Sistema de Gestão Empresarial',
+      description: 'Sistema completo de gestão com módulos de vendas, estoque, financeiro e relatórios gerenciais. Interface intuitiva e dashboard com métricas em tempo real.',
+      tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Charts.js'],
       gradient: 'from-primary to-accent',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
+    },
+    {
+      title: 'E-Commerce Platform',
+      description: 'Plataforma de e-commerce moderna com carrinho de compras, sistema de pagamento integrado, painel administrativo e gestão de produtos com upload de imagens.',
+      tags: ['Next.js', 'React', 'Stripe', 'Tailwind', 'API'],
+      gradient: 'from-accent to-secondary',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
+    },
+    {
+      title: 'Portfolio Interativo 3D',
+      description: 'Portfolio pessoal com elementos 3D interativos usando Three.js, animações suaves com Framer Motion e design responsivo moderno.',
+      tags: ['React', 'Three.js', 'Framer Motion', 'TypeScript'],
+      gradient: 'from-secondary to-primary',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
     },
     {
       title: 'Dashboard Analytics',
-      description: 'Dashboard interativo para visualização de dados com gráficos em tempo real e relatórios personalizados.',
-      tags: ['Next.js', 'TypeScript', 'Chart.js', 'API'],
-      gradient: 'from-accent to-secondary',
+      description: 'Dashboard analítico para visualização de dados empresariais com gráficos interativos, filtros dinâmicos e exportação de relatórios personalizados.',
+      tags: ['React', 'D3.js', 'REST API', 'Material-UI'],
+      gradient: 'from-primary to-secondary',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
     },
     {
-      title: 'Social Media App',
-      description: 'Aplicativo social com feed em tempo real, sistema de mensagens e autenticação segura.',
-      tags: ['React', 'Firebase', 'Tailwind', 'WebSocket'],
-      gradient: 'from-secondary to-primary',
+      title: 'Task Management App',
+      description: 'Aplicativo de gerenciamento de tarefas com recursos de colaboração em equipe, notificações em tempo real e integração com calendário.',
+      tags: ['React', 'Firebase', 'WebSocket', 'PWA'],
+      gradient: 'from-accent to-primary',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
+    },
+    {
+      title: 'Sistema de Reservas',
+      description: 'Plataforma de agendamento online com sistema de notificações, integração de calendário e painel de controle administrativo completo.',
+      tags: ['Next.js', 'PostgreSQL', 'Node.js', 'SendGrid'],
+      gradient: 'from-secondary to-accent',
+      github: 'https://github.com/FelippeTN',
+      demo: '#',
     },
   ];
 
@@ -78,14 +108,24 @@ const Projects = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  <button className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300">
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300"
+                  >
                     <Github className="w-5 h-5" />
                     Código
-                  </button>
-                  <button className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300">
+                  </a>
+                  <a 
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300"
+                  >
                     <ExternalLink className="w-5 h-5" />
                     Demo
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>

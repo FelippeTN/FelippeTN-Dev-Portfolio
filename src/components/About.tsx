@@ -1,22 +1,37 @@
 import { motion } from 'framer-motion';
-import { Code2, Sparkles, Zap } from 'lucide-react';
+import { Code2, Sparkles, Zap, Target, Users, Rocket } from 'lucide-react';
 
 const About = () => {
   const features = [
     {
       icon: Code2,
-      title: 'Clean Code',
-      description: 'Código limpo, organizado e escalável seguindo as melhores práticas do mercado',
+      title: 'Desenvolvimento Full Stack',
+      description: 'Experiência completa em desenvolvimento web, do frontend ao backend, com foco em arquitetura escalável e manutenível',
     },
     {
       icon: Sparkles,
-      title: 'Design Moderno',
-      description: 'Interfaces intuitivas com foco em UX/UI e últimas tendências de design',
+      title: 'UX/UI Design',
+      description: 'Criação de interfaces modernas e responsivas que combinam estética com funcionalidade e acessibilidade',
     },
     {
       icon: Zap,
-      title: 'Performance',
-      description: 'Otimização constante para garantir velocidade e eficiência em cada projeto',
+      title: 'Performance & Otimização',
+      description: 'Implementação de melhores práticas para garantir aplicações rápidas, eficientes e com excelente experiência do usuário',
+    },
+    {
+      icon: Target,
+      title: 'Foco em Resultados',
+      description: 'Comprometimento com a entrega de soluções que agregam valor real ao negócio e aos usuários finais',
+    },
+    {
+      icon: Users,
+      title: 'Trabalho em Equipe',
+      description: 'Colaboração efetiva com equipes multidisciplinares, comunicação clara e compartilhamento de conhecimento',
+    },
+    {
+      icon: Rocket,
+      title: 'Inovação Contínua',
+      description: 'Aprendizado constante de novas tecnologias e metodologias para entregar soluções cada vez melhores',
     },
   ];
 
@@ -35,12 +50,15 @@ const About = () => {
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Sobre <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mim</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Transformando ideias em realidade através de código
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
+            Desenvolvedor Full Stack apaixonado por criar experiências digitais excepcionais. 
+            Com sólida formação em Análise e Desenvolvimento de Sistemas e experiência prática 
+            em projetos reais, busco constantemente transformar ideias complexas em soluções 
+            elegantes e funcionais que fazem a diferença.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}

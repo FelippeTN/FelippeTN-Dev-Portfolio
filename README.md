@@ -1,53 +1,112 @@
-# Welcome to your Lovable project
+# 🚀 Felippe Toscano Nalim - Portfolio Profissional
 
-## Project info
+Portfolio interativo e moderno desenvolvido com React, TypeScript, Three.js e Tailwind CSS, apresentando projetos, habilidades e experiência profissional.
 
-**URL**: https://lovable.dev/projects/4049dce6-4e2f-475c-87b2-a7e7f27cec7d
+## ✨ Características
 
-## How can I edit this code?
+- 🎨 **Design Moderno e Responsivo** - Interface adaptável para todos os dispositivos
+- 🌌 **Elementos 3D Interativos** - Animações com Three.js e Framer Motion
+- ⚡ **Performance Otimizada** - Carregamento rápido e experiência fluida
+- 🎯 **Navegação Intuitiva** - Menu responsivo e navegação suave entre seções
+- 📱 **Mobile-First** - Desenvolvido com foco em dispositivos móveis
+- 🔍 **SEO Friendly** - Otimizado para motores de busca
 
-There are several ways of editing your application.
+## 🛠️ Tecnologias Utilizadas
 
-**Use Lovable**
+### Frontend
+- **React 18** - Biblioteca JavaScript para interfaces
+- **TypeScript** - Superset tipado do JavaScript
+- **Vite** - Build tool moderna e rápida
+- **Tailwind CSS** - Framework CSS utility-first
+- **Framer Motion** - Biblioteca de animações
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4049dce6-4e2f-475c-87b2-a7e7f27cec7d) and start prompting.
+### 3D & Animações
+- **Three.js** - Biblioteca 3D para WebGL
+- **@react-three/fiber** - React renderer para Three.js
+- **@react-three/drei** - Helpers para React Three Fiber
 
-Changes made via Lovable will be committed automatically to this repo.
+### UI Components
+- **Shadcn/ui** - Componentes de UI reutilizáveis
+- **Lucide React** - Ícones modernos
+- **React Router** - Roteamento do aplicativo
 
-**Use your preferred IDE**
+## 📋 Seções do Portfolio
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Hero** - Apresentação inicial com elementos 3D animados
+2. **Sobre Mim** - Informações profissionais e valores
+3. **Habilidades** - Stack tecnológico e soft skills
+4. **Experiência** - Trajetória profissional detalhada
+5. **Formação** - Educação e certificações
+6. **Projetos** - Portfolio de projetos desenvolvidos
+7. **Contato** - Links para redes sociais e formulário
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Como Executar
 
-Follow these steps:
+### Pré-requisitos
+- Node.js (v18 ou superior)
+- npm ou yarn
+
+### Instalação
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone o repositório
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Entre no diretório
+cd FelippeTN-Dev-Portfolio
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Instale as dependências
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+O projeto estará disponível em `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📦 Scripts Disponíveis
 
-**Use GitHub Codespaces**
+```sh
+npm run dev        # Inicia o servidor de desenvolvimento
+npm run build      # Cria build de produção
+npm run preview    # Preview do build de produção
+npm run lint       # Executa o linter
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
+## 🎨 Personalização
+
+O projeto utiliza Tailwind CSS para estilização, permitindo fácil customização através do arquivo `tailwind.config.ts`. As cores e temas podem ser ajustados no arquivo de configuração.
+
+## 📱 Responsividade
+
+O portfolio é totalmente responsivo e otimizado para:
+- 📱 Smartphones (320px+)
+- 📱 Tablets (768px+)
+- 💻 Laptops (1024px+)
+- 🖥️ Desktops (1280px+)
+
+## 🌐 Deploy
+
+O projeto pode ser facilmente deployado em plataformas como:
+- Vercel
+- Netlify
+- GitHub Pages
+- AWS Amplify
+
+## 📄 Licença
+
+Este projeto é de uso pessoal.
+
+## 👨‍💻 Desenvolvedor
+
+**Felippe Toscano Nalim**
+- LinkedIn: [felippe-toscano-nalim](https://www.linkedin.com/in/felippe-toscano-nalim/)
+- GitHub: [@FelippeTN](https://github.com/FelippeTN)
+- Email: felippenalim2004@gmail.com
+
+---
+
+Desenvolvido com ❤️ usando React + TypeScript + Three.js
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?

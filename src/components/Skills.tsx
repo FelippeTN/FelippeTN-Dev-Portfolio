@@ -4,18 +4,23 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Frontend',
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Bootstrap CSS'],
+      skills: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'Bootstrap CSS', 'HTML5/CSS3', 'Responsive Design'],
       color: 'from-primary to-accent',
     },
     {
       title: 'Backend',
-      skills: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs', 'GraphQL'],
+      skills: ['Node.js', 'Python', 'PostgreSQL', 'MySQL', 'REST APIs', 'GraphQL', 'Express.js', 'Authentication'],
       color: 'from-accent to-secondary',
     },
     {
-      title: 'Ferramentas',
-      skills: ['Git', 'Docker', 'AWS'],
+      title: 'DevOps & Ferramentas',
+      skills: ['Git', 'GitHub', 'Docker', 'AWS', 'CI/CD', 'Linux', 'VS Code', 'Postman'],
       color: 'from-secondary to-primary',
+    },
+    {
+      title: 'Soft Skills',
+      skills: ['Trabalho em Equipe', 'Comunicação', 'Resolução de Problemas', 'Aprendizado Rápido', 'Adaptabilidade', 'Gestão de Tempo'],
+      color: 'from-primary to-secondary',
     },
   ];
 
@@ -37,7 +42,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
