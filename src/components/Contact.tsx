@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
 
 const Contact = () => {
   const socialLinks = [
-    { icon: Github, label: 'GitHub', href: '#', color: 'hover:text-primary' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#', color: 'hover:text-accent' },
-    { icon: Twitter, label: 'Twitter', href: '#', color: 'hover:text-secondary' },
-    { icon: Mail, label: 'Email', href: 'mailto:seu@email.com', color: 'hover:text-primary' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/FelippeTN', color: 'hover:text-primary' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', color: 'hover:text-accent' },
+    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/felippetn/', color: 'hover:text-secondary' },
+    { icon: Mail, label: 'Email', href: 'mailto:felippenalim2004@gmail.com', color: 'hover:text-primary' },
   ];
 
   return (
