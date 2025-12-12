@@ -85,14 +85,6 @@ O portfolio é totalmente responsivo e otimizado para:
 - 💻 Laptops (1024px+)
 - 🖥️ Desktops (1280px+)
 
-## 🌐 Deploy
-
-O projeto pode ser facilmente deployado em plataformas como:
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS Amplify
-
 ## 📄 Licença
 
 Este projeto é de uso pessoal.
@@ -106,7 +98,7 @@ Este projeto é de uso pessoal.
 
 ---
 
-Desenvolvido com ❤️ usando React + TypeScript + Three.js
+Desenvolvido usando React + TypeScript + Three.js
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
@@ -118,15 +110,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/4049dce6-4e2f-475c-87b2-a7e7f27cec7d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
