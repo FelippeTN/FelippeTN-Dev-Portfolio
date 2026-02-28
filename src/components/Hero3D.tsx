@@ -153,7 +153,7 @@ const Hero3D = () => {
               className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur-md rounded-full border border-cyan-500/30 shadow-lg"
             >
               <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-white/90">Disponível para projetos</span>
+              <span className="text-sm font-semibold text-white/90">Aberto a novas oportunidades</span>
             </motion.div>
           </motion.div>
 
@@ -173,7 +173,7 @@ const Hero3D = () => {
                 Software Engineer
               </span>
               <span className="text-sm font-semibold text-cyan-400 tracking-wider uppercase px-4 py-2 m-1 bg-cyan-500/10 rounded-full border border-cyan-500/30">
-                Full Stack Developer
+                AI Operations Specialist
               </span>
             </motion.div>
 
@@ -185,7 +185,7 @@ const Hero3D = () => {
             >
               Felippe Toscano Nalim
               <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent animate-pulse">
-                Experiências Digitais
+                Engenheiro de Software & IA
               </span>
             </motion.h1>
 
@@ -195,9 +195,9 @@ const Hero3D = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-gray-200 max-w-xl leading-relaxed"
             >
-              Desenvolvedor Full Stack especializado em criar soluções web inovadoras e escaláveis. 
-              Com expertise em React, TypeScript, Node.js e cloud computing, transformo ideias complexas 
-              em experiências digitais impactantes e funcionais.
+              Engenheiro de Software na Procuradoria-Geral do Estado do Rio de Janeiro (PGE-RJ), 
+              especializado em operacionalizar Inteligência Artificial — transformando modelos experimentais 
+              em sistemas de produção robustos, escaláveis e de alta performance.
             </motion.p>
 
             <motion.div

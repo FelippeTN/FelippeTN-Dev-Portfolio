@@ -5,33 +5,33 @@ const About = () => {
   const features = [
     {
       icon: Code2,
-      title: 'Desenvolvimento Full Stack',
-      description: 'Experiência completa em desenvolvimento web, do frontend ao backend, com foco em arquitetura escalável e manutenível',
+      title: 'Engenharia de Software',
+      description: 'Arquitetura de sistemas de produção robustos e escaláveis, com foco em mantenabilidade, observabilidade e engenharia de alta qualidade.',
     },
     {
       icon: Sparkles,
-      title: 'UX/UI Design',
-      description: 'Criação de interfaces modernas e responsivas que combinam estética com funcionalidade e acessibilidade',
+      title: 'Operações de IA',
+      description: 'Especialista em operacionalizar Inteligência Artificial — transformando modelos experimentais em produtos de software confiáveis e prontos para produção.',
     },
     {
       icon: Zap,
-      title: 'Performance & Otimização',
-      description: 'Implementação de melhores práticas para garantir aplicações rápidas, eficientes e com excelente experiência do usuário',
+      title: 'Performance & Escalabilidade',
+      description: 'Implementação de serviços de alta performance com Go, Python e Node.js, garantindo eficiência sob carga real.',
     },
     {
       icon: Target,
-      title: 'Foco em Resultados',
-      description: 'Comprometimento com a entrega de soluções que agregam valor real ao negócio e aos usuários finais',
+      title: 'Impacto no Negócio',
+      description: 'Comprometido com a entrega de soluções que geram valor real, com foco em resultados mensurados e alinhamento estratégico.',
     },
     {
       icon: Users,
-      title: 'Trabalho em Equipe',
-      description: 'Colaboração efetiva com equipes multidisciplinares, comunicação clara e compartilhamento de conhecimento',
+      title: 'Colaboração & Liderança Técnica',
+      description: 'Experiência em equipes multidisciplinares, mentoria técnica, revisão de código e disseminação de boas práticas de engenharia.',
     },
     {
       icon: Rocket,
-      title: 'Inovação Contínua',
-      description: 'Aprendizado constante de novas tecnologias e metodologias para entregar soluções cada vez melhores',
+      title: 'Aprendizado Contínuo',
+      description: 'Estudante na USP (Engenharia de Software) e certificado pela University of Michigan, sempre evoluindo com as melhores práticas do mercado.',
     },
   ];
 
@@ -51,10 +51,11 @@ const About = () => {
             Sobre <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mim</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto leading-relaxed">
-            Desenvolvedor Full Stack apaixonado por criar experiências digitais excepcionais. 
-            Com sólida formação em Análise e Desenvolvimento de Sistemas e experiência prática 
-            em projetos reais, busco constantemente transformar ideias complexas em soluções 
-            elegantes e funcionais que fazem a diferença.
+            Sou um Engenheiro de Software dedicado a projetar e construir sistemas robustos e prontos para produção. 
+            Meu foco vai além de escrever código — busco arquitetar soluções que sejam manuteníveis, escaláveis e eficientes.
+            Atualmente, na Procuradoria-Geral do Estado do Rio de Janeiro (PGE-RJ), farei a ponte entre a Engenharia de Software 
+            tradicional e a Inteligência Artificial moderna, especializando-me em operacionalizar IA e transformar modelos 
+            experimentais em produtos de software confiáveis e de alta performance.
           </p>
         </motion.div>
 

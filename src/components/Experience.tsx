@@ -4,28 +4,30 @@ import { Briefcase, Calendar } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      title: 'Desenvolvedor Full Stack',
-      company: 'Projetos Freelance',
-      period: '2023 - Presente',
-      description: 'Desenvolvimento de soluções web personalizadas para diversos clientes, incluindo e-commerce, sistemas de gestão e landing pages. Responsável por todo o ciclo de desenvolvimento, desde o planejamento até a entrega final.',
+      title: 'Engenheiro de Software',
+      company: 'PGE-RJ — Procuradoria-Geral do Estado do Rio de Janeiro',
+      period: '2024 - Presente',
+      description: 'Atuação na ponte entre Engenharia de Software tradicional e Inteligência Artificial moderna. Responsável por operacionalizar modelos de IA, transformando soluções experimentais em sistemas de produção confiáveis, escaláveis e de alta performance utilizados pelo Estado do Rio de Janeiro.',
       achievements: [
-        'Desenvolvimento de mais de 10 projetos completos',
-        'Implementação de arquiteturas escaláveis e performáticas',
-        'Integração com APIs e serviços terceiros',
-        'Otimização de performance e SEO',
+        'Operacionalização de modelos de IA em ambiente de produção estatal',
+        'Desenvolvimento de serviços backend de alta performance com Go e Python',
+        'Implementação de pipelines de dados e integração com infraestrutura cloud (AWS/GCP)',
+        'Containerização e orquestração de serviços com Docker e Linux',
+        'Arquitetura de sistemas escaláveis orientados a domínio',
       ],
       color: 'from-primary to-accent',
     },
     {
-      title: 'Desenvolvedor Web',
-      company: 'Projetos Acadêmicos',
-      period: '2022 - 2023',
-      description: 'Desenvolvimento de projetos acadêmicos focados em tecnologias web modernas, incluindo React, Node.js e PostgreSQL. Experiência com metodologias ágeis e trabalho em equipe.',
+      title: 'Engenheiro de Software Full Stack',
+      company: 'LogicAI Solutions',
+      period: '2023 - 2024',
+      description: 'Desenvolvimento de produtos de software completos para a empresa LogicAI Solutions, desde sistemas de gerenciamento educacional até plataformas web institucionais. Liderança técnica em projetos de ponta a ponta com TypeScript, React e Node.js.',
       achievements: [
-        'Criação de sistemas de gestão empresarial',
-        'Desenvolvimento de aplicações responsivas',
-        'Implementação de testes automatizados',
-        'Documentação técnica completa',
+        'Desenvolvimento do TeacherApp — plataforma de gerenciamento de estudantes',
+        'Criação do site institucional da LogicAI Solutions com TypeScript',
+        'Implementação de arquiteturas REST e integração com banco de dados relacional',
+        'Contribuição com mais de 93% dos commits no repositório principal do produto',
+        'Aplicação de metodologias ágeis com Scrum e Kanban',
       ],
       color: 'from-accent to-secondary',
     },
@@ -47,7 +49,7 @@ const Experience = () => {
             Experiência <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Profissional</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Trajetória de desenvolvimento e crescimento profissional
+            Experiência profissional em ambientes de produção real, do setor público à indústria de tecnologia
           </p>
         </motion.div>
 

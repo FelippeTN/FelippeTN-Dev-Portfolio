@@ -4,15 +4,15 @@ import { GraduationCap, Award, BookOpen } from 'lucide-react';
 const Education = () => {
   const education = [
     {
-      degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
-      institution: 'Faculdade de Tecnologia',
-      period: '2022 - 2024',
-      description: 'Formação focada em desenvolvimento de software, engenharia de software, banco de dados, arquitetura de sistemas e metodologias ágeis.',
+      degree: 'Engenharia de Software',
+      institution: 'Universidade de São Paulo (USP)',
+      period: '2024 - Em andamento',
+      description: 'Graduação em Engenharia de Software com ênfase em arquitetura de sistemas, engenharia de software avançada, inteligência artificial e metodologias de desenvolvimento de software em larga escala.',
       highlights: [
-        'Desenvolvimento Web Full Stack',
+        'Arquitetura e Design de Sistemas',
+        'Engenharia de Software Avançada',
+        'Inteligência Artificial & Aprendizado de Máquina',
         'Banco de Dados e Modelagem',
-        'Engenharia de Software',
-        'Arquitetura de Sistemas',
         'Metodologias Ágeis (Scrum, Kanban)',
       ],
       icon: GraduationCap,
@@ -22,22 +22,22 @@ const Education = () => {
 
   const certifications = [
     {
-      title: 'React - The Complete Guide',
-      institution: 'Udemy',
-      year: '2023',
+      title: 'University of Michigan — Certified',
+      institution: 'Coursera / University of Michigan',
+      year: '2024',
       icon: Award,
       color: 'from-accent to-secondary',
     },
     {
-      title: 'Node.js: Desenvolvedor Backend',
+      title: 'React — The Complete Guide',
       institution: 'Udemy',
       year: '2023',
       icon: Award,
       color: 'from-secondary to-primary',
     },
     {
-      title: 'TypeScript Essentials',
-      institution: 'Online Course',
+      title: 'Node.js: Desenvolvedor Backend',
+      institution: 'Udemy',
       year: '2023',
       icon: Award,
       color: 'from-primary to-secondary',
@@ -60,7 +60,7 @@ const Education = () => {
             Formação & <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Certificações</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Educação contínua e aperfeiçoamento profissional
+            Formação acadêmica sólida e certificações internacionais em engenharia e tecnologia
           </p>
         </motion.div>
 

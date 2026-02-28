@@ -3,24 +3,34 @@ import { motion } from 'framer-motion';
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend',
-      skills: ['React', 'TypeScript', 'JavaScript', 'Next.js', 'Tailwind CSS', 'Bootstrap CSS', 'HTML5/CSS3', 'Responsive Design'],
+      title: 'Backend & Sistemas',
+      skills: ['Go (Golang)', 'Python', 'Node.js', 'TypeScript', 'JavaScript', 'REST APIs', 'Express.js', 'GraphQL'],
       color: 'from-primary to-accent',
     },
     {
-      title: 'Backend',
-      skills: ['Node.js', 'Python', 'PostgreSQL', 'MySQL', 'REST APIs', 'GraphQL', 'Express.js', 'Authentication'],
+      title: 'Frontend',
+      skills: ['React', 'Next.js', 'Tailwind CSS', 'HTML5/CSS3', 'Framer Motion', 'Three.js', 'Responsive Design', 'Bootstrap CSS'],
       color: 'from-accent to-secondary',
     },
     {
-      title: 'DevOps & Ferramentas',
-      skills: ['Git', 'GitHub', 'Docker', 'AWS', 'CI/CD', 'Linux', 'VS Code', 'Postman'],
+      title: 'IA & Dados',
+      skills: ['TensorFlow', 'Pandas', 'Operações de IA', 'Machine Learning', 'Pipelines de Dados', 'Análise de Dados'],
       color: 'from-secondary to-primary',
     },
     {
-      title: 'Soft Skills',
-      skills: ['Trabalho em Equipe', 'Comunicação', 'Resolução de Problemas', 'Aprendizado Rápido', 'Adaptabilidade', 'Gestão de Tempo'],
+      title: 'DevOps & Infraestrutura',
+      skills: ['Docker', 'Linux', 'AWS', 'GCP', 'CI/CD', 'Git', 'GitHub', 'Postman'],
       color: 'from-primary to-secondary',
+    },
+    {
+      title: 'Banco de Dados',
+      skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+      color: 'from-accent to-primary',
+    },
+    {
+      title: 'Soft Skills',
+      skills: ['Liderança Técnica', 'Comunicação', 'Resolução de Problemas', 'Pensamento Crítico', 'Trabalho em Equipe', 'Gestão de Projetos'],
+      color: 'from-secondary to-accent',
     },
   ];
 
@@ -38,11 +48,11 @@ const Skills = () => {
             Habilidades & <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Tecnologias</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Stack tecnológico moderno e em constante evolução
+            Stack técnico orientado a sistemas de produção, IA e infraestrutura em nuvem
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}

@@ -26,7 +26,8 @@ const Contact = () => {
           </h2>
           
           <p className="text-muted-foreground text-lg mb-12">
-            Estou sempre aberto a novos projetos e oportunidades. Entre em contato e vamos criar algo incrível juntos!
+            Estou sempre aberto a novas oportunidades e colaborações. 
+            Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato!
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
@@ -52,7 +53,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            href="mailto:seu@email.com"
+            href="mailto:felippenalim2004@gmail.com"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] transition-all duration-300 hover:scale-105"
           >
             <Mail className="w-5 h-5" />
@@ -69,7 +70,7 @@ const Contact = () => {
         transition={{ duration: 0.6, delay: 0.6 }}
         className="mt-24 pt-8 border-t border-border/50 text-center text-muted-foreground"
       >
-        <p>© 2024 Developer Portfolio. Desenvolvido com React + Three.js</p>
+        <p>© 2025 Felippe Toscano Nalim. Desenvolvido com React, Three.js & Framer Motion</p>
       </motion.div>
     </section>
   );

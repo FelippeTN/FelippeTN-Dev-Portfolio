@@ -4,51 +4,51 @@ import { ExternalLink, Github } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
-      title: 'Sistema de Gestão Empresarial',
-      description: 'Sistema completo de gestão com módulos de vendas, estoque, financeiro e relatórios gerenciais. Interface intuitiva e dashboard com métricas em tempo real.',
-      tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Charts.js'],
+      title: 'Luna-Chat',
+      description: 'Chatbot criado em memória de Luna, minha melhor amiga. Um projeto pessoal construído com Python, demonstrando técnicas de processamento de linguagem natural e integração com modelos de IA conversacional.',
+      tags: ['Python', 'IA', 'NLP', 'Chatbot'],
       gradient: 'from-primary to-accent',
-      github: 'https://github.com/FelippeTN',
+      github: 'https://github.com/FelippeTN/Luna-Chat',
       demo: '#',
     },
     {
-      title: 'E-Commerce Platform',
-      description: 'Plataforma de e-commerce moderna com carrinho de compras, sistema de pagamento integrado, painel administrativo e gestão de produtos com upload de imagens.',
-      tags: ['Next.js', 'React', 'Stripe', 'Tailwind', 'API'],
+      title: 'LogicAI Solutions Website',
+      description: 'Site institucional da LogicAI Solutions, empresa especializada em soluções de Inteligência Artificial. Desenvolvido com TypeScript e React, com design moderno e responsivo.',
+      tags: ['TypeScript', 'React', 'Tailwind CSS', 'Vite'],
       gradient: 'from-accent to-secondary',
-      github: 'https://github.com/FelippeTN',
-      demo: '#',
+      github: 'https://github.com/FelippeTN/LogicAI-Solutions-Website',
+      demo: 'https://github.com/FelippeTN/LogicAI-Solutions-Website',
     },
     {
-      title: 'Portfolio Interativo 3D',
-      description: 'Portfolio pessoal com elementos 3D interativos usando Three.js, animações suaves com Framer Motion e design responsivo moderno.',
-      tags: ['React', 'Three.js', 'Framer Motion', 'TypeScript'],
+      title: 'TeacherApp',
+      description: 'Plataforma completa de gerenciamento de estudantes para educadores. Permite o controle de turmas, notas, frequência e comunicação entre professores e alunos.',
+      tags: ['TypeScript', 'React', 'Node.js', 'PostgreSQL'],
       gradient: 'from-secondary to-primary',
-      github: 'https://github.com/FelippeTN',
+      github: 'https://github.com/FelippeTN/TeacherApp',
       demo: '#',
     },
     {
-      title: 'Dashboard Analytics',
-      description: 'Dashboard analítico para visualização de dados empresariais com gráficos interativos, filtros dinâmicos e exportação de relatórios personalizados.',
-      tags: ['React', 'D3.js', 'REST API', 'Material-UI'],
+      title: 'Aggregare School',
+      description: 'Sistema de gestão escolar completo, com módulos para administração de alunos, professores, disciplinas e relatórios académicos. Arquitetura orientada a domínio.',
+      tags: ['TypeScript', 'React', 'REST API', 'PostgreSQL'],
       gradient: 'from-primary to-secondary',
-      github: 'https://github.com/FelippeTN',
+      github: 'https://github.com/FelippeTN/Aggregare-school',
       demo: '#',
     },
     {
-      title: 'Task Management App',
-      description: 'Aplicativo de gerenciamento de tarefas com recursos de colaboração em equipe, notificações em tempo real e integração com calendário.',
-      tags: ['React', 'Firebase', 'WebSocket', 'PWA'],
+      title: 'Dev Portfolio 3D',
+      description: 'Este próprio portfólio — construído com React, Three.js e Framer Motion. Apresenta um campo estelar 3D interativo, animações fluidas e design responsivo de alto impacto visual.',
+      tags: ['React', 'Three.js', 'Framer Motion', 'TypeScript', 'Tailwind CSS'],
       gradient: 'from-accent to-primary',
-      github: 'https://github.com/FelippeTN',
+      github: 'https://github.com/FelippeTN/FelippeTN-Dev-Portfolio',
       demo: '#',
     },
     {
-      title: 'Sistema de Reservas',
-      description: 'Plataforma de agendamento online com sistema de notificações, integração de calendário e painel de controle administrativo completo.',
-      tags: ['Next.js', 'PostgreSQL', 'Node.js', 'SendGrid'],
+      title: 'myteacher',
+      description: 'Plataforma educacional desenvolvida para a LogicAI Solutions, com gestão de alunos, conteúdos e acompanhamento de progresso. Produto com maior volume de contribuições recentes.',
+      tags: ['TypeScript', 'React', 'Node.js', 'API REST'],
       gradient: 'from-secondary to-accent',
-      github: 'https://github.com/FelippeTN',
+      github: 'https://github.com/LogicAI-Solutions/myteacher',
       demo: '#',
     },
   ];
@@ -69,7 +69,7 @@ const Projects = () => {
             Projetos em <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Destaque</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Alguns dos trabalhos que desenvolvi recentemente
+            Projetos reais de código aberto e produtos que desenvolvi
           </p>
         </motion.div>
 
