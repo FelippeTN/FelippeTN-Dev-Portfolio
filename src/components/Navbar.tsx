@@ -52,22 +52,8 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <motion.a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#');
-              }}
-              className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              FTN
-            </motion.a>
-
-            {/* Desktop Navigation */}
+          <div className="relative flex items-center justify-center">
+            {/* Desktop Navigation - centered */}
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item, index) => (
                 <motion.a
@@ -80,8 +66,8 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-foreground/80 hover:text-primary transition-colors duration-300 font-medium"
-                  whileHover={{ scale: 1.1 }}
+                  className="text-foreground/70 hover:text-primary transition-colors duration-300 font-medium text-sm tracking-wide"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {item.label}
@@ -89,10 +75,10 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - absolute right */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
+              className="md:hidden absolute right-0 p-2 rounded-lg hover:bg-primary/10 transition-colors duration-300"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
