@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Server, Sparkles, Zap, Target, Users, Rocket } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import fastapiPhoto from '@/assets/fastapi.jpeg';
 
 const About = () => {
   const { t } = useLanguage();
@@ -51,6 +52,23 @@ const About = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 max-w-2xl mx-auto rounded-xl bg-primary/10 border border-primary/20 overflow-hidden"
+        >
+          <img
+            src={fastapiPhoto}
+            alt="Felippe com Tiangolo, criador do FastAPI"
+            className="w-full max-h-72 object-cover object-top"
+          />
+          <p className="px-5 py-3 text-sm text-primary/90 leading-relaxed">
+            {a.funFact}
+          </p>
+        </motion.div>
       </div>
     </section>
   );

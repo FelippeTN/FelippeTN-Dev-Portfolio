@@ -38,6 +38,10 @@ const translations = {
       title: 'Sobre Mim',
       description:
         'Engenheiro de Software com foco em backend de alta performance e na criação de sistemas com IA. Atualmente na PGE-RJ, conectando Engenharia de Software sólida com o poder da Inteligência Artificial moderna.',
+        
+      funFact: 'Curiosidade: já conheci pessoalmente o Tiangolo — o criador do FastAPI. Sim, aquele cara que fez a biblioteca que provavelmente está rodando em produção agora mesmo em algum lugar do planeta.',
+      funFactLabel: 'Fun fact',
+
       features: [
         {
           title: 'Backend & Engenharia de Software',
@@ -259,6 +263,9 @@ const translations = {
       title: 'About Me',
       description:
         'Software Engineer focused on high-performance backend systems and building production-grade systems with AI. Currently at PGE-RJ, combining solid Software Engineering with the power of modern Artificial Intelligence.',
+      funFact: '🎉 Fun fact: I\'ve met Tiangolo in person — the creator of FastAPI. Yeah, the guy who built the library probably running in production somewhere on the planet right now.',
+      funFactLabel: 'Fun fact',
+
       features: [
         {
           title: 'Backend & Software Engineering',
