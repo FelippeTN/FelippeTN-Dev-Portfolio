@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
       title: 'Engenheiro de Software',
       company: 'PGE-RJ — Procuradoria-Geral do Estado do Rio de Janeiro',
-      period: '2024 - Presente',
-      description: 'Atuação na ponte entre Engenharia de Software tradicional e Inteligência Artificial moderna. Responsável por operacionalizar modelos de IA, transformando soluções experimentais em sistemas de produção confiáveis, escaláveis e de alta performance utilizados pelo Estado do Rio de Janeiro.',
+      period: '2024 — Presente',
+      description: 'Atuação na ponte entre Engenharia de Software tradicional e Inteligência Artificial moderna. Responsável por operacionalizar modelos de IA, transformando soluções experimentais em sistemas de produção confiáveis, escaláveis e de alta performance.',
       achievements: [
         'Operacionalização de modelos de IA em ambiente de produção estatal',
         'Desenvolvimento de serviços backend de alta performance com Go e Python',
@@ -15,13 +14,12 @@ const Experience = () => {
         'Containerização e orquestração de serviços com Docker e Linux',
         'Arquitetura de sistemas escaláveis orientados a domínio',
       ],
-      color: 'from-primary to-accent',
     },
     {
       title: 'Engenheiro de Software Full Stack',
       company: 'LogicAI Solutions',
-      period: '2023 - 2024',
-      description: 'Desenvolvimento de produtos de software completos para a empresa LogicAI Solutions, desde sistemas de gerenciamento educacional até plataformas web institucionais. Liderança técnica em projetos de ponta a ponta com TypeScript, React e Node.js.',
+      period: '2023 — 2024',
+      description: 'Desenvolvimento de produtos de software completos, desde sistemas de gerenciamento educacional até plataformas web institucionais. Liderança técnica em projetos de ponta a ponta com TypeScript, React e Node.js.',
       achievements: [
         'Desenvolvimento do TeacherApp — plataforma de gerenciamento de estudantes',
         'Criação do site institucional da LogicAI Solutions com TypeScript',
@@ -29,85 +27,77 @@ const Experience = () => {
         'Contribuição com mais de 93% dos commits no repositório principal do produto',
         'Aplicação de metodologias ágeis com Scrum e Kanban',
       ],
-      color: 'from-accent to-secondary',
     },
   ];
 
   return (
-    <section id="experience" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-card/30" />
-      
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="experience" className="py-28 relative">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Experiência <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Profissional</span>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+            Experiência Profissional
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Experiência profissional em ambientes de produção real, do setor público à indústria de tecnologia
+          <div className="section-line" />
+          <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
+            Do setor público à indústria de tecnologia, construindo sistemas reais
           </p>
         </motion.div>
 
-        <div className="max-w-5xl mx-auto space-y-8">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group relative"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-              
-              <div className="relative p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${exp.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
-                      <Briefcase className="w-6 h-6 text-primary-foreground" />
-                    </div>
-                    
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute left-0 md:left-8 top-0 bottom-0 w-px bg-white/[0.06]" />
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.title + exp.company}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative pl-8 md:pl-20 group"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 md:left-8 top-1 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-primary/60 border-2 border-background group-hover:bg-primary transition-colors duration-300" />
+
+                <div className="space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                     <div>
-                      <h3 className="text-2xl font-bold mb-1 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-lg font-semibold text-foreground">
                         {exp.title}
                       </h3>
-                      <p className="text-lg text-muted-foreground font-semibold">
+                      <p className="text-sm text-muted-foreground">
                         {exp.company}
                       </p>
                     </div>
+                    <span className="text-xs font-medium text-primary/80 bg-primary/[0.08] px-3 py-1 rounded-full self-start">
+                      {exp.period}
+                    </span>
                   </div>
-                  
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-sm font-medium">{exp.period}</span>
-                  </div>
-                </div>
-                
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {exp.description}
-                </p>
-                
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-foreground/80 uppercase tracking-wider mb-3">
-                    Principais Realizações
-                  </h4>
-                  <ul className="space-y-2">
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  <ul className="space-y-1.5 pt-1">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${exp.color} mt-2 flex-shrink-0`} />
-                        <span>{achievement}</span>
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                        <span className="w-1 h-1 rounded-full bg-primary/50 mt-2 flex-shrink-0" />
+                        {achievement}
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

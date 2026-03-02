@@ -9,7 +9,7 @@ import Contact from '@/components/Contact';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-card/30">
+    <div className="min-h-screen bg-background">
       <Navbar />
       <Hero3D />
       <About />

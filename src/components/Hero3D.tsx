@@ -3,12 +3,13 @@ import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import Felippe from '@/assets/Felippe.jpg';
 
 const felippeImg = Felippe;
 
 function StarField() {
-  const count = 2000;
+  const count = 1800;
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i += 3) {
@@ -23,15 +24,15 @@ function StarField() {
     const col = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i += 3) {
       const colorChoice = Math.random();
-      if (colorChoice < 0.35) {
-        // Vercel blue #0070F3
-        col[i] = 0.0; col[i + 1] = 0.44; col[i + 2] = 0.95;
+      if (colorChoice < 0.4) {
+        // Emerald #10b981
+        col[i] = 0.063; col[i + 1] = 0.725; col[i + 2] = 0.506;
       } else if (colorChoice < 0.65) {
-        // Indigo #6366F1
-        col[i] = 0.39; col[i + 1] = 0.40; col[i + 2] = 0.95;
+        // Teal #14b8a6
+        col[i] = 0.078; col[i + 1] = 0.722; col[i + 2] = 0.651;
       } else {
         // Cool white
-        col[i] = 0.90; col[i + 1] = 0.91; col[i + 2] = 1.0;
+        col[i] = 0.85; col[i + 1] = 0.88; col[i + 2] = 0.92;
       }
     }
     return col;
@@ -41,8 +42,8 @@ function StarField() {
 
   useFrame((state) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.03;
-      pointsRef.current.rotation.x = state.clock.elapsedTime * 0.02;
+      pointsRef.current.rotation.y = state.clock.elapsedTime * 0.025;
+      pointsRef.current.rotation.x = state.clock.elapsedTime * 0.015;
     }
   });
 
@@ -63,120 +64,99 @@ function StarField() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.025}
+        size={0.022}
         vertexColors
         transparent
-        opacity={0.9}
+        opacity={0.85}
         sizeAttenuation
       />
     </points>
   );
 }
 
-
-function InterstellarDevScene() {
-  return (
-    <>
-      <StarField />
-    </>
-  );
-}
-
 const Hero3D = () => {
+  const socialLinks = [
+    { icon: Github, href: 'https://github.com/FelippeTN', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:felippenalim2004@gmail.com', label: 'Email' },
+  ];
+
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      {/* Three.js Canvas */}
       <div className="absolute inset-0 w-full h-full">
-        <Canvas 
+        <Canvas
           camera={{ position: [0, 2, 10], fov: 65 }}
           gl={{ antialias: true, alpha: true }}
           className="w-full h-full"
         >
-          <ambientLight intensity={0.3} />
-          <pointLight position={[0, 0, 0]} intensity={1.8} color="#0070F3" distance={10} />
-          <pointLight position={[8, 5, 5]} intensity={1.4} color="#6366F1" distance={15} />
-          <pointLight position={[-8, -5, -5]} intensity={0.9} color="#3B82F6" distance={15} />
-          <spotLight 
-            position={[15, 15, 15]} 
-            angle={0.4} 
-            penumbra={1} 
-            intensity={1.2}
-            color="#ffffff"
-            castShadow
-          />
-          <directionalLight position={[-10, 10, 5]} intensity={0.3} color="#818CF8" />
-          
-          <InterstellarDevScene />
-          <OrbitControls 
-            enableZoom={false} 
+          <ambientLight intensity={0.2} />
+          <pointLight position={[0, 0, 0]} intensity={1.2} color="#10b981" distance={10} />
+          <pointLight position={[8, 5, 5]} intensity={0.8} color="#14b8a6" distance={15} />
+          <pointLight position={[-8, -5, -5]} intensity={0.6} color="#059669" distance={15} />
+          <StarField />
+          <OrbitControls
+            enableZoom={false}
             enablePan={false}
             autoRotate
-            autoRotateSpeed={0.8}
+            autoRotateSpeed={0.5}
             maxPolarAngle={Math.PI / 1.8}
             minPolarAngle={Math.PI / 3}
           />
         </Canvas>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent pointer-events-none" />
+      {/* Subtle gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex items-center justify-between min-h-screen gap-12">
+      {/* Content */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+          {/* Profile photo - left side on desktop */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex flex-col items-center space-y-6"
+            className="hidden lg:block flex-shrink-0"
           >
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#0070F3] via-indigo-500 to-[#6366F1] rounded-full opacity-45 blur-xl group-hover:opacity-70 animate-pulse transition duration-1000"></div>
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#0070F3] to-[#6366F1] rounded-full animate-spin-slow opacity-25"></div>
-              
-              <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-[#0070F3]/25 group-hover:border-[#0070F3]/35 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0070F3]/10 to-[#6366F1]/10 group-hover:opacity-0 transition-opacity duration-500"></div>
+              <div className="absolute -inset-1 rounded-full bg-primary/20 blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
+              <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-white/[0.08] group-hover:border-primary/30 transition-all duration-500">
                 <img
                   src="/profile-photo.jpg"
                   alt="Felippe Toscano Nalim"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  onError={(e) => {
-                    e.currentTarget.src = felippeImg;
-                  }}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  onError={(e) => { e.currentTarget.src = felippeImg; }}
                 />
               </div>
-              
-              <div className="absolute top-0 right-0 w-3 h-3 bg-[#0070F3] rounded-full animate-ping"></div>
-              <div className="absolute bottom-10 left-0 w-2 h-2 bg-[#6366F1] rounded-full animate-ping" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute top-10 left-5 w-2 h-2 bg-blue-400 rounded-full animate-ping" style={{ animationDelay: '1s' }}></div>
+              {/* Status badge */}
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
+                <div className="flex items-center gap-2 px-4 py-1.5 bg-card/90 backdrop-blur-sm rounded-full border border-white/[0.08] text-xs font-medium text-muted-foreground">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                  Disponível
+                </div>
+              </div>
             </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="flex items-center gap-2 px-6 py-3 bg-[#0070F3]/8 backdrop-blur-md rounded-full border border-[#0070F3]/20 shadow-lg"
-            >
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold text-white/90">Aberto a novas oportunidades</span>
-            </motion.div>
           </motion.div>
 
+          {/* Text content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl space-y-8 backdrop-blur-lg bg-[#111111]/80 p-10 lg:p-12 rounded-3xl border border-[#222222] shadow-2xl shadow-[#0070F3]/8 hover:border-[#0070F3]/25 transition-all duration-500"
+            className="max-w-2xl text-center lg:text-left"
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block"
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6"
             >
-              <span className="text-sm font-medium text-[#0070F3] tracking-wider uppercase px-4 py-2 m-1 bg-[#0070F3]/8 rounded-full border border-[#0070F3]/20">
+              <span className="text-xs font-medium text-primary tracking-widest uppercase px-3 py-1 bg-primary/[0.08] rounded-full border border-primary/20">
                 Software Engineer
               </span>
-              <span className="text-sm font-medium text-[#6366F1] tracking-wider uppercase px-4 py-2 m-1 bg-[#6366F1]/8 rounded-full border border-[#6366F1]/20">
-                AI Operations Specialist
+              <span className="text-xs font-medium text-primary tracking-widest uppercase px-3 py-1 bg-primary/[0.08] rounded-full border border-primary/20">
+                AI Operations
               </span>
             </motion.div>
 
@@ -184,61 +164,90 @@ const Hero3D = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-5xl lg:text-7xl font-bold leading-tight text-white"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6"
             >
-              Felippe Toscano Nalim
-              <span className="block bg-gradient-to-r from-[#0070F3] to-[#6366F1] bg-clip-text text-transparent">
-                Engenheiro de Software & IA
-              </span>
+              Felippe Toscano
+              <br />
+              <span className="text-primary">Nalim</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-lg text-gray-200 max-w-xl leading-relaxed"
+              className="text-base sm:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed mb-8"
             >
-              Engenheiro de Software na Procuradoria-Geral do Estado do Rio de Janeiro (PGE-RJ), 
-              especializado em operacionalizar Inteligência Artificial — transformando modelos experimentais 
-              em sistemas de produção robustos, escaláveis e de alta performance.
+              Engenheiro de Software na PGE-RJ, especializado em operacionalizar
+              Inteligência Artificial — transformando modelos experimentais em
+              sistemas de produção escaláveis e de alta performance.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="flex gap-4 pt-4"
+              className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
             >
               <a
                 href="#projects"
-                className="px-8 py-4 rounded-lg bg-[#0070F3] text-white font-semibold hover:bg-[#0060D0] hover:shadow-[0_0_32px_rgba(0,112,243,0.4)] transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-7 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_24px_rgba(16,185,129,0.25)]"
               >
                 Ver Projetos
               </a>
               <a
                 href="#contact"
-                className="px-8 py-4 rounded-lg border border-[#222222] text-[#EEEEEE]/80 font-semibold hover:border-[#0070F3]/50 hover:text-[#EEEEEE] transition-all duration-300 hover:scale-105 hover:-translate-y-1 backdrop-blur-sm"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="px-7 py-3 rounded-lg border border-white/[0.1] text-foreground/80 font-semibold text-sm hover:border-primary/40 hover:text-foreground transition-all duration-300"
               >
-                Contato
+                Entre em contato
               </a>
+            </motion.div>
+
+            {/* Social links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="flex items-center gap-3 mt-10 justify-center lg:justify-start"
+            >
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-white/[0.04] transition-all duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
             </motion.div>
           </motion.div>
         </div>
       </div>
 
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex items-start justify-center p-2">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-primary rounded-full"
-          />
-        </div>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="text-muted-foreground/50"
+        >
+          <ArrowDown className="w-5 h-5" />
+        </motion.div>
       </motion.div>
     </section>
   );

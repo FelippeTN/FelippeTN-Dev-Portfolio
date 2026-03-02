@@ -1,77 +1,86 @@
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, Heart } from 'lucide-react';
 
 const Contact = () => {
   const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/FelippeTN', color: 'hover:text-primary' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', color: 'hover:text-accent' },
-    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/felippetn/', color: 'hover:text-secondary' },
-    { icon: Mail, label: 'Email', href: 'mailto:felippenalim2004@gmail.com', color: 'hover:text-primary' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/FelippeTN' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/' },
+    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/felippetn/' },
+    { icon: Mail, label: 'Email', href: 'mailto:felippenalim2004@gmail.com' },
   ];
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-t from-card/50 to-background" />
-      
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="contact" className="py-28 relative">
+      <div className="max-w-3xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto"
+          transition={{ duration: 0.5 }}
+          className="text-center"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            Vamos <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Conversar?</span>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
+            Vamos Conversar?
           </h2>
+          <div className="section-line" />
           
-          <p className="text-muted-foreground text-lg mb-12">
+          <p className="text-muted-foreground text-base max-w-lg mx-auto mt-6 mb-10 leading-relaxed">
             Estou sempre aberto a novas oportunidades e colaborações. 
-            Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato!
+            Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
+          {/* Social links */}
+          <div className="flex justify-center gap-3 mb-10">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={social.label}
                 href={social.href}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                target={social.href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`group relative p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border ${social.color} transition-all duration-300 hover:scale-110 hover:border-primary/50`}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="p-3 rounded-lg text-muted-foreground hover:text-primary bg-card/40 border border-white/[0.06] hover:border-primary/30 transition-all duration-300"
                 aria-label={social.label}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <social.icon className="w-6 h-6 relative z-10" />
+                <social.icon className="w-5 h-5" />
               </motion.a>
             ))}
           </div>
 
+          {/* CTA Button */}
           <motion.a
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             href="mailto:felippenalim2004@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_24px_rgba(16,185,129,0.25)]"
           >
-            <Mail className="w-5 h-5" />
+            <Mail className="w-4 h-4" />
             Enviar Email
           </motion.a>
         </motion.div>
       </div>
 
       {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="mt-24 pt-8 border-t border-border/50 text-center text-muted-foreground"
-      >
-        <p>© 2025 Felippe Toscano Nalim. Desenvolvido com React, Three.js & Framer Motion</p>
-      </motion.div>
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-24 pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Felippe Toscano Nalim
+          </p>
+          <p className="text-xs text-muted-foreground flex items-center gap-1">
+            Feito com <Heart className="w-3 h-3 text-primary" /> React, Three.js & Framer Motion
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };
