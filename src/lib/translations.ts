@@ -16,20 +16,19 @@ const translations = {
     hero: {
       locationBadge: 'Rio de Janeiro, Brasil',
       roleBadge: 'Software Engineer',
-      subtitle: 'Desenvolvedor Backend & Especialista em IA',
+      subtitle: 'Software Engineer & Especialista em Backend',
       description:
-        'Engenheiro de Software na PGE-RJ, especializado em backend de alta performance e operacionalização de IA em sistemas confiáveis, observáveis e escaláveis.',
+        'Engenheiro de Software na PGE-RJ, especializado em backend de alta performance e na construção de sistemas confiáveis, observáveis e escaláveis com IA.',
       highlights: [
         'Engenharia de backend para produção real',
         'Operacionalização de IA com foco em escala',
         'Arquiteturas robustas com Go, Python e TypeScript',
-        'Experiência em setor público e produtos SaaS',
+        'Especialista em sistemas backend de alta performance',
       ],
       stats: [
-        { value: '4+', label: 'Projetos em Produção' },
         { value: '3+', label: 'Anos de Experiência' },
         { value: '24/7', label: 'Foco em Performance' },
-        { value: 'PT', label: 'Rio de Janeiro' },
+        { value: 'Brasil', label: 'Rio de Janeiro' },
       ],
       available: 'Disponível para oportunidades',
       btnProjects: 'Ver Projetos',
@@ -38,7 +37,7 @@ const translations = {
     about: {
       title: 'Sobre Mim',
       description:
-        'Engenheiro de Software com foco em backend de alta performance e IA operacional. Atualmente na PGE-RJ, fazendo a ponte entre Engenharia de Software tradicional e Inteligência Artificial moderna.',
+        'Engenheiro de Software com foco em backend de alta performance e na criação de sistemas com IA. Atualmente na PGE-RJ, conectando Engenharia de Software sólida com o poder da Inteligência Artificial moderna.',
       features: [
         {
           title: 'Backend & Engenharia de Software',
@@ -216,7 +215,7 @@ const translations = {
       title: 'Vamos Conversar?',
       description:
         'Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato.',
-      btnEmail: 'Enviar Email',
+      btnWhatsapp: 'Chamar no WhatsApp',
       footer: 'Feito com',
       footerStack: 'React, Three.js & Framer Motion',
     },
@@ -238,20 +237,19 @@ const translations = {
     hero: {
       locationBadge: 'Rio de Janeiro, Brazil',
       roleBadge: 'Software Engineer',
-      subtitle: 'Backend Developer & AI Specialist',
+      subtitle: 'Software Engineer & Backend Specialist',
       description:
-        'Software Engineer at PGE-RJ, specialized in high-performance backend systems and operationalizing AI into reliable, observable, and scalable production systems.',
+        'Software Engineer at PGE-RJ, specialized in high-performance backend systems and building reliable, observable, and scalable production systems with AI.',
       highlights: [
         'Backend engineering for real-world production',
         'AI operationalization focused on scale',
         'Robust architectures with Go, Python & TypeScript',
-        'Experience in public sector and SaaS products',
+        'Specialist in high-performance backend systems',
       ],
       stats: [
-        { value: '4+', label: 'Production Projects' },
         { value: '3+', label: 'Years of Experience' },
         { value: '24/7', label: 'Performance Focus' },
-        { value: 'PT', label: 'Rio de Janeiro' },
+        { value: 'BR', label: 'Rio de Janeiro' },
       ],
       available: 'Available for opportunities',
       btnProjects: 'View Projects',
@@ -260,7 +258,7 @@ const translations = {
     about: {
       title: 'About Me',
       description:
-        'Software Engineer focused on high-performance backend systems and operational AI. Currently at PGE-RJ, bridging traditional Software Engineering with modern Artificial Intelligence.',
+        'Software Engineer focused on high-performance backend systems and building production-grade systems with AI. Currently at PGE-RJ, combining solid Software Engineering with the power of modern Artificial Intelligence.',
       features: [
         {
           title: 'Backend & Software Engineering',
@@ -443,7 +441,7 @@ const translations = {
       title: "Let's Talk?",
       description:
         "I'm always open to new opportunities and collaborations. If you have a challenging project or a role that makes sense, reach out.",
-      btnEmail: 'Send Email',
+      btnWhatsapp: 'Chat on WhatsApp',
       footer: 'Made with',
       footerStack: 'React, Three.js & Framer Motion',
     },
