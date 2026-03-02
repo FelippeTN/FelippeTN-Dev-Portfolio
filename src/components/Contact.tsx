@@ -56,7 +56,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
             href="mailto:felippenalim2004@gmail.com"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_24px_rgba(16,185,129,0.25)]"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_24px_rgba(59,130,246,0.3)]"
           >
             <Mail className="w-4 h-4" />
             Enviar Email

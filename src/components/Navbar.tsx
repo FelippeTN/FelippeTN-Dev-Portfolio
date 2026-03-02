@@ -1,31 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      const sections = ['contact', 'projects', 'education', 'experience', 'skills', 'about'];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom > 150) {
-            setActiveSection(id);
-            return;
-          }
-        }
-      }
-      if (window.scrollY < 300) setActiveSection('');
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const clickLockRef = useRef<{ id: string; until: number } | null>(null);
 
   const navItems = [
     { label: 'Sobre', href: '#about' },
@@ -36,12 +17,59 @@ const Navbar = () => {
     { label: 'Contato', href: '#contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+
+      const now = Date.now();
+      const isAtPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+      if (isAtPageBottom) {
+        setActiveSection('contact');
+        return;
+      }
+
+      if (clickLockRef.current && now < clickLockRef.current.until) {
+        setActiveSection(clickLockRef.current.id);
+        return;
+      }
+
+      const offset = 120;
+      const currentPosition = window.scrollY + offset;
+      let currentActiveSection = '';
+
+      for (const item of navItems) {
+        const id = item.href.replace('#', '');
+        const el = document.getElementById(id);
+        if (!el) continue;
+
+        if (el.offsetTop <= currentPosition) {
+          currentActiveSection = id;
+        }
+      }
+
+      setActiveSection(currentActiveSection);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
+
     if (href === '#') {
+      clickLockRef.current = null;
+      setActiveSection('');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
+
+    const targetId = href.replace('#', '');
+    clickLockRef.current = { id: targetId, until: Date.now() + 900 };
+    setActiveSection(targetId);
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

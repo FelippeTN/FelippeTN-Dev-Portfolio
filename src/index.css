@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    --background: 220 15% 4%;
+    --background: 225 20% 4%;
     --foreground: 210 20% 95%;
 
-    --card: 220 15% 7%;
+    --card: 225 18% 7%;
     --card-foreground: 210 20% 95%;
 
-    --popover: 220 15% 7%;
+    --popover: 225 18% 7%;
     --popover-foreground: 210 20% 95%;
 
-    --primary: 160 84% 39%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 215 20% 14%;
+    --secondary: 225 18% 13%;
     --secondary-foreground: 210 20% 90%;
 
-    --muted: 215 20% 12%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 225 16% 12%;
+    --muted-foreground: 220 10% 50%;
 
-    --accent: 160 84% 39%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 95%;
 
-    --border: 215 20% 12%;
-    --input: 215 20% 14%;
-    --ring: 160 84% 39%;
+    --border: 225 16% 12%;
+    --input: 225 18% 13%;
+    --ring: 217 91% 60%;
 
     --radius: 0.75rem;
   }
@@ -67,8 +67,13 @@
 
   /* Selection */
   ::selection {
-    background: hsl(160 84% 39% / 0.3);
+    background: hsl(217 91% 60% / 0.3);
     color: hsl(var(--foreground));
+  }
+
+  /* Scroll offset for fixed navbar */
+  section[id] {
+    scroll-margin-top: 80px;
   }
 }
 
