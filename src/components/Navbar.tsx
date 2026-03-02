@@ -1,21 +1,16 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
+  const { t, toggleLocale, locale } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const clickLockRef = useRef<{ id: string; until: number } | null>(null);
 
-  const navItems = [
-    { label: 'Sobre', href: '#about' },
-    { label: 'Habilidades', href: '#skills' },
-    { label: 'Experiência', href: '#experience' },
-    { label: 'Formação', href: '#education' },
-    { label: 'Projetos', href: '#projects' },
-    { label: 'Contato', href: '#contact' },
-  ];
+  const navItems = t.navbar.items;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,6 +118,35 @@ const Navbar = () => {
                   </a>
                 );
               })}
+
+              {/* Flag toggle */}
+              <button
+                onClick={toggleLocale}
+                aria-label="Toggle language"
+                className="ml-3 relative flex items-center gap-0 rounded-full border border-white/[0.1] bg-white/[0.04] p-0.5 hover:border-primary/40 transition-all duration-300"
+              >
+                <span
+                  className={`relative z-10 flex items-center justify-center w-8 h-7 rounded-full text-base transition-all duration-300 ${
+                    locale === 'pt' ? 'opacity-100' : 'opacity-40'
+                  }`}
+                >
+                  🇧🇷
+                </span>
+                <span
+                  className={`relative z-10 flex items-center justify-center w-8 h-7 rounded-full text-base transition-all duration-300 ${
+                    locale === 'en' ? 'opacity-100' : 'opacity-40'
+                  }`}
+                >
+                  🇺🇸
+                </span>
+                {/* sliding indicator */}
+                <motion.span
+                  layout
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  className="absolute top-0.5 bottom-0.5 w-8 rounded-full bg-primary/20 border border-primary/30"
+                  style={{ left: locale === 'pt' ? '2px' : 'calc(50% + 0px)' }}
+                />
+              </button>
             </div>
 
             <button
@@ -168,6 +192,31 @@ const Navbar = () => {
                     {item.label}
                   </motion.a>
                 ))}
+                {/* Mobile flag toggle */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
+                  className="mt-3 flex items-center justify-between px-4 py-3 rounded-lg border border-white/[0.06] bg-white/[0.02]"
+                >
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {locale === 'pt' ? 'Idioma' : 'Language'}
+                  </span>
+                  <button
+                    onClick={toggleLocale}
+                    aria-label="Toggle language"
+                    className="relative flex items-center rounded-full border border-white/[0.1] bg-white/[0.04] p-0.5 hover:border-primary/40 transition-all duration-300"
+                  >
+                    <span className={`relative z-10 flex items-center justify-center w-9 h-8 rounded-full text-lg transition-all duration-300 ${locale === 'pt' ? 'opacity-100' : 'opacity-35'}`}>🇧🇷</span>
+                    <span className={`relative z-10 flex items-center justify-center w-9 h-8 rounded-full text-lg transition-all duration-300 ${locale === 'en' ? 'opacity-100' : 'opacity-35'}`}>🇺🇸</span>
+                    <motion.span
+                      layout
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      className="absolute top-0.5 bottom-0.5 w-9 rounded-full bg-primary/20 border border-primary/30"
+                      style={{ left: locale === 'pt' ? '2px' : 'calc(50% + 0px)' }}
+                    />
+                  </button>
+                </motion.div>
               </div>
             </motion.div>
           </>

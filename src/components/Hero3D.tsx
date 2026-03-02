@@ -5,6 +5,7 @@ import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { Github, Linkedin, Mail, ArrowDown, MapPin, BriefcaseBusiness, Users, Clock3, Globe } from 'lucide-react';
 import Felippe from '@/assets/Felippe.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const felippeImg = Felippe;
 
@@ -75,25 +76,19 @@ function StarField() {
 }
 
 const Hero3D = () => {
+  const { t } = useLanguage();
+  const h = t.hero;
+
   const socialLinks = [
     { icon: Github, href: 'https://github.com/FelippeTN', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', label: 'LinkedIn' },
     { icon: Mail, href: 'mailto:felippenalim2004@gmail.com', label: 'Email' },
   ];
 
-  const highlights = [
-    'Engenharia de software para produção real',
-    'Operacionalização de IA com foco em escala',
-    'Arquiteturas robustas com Go, Python e TypeScript',
-    'Experiência em setor público e produtos SaaS',
-  ];
+  const highlights = h.highlights;
 
-  const stats = [
-    { icon: Users, value: '4+', label: 'Projetos em Produção' },
-    { icon: BriefcaseBusiness, value: '3+', label: 'Anos de Experiência' },
-    { icon: Clock3, value: '24/7', label: 'Foco em Performance' },
-    { icon: Globe, value: 'BR', label: 'Rio de Janeiro' },
-  ];
+  const statIcons = [Users, BriefcaseBusiness, Clock3, Globe];
+  const stats = h.stats.map((s, i) => ({ ...s, icon: statIcons[i] }));
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
@@ -141,15 +136,15 @@ const Hero3D = () => {
               className="flex flex-wrap items-center gap-2 justify-center lg:justify-start mb-5"
             >
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/80 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
-                <MapPin className="w-3.5 h-3.5 text-primary" /> Rio de Janeiro, Brasil
+                <MapPin className="w-3.5 h-3.5 text-primary" /> {h.locationBadge}
               </span>
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground/80 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08]">
-                <BriefcaseBusiness className="w-3.5 h-3.5 text-primary" /> Software Engineer
+                <BriefcaseBusiness className="w-3.5 h-3.5 text-primary" /> {h.roleBadge}
               </span>
             </motion.div>
 
             <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground/80 font-semibold mb-4">
-              Desenvolvedor & Especialista em IA
+              {h.subtitle}
             </p>
 
             <motion.h1
@@ -167,8 +162,7 @@ const Hero3D = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed mb-6"
             >
-              Engenheiro de Software na PGE-RJ, especializado em transformar modelos de IA em sistemas
-              de produção confiáveis, observáveis e escaláveis.
+              {h.description}
             </motion.p>
 
             <motion.ul
@@ -199,7 +193,7 @@ const Hero3D = () => {
                 }}
                 className="px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_28px_rgba(59,130,246,0.35)]"
               >
-                Ver Projetos
+                {h.btnProjects}
               </a>
               <a
                 href="#contact"
@@ -209,7 +203,7 @@ const Hero3D = () => {
                 }}
                 className="px-7 py-3.5 rounded-xl border border-white/[0.12] text-foreground/85 font-semibold text-sm hover:border-primary/45 hover:text-foreground transition-all duration-300 bg-white/[0.02]"
               >
-                Fale comigo
+                {h.btnContact}
               </a>
             </motion.div>
 
@@ -256,7 +250,7 @@ const Hero3D = () => {
                 <div className="absolute -bottom-4 right-4 sm:right-6">
                   <div className="flex items-center gap-2.5 px-4 py-2.5 bg-card/95 backdrop-blur-md rounded-xl border border-white/[0.12] text-xs font-semibold text-foreground/85 shadow-xl shadow-primary/10">
                     <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    Disponível para oportunidades
+                    {h.available}
                   </div>
                 </div>
               </div>

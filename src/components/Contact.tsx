@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Instagram, Heart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
+  const c = t.contact;
+
   const socialLinks = [
     { icon: Github, label: 'GitHub', href: 'https://github.com/FelippeTN' },
     { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/' },
@@ -20,13 +24,12 @@ const Contact = () => {
           className="text-center"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Vamos Conversar?
+            {c.title}
           </h2>
           <div className="section-line" />
           
           <p className="text-muted-foreground text-base max-w-lg mx-auto mt-6 mb-10 leading-relaxed">
-            Estou sempre aberto a novas oportunidades e colaborações. 
-            Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato.
+            {c.description}
           </p>
 
           {/* Social links */}
@@ -59,7 +62,7 @@ const Contact = () => {
             className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-[0_0_24px_rgba(59,130,246,0.3)]"
           >
             <Mail className="w-4 h-4" />
-            Enviar Email
+            {c.btnEmail}
           </motion.a>
         </motion.div>
       </div>
@@ -77,7 +80,7 @@ const Contact = () => {
             © {new Date().getFullYear()} Felippe Toscano Nalim
           </p>
           <p className="text-xs text-muted-foreground flex items-center gap-1">
-            Feito com <Heart className="w-3 h-3 text-primary" /> React, Three.js & Framer Motion
+            {c.footer} <Heart className="w-3 h-3 text-primary" /> {c.footerStack}
           </p>
         </motion.div>
       </div>

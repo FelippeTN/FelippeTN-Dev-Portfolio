@@ -1,39 +1,13 @@
 import { motion } from 'framer-motion';
-import { Code2, Sparkles, Zap, Target, Users, Rocket } from 'lucide-react';
+import { Server, Sparkles, Zap, Target, Users, Rocket } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
-  const features = [
-    {
-      icon: Code2,
-      title: 'Engenharia de Software',
-      description: 'Arquitetura de sistemas de produção robustos e escaláveis, com foco em mantenabilidade, observabilidade e engenharia de alta qualidade.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Operações de IA',
-      description: 'Especialista em operacionalizar Inteligência Artificial — transformando modelos experimentais em produtos de software confiáveis e prontos para produção.',
-    },
-    {
-      icon: Zap,
-      title: 'Performance & Escalabilidade',
-      description: 'Implementação de serviços de alta performance com Go, Python e Node.js, garantindo eficiência sob carga real.',
-    },
-    {
-      icon: Target,
-      title: 'Impacto no Negócio',
-      description: 'Comprometido com a entrega de soluções que geram valor real, com foco em resultados mensurados e alinhamento estratégico.',
-    },
-    {
-      icon: Users,
-      title: 'Colaboração & Liderança Técnica',
-      description: 'Experiência em equipes multidisciplinares, mentoria técnica, revisão de código e disseminação de boas práticas de engenharia.',
-    },
-    {
-      icon: Rocket,
-      title: 'Aprendizado Contínuo',
-      description: 'Estudante na USP (Engenharia de Software) e certificado pela University of Michigan, sempre evoluindo com as melhores práticas do mercado.',
-    },
-  ];
+  const { t } = useLanguage();
+  const a = t.about;
+
+  const featureIcons = [Server, Sparkles, Zap, Target, Users, Rocket];
+  const features = a.features.map((f, i) => ({ ...f, icon: featureIcons[i] }));
 
   return (
     <section id="about" className="py-28 relative">
@@ -46,13 +20,11 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Sobre Mim
+            {a.title}
           </h2>
           <div className="section-line" />
           <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed mt-6">
-            Engenheiro de Software dedicado a projetar sistemas robustos e prontos para produção.
-            Atualmente na PGE-RJ, fazendo a ponte entre a Engenharia de Software 
-            tradicional e a Inteligência Artificial moderna.
+            {a.description}
           </p>
         </motion.div>
 

@@ -1,34 +1,10 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Experience = () => {
-  const experiences = [
-    {
-      title: 'Engenheiro de Software',
-      company: 'PGE-RJ — Procuradoria-Geral do Estado do Rio de Janeiro',
-      period: '2024 — Presente',
-      description: 'Atuação na ponte entre Engenharia de Software tradicional e Inteligência Artificial moderna. Responsável por operacionalizar modelos de IA, transformando soluções experimentais em sistemas de produção confiáveis, escaláveis e de alta performance.',
-      achievements: [
-        'Operacionalização de modelos de IA em ambiente de produção estatal',
-        'Desenvolvimento de serviços backend de alta performance com Go e Python',
-        'Implementação de pipelines de dados e integração com infraestrutura cloud (AWS/GCP)',
-        'Containerização e orquestração de serviços com Docker e Linux',
-        'Arquitetura de sistemas escaláveis orientados a domínio',
-      ],
-    },
-    {
-      title: 'Engenheiro de Software Full Stack',
-      company: 'LogicAI Solutions',
-      period: '2023 — 2024',
-      description: 'Desenvolvimento de produtos de software completos, desde sistemas de gerenciamento educacional até plataformas web institucionais. Liderança técnica em projetos de ponta a ponta com TypeScript, React e Node.js.',
-      achievements: [
-        'Desenvolvimento do TeacherApp — plataforma de gerenciamento de estudantes',
-        'Criação do site institucional da LogicAI Solutions com TypeScript',
-        'Implementação de arquiteturas REST e integração com banco de dados relacional',
-        'Contribuição com mais de 93% dos commits no repositório principal do produto',
-        'Aplicação de metodologias ágeis com Scrum e Kanban',
-      ],
-    },
-  ];
+  const { t } = useLanguage();
+  const ex = t.experience;
+  const experiences = ex.items;
 
   return (
     <section id="experience" className="py-28 relative">
@@ -41,11 +17,11 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Experiência Profissional
+            {ex.title}
           </h2>
           <div className="section-line" />
           <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
-            Do setor público à indústria de tecnologia, construindo sistemas reais
+            {ex.description}
           </p>
         </motion.div>
 

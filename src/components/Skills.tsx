@@ -1,32 +1,10 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: 'Backend & Sistemas',
-      skills: ['Go (Golang)', 'Python', 'Node.js', 'TypeScript', 'JavaScript', 'REST APIs', 'Express.js', 'GraphQL'],
-    },
-    {
-      title: 'Frontend',
-      skills: ['React', 'Next.js', 'Tailwind CSS', 'HTML5/CSS3', 'Framer Motion', 'Three.js', 'Responsive Design', 'Bootstrap CSS'],
-    },
-    {
-      title: 'IA & Dados',
-      skills: ['TensorFlow', 'Pandas', 'Operações de IA', 'Machine Learning', 'Pipelines de Dados', 'Análise de Dados'],
-    },
-    {
-      title: 'DevOps & Infraestrutura',
-      skills: ['Docker', 'Linux', 'AWS', 'GCP', 'CI/CD', 'Git', 'GitHub', 'Postman'],
-    },
-    {
-      title: 'Banco de Dados',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
-    },
-    {
-      title: 'Soft Skills',
-      skills: ['Liderança Técnica', 'Comunicação', 'Resolução de Problemas', 'Pensamento Crítico', 'Trabalho em Equipe', 'Gestão de Projetos'],
-    },
-  ];
+  const { t } = useLanguage();
+  const s = t.skills;
+  const skillCategories = s.categories;
 
   return (
     <section id="skills" className="py-28 relative">
@@ -39,11 +17,11 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Habilidades & Tecnologias
+            {s.title}
           </h2>
           <div className="section-line" />
           <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
-            Stack técnico orientado a sistemas de produção, IA e infraestrutura em nuvem
+            {s.description}
           </p>
         </motion.div>
 

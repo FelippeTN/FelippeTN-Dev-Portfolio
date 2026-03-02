@@ -1,51 +1,11 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Luna-Chat',
-      description: 'Chatbot criado em memória de Luna, minha melhor amiga. Construído com Python, demonstrando técnicas de NLP e integração com modelos de IA conversacional.',
-      tags: ['Python', 'IA', 'NLP', 'Chatbot'],
-      github: 'https://github.com/FelippeTN/Luna-Chat',
-      demo: '',
-    },
-    {
-      title: 'LogicAI Solutions Website',
-      description: 'Site institucional da LogicAI Solutions. Desenvolvido com TypeScript e React, design moderno e responsivo.',
-      tags: ['TypeScript', 'React', 'Tailwind CSS', 'Vite'],
-      github: 'https://github.com/FelippeTN/LogicAI-Solutions-Website',
-      demo: 'https://github.com/FelippeTN/LogicAI-Solutions-Website',
-    },
-    {
-      title: 'TeacherApp',
-      description: 'Plataforma completa de gerenciamento de estudantes para educadores. Controle de turmas, notas, frequência e comunicação.',
-      tags: ['TypeScript', 'React', 'Node.js', 'PostgreSQL'],
-      github: 'https://github.com/FelippeTN/TeacherApp',
-      demo: '',
-    },
-    {
-      title: 'Aggregare School',
-      description: 'Sistema de gestão escolar completo com módulos para administração de alunos, professores, disciplinas e relatórios.',
-      tags: ['TypeScript', 'React', 'REST API', 'PostgreSQL'],
-      github: 'https://github.com/FelippeTN/Aggregare-school',
-      demo: '',
-    },
-    {
-      title: 'Dev Portfolio 3D',
-      description: 'Este portfólio — construído com React, Three.js e Framer Motion. Campo estelar 3D interativo e animações fluidas.',
-      tags: ['React', 'Three.js', 'Framer Motion', 'TypeScript'],
-      github: 'https://github.com/FelippeTN/FelippeTN-Dev-Portfolio',
-      demo: '',
-    },
-    {
-      title: 'myteacher',
-      description: 'Plataforma educacional para a LogicAI Solutions, com gestão de alunos, conteúdos e acompanhamento de progresso.',
-      tags: ['TypeScript', 'React', 'Node.js', 'API REST'],
-      github: 'https://github.com/LogicAI-Solutions/myteacher',
-      demo: '',
-    },
-  ];
+  const { t } = useLanguage();
+  const p = t.projects;
+  const projects = p.items;
 
   return (
     <section id="projects" className="py-28 relative">
@@ -58,11 +18,11 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Projetos em Destaque
+            {p.title}
           </h2>
           <div className="section-line" />
           <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
-            Projetos reais de código aberto que desenvolvi
+            {p.description}
           </p>
         </motion.div>
 
@@ -115,7 +75,7 @@ const Projects = () => {
                     className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     <Github className="w-3.5 h-3.5" />
-                    Código
+                    {p.codeLabel}
                   </a>
                   {project.demo && (
                     <a 
@@ -125,7 +85,7 @@ const Projects = () => {
                       className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors duration-300"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      Demo
+                      {p.demoLabel}
                     </a>
                   )}
                 </div>

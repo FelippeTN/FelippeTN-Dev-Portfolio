@@ -1,40 +1,12 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, BookOpen } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Education = () => {
-  const education = [
-    {
-      degree: 'Engenharia de Software',
-      institution: 'Universidade de São Paulo (USP)',
-      period: '2024 — Em andamento',
-      description: 'Graduação com ênfase em arquitetura de sistemas, engenharia de software avançada, inteligência artificial e metodologias de desenvolvimento de software em larga escala.',
-      highlights: [
-        'Arquitetura e Design de Sistemas',
-        'Engenharia de Software Avançada',
-        'Inteligência Artificial & Aprendizado de Máquina',
-        'Banco de Dados e Modelagem',
-        'Metodologias Ágeis (Scrum, Kanban)',
-      ],
-    },
-  ];
-
-  const certifications = [
-    {
-      title: 'University of Michigan — Certified',
-      institution: 'Coursera / University of Michigan',
-      year: '2024',
-    },
-    {
-      title: 'React — The Complete Guide',
-      institution: 'Udemy',
-      year: '2023',
-    },
-    {
-      title: 'Node.js: Desenvolvedor Backend',
-      institution: 'Udemy',
-      year: '2023',
-    },
-  ];
+  const { t } = useLanguage();
+  const ed = t.education;
+  const education = ed.items;
+  const certifications = ed.certifications;
 
   return (
     <section id="education" className="py-28 relative">
@@ -47,11 +19,11 @@ const Education = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            Formação & Certificações
+            {ed.title}
           </h2>
           <div className="section-line" />
           <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
-            Formação acadêmica sólida e certificações internacionais
+            {ed.description}
           </p>
         </motion.div>
 
@@ -111,7 +83,7 @@ const Education = () => {
           transition={{ duration: 0.4 }}
           className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-5 text-center"
         >
-          Certificações
+          {ed.certificationsLabel}
         </motion.h3>
         
         <div className="grid sm:grid-cols-3 gap-4">
