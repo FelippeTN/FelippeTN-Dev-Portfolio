@@ -126,7 +126,7 @@ const translations = {
         {
           title: 'Engenheiro de Software',
           company: 'LogicAI Solutions',
-          period: '2023 — 2024',
+          period: '2024 — 2025',
           description:
             'Desenvolvimento de produtos de software completos, desde sistemas de gerenciamento educacional até plataformas web institucionais. Liderança técnica em projetos de ponta a ponta com TypeScript, React e Node.js.',
           achievements: [
@@ -135,6 +135,20 @@ const translations = {
             'Implementação de arquiteturas REST e integração com banco de dados relacional',
             'Contribuição com mais de 93% dos commits no repositório principal do produto',
             'Aplicação de metodologias ágeis com Scrum e Kanban',
+          ],
+        },
+        {
+          title: 'Engenheiro de Software Autonomo',
+          company: 'Autonomo - Freelance',
+          period: '2022 - Presente',
+          description:
+            'Atuacao como autonomo no desenvolvimento de software sob medida para empresas, startups e empreendedores, com foco em solucoes web, automacao inteligente, APIs e aplicacoes com IA.',
+          achievements: [
+            'Desenvolvimento web full-stack com Python, Django, Node.js e TypeScript',
+            'Criacao de chatbots, fluxos com LLMs e ferramentas de NLP',
+            'Construcao de APIs REST seguras e escalaveis para integracoes',
+            'Automacao de processos para ganho operacional e reducao de custo',
+            'Consultoria tecnica em arquitetura, stack e boas praticas de desenvolvimento',
           ],
         },
       ],
@@ -350,7 +364,7 @@ const translations = {
         {
           title: 'Software Engineer',
           company: 'LogicAI Solutions',
-          period: '2023 — 2024',
+          period: '2024 — 2025',
           description:
             'Full-stack software product development, from educational management systems to institutional web platforms. Technical leadership in end-to-end projects using TypeScript, React and Node.js.',
           achievements: [
@@ -359,6 +373,20 @@ const translations = {
             'Implementation of REST architectures and relational database integration',
             'Contributed more than 93% of commits to the main product repository',
             'Application of agile methodologies with Scrum and Kanban',
+          ],
+        },
+        {
+          title: 'Freelance Software Engineer',
+          company: 'Self-employed - Freelance',
+          period: '2022 - Present',
+          description:
+            'Self-employed software engineer building custom solutions for companies, startups, and entrepreneurs, with focus on web applications, intelligent automation, APIs, and AI-powered systems.',
+          achievements: [
+            'Full-stack web development with Python, Django, Node.js, and TypeScript',
+            'Chatbots, LLM workflows, and NLP tooling for real business use cases',
+            'Secure and scalable REST APIs for integrations and product backends',
+            'Process automation to reduce manual work and improve efficiency',
+            'Technical consulting on architecture, stack decisions, and engineering practices',
           ],
         },
       ],
@@ -456,3 +484,5 @@ const translations = {
 } as const;
 
 export default translations;
+
+
