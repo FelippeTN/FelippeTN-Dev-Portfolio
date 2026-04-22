@@ -43,11 +43,11 @@ const Hero3D = () => {
               {h.subtitle}
             </p>
 
-            <h1 className="mt-5 text-balance text-[2.8rem] font-extrabold leading-[0.95] text-foreground sm:text-[3.5rem] xl:text-[4.1rem]">
+            <h1 className="mt-5 text-balance text-[2.45rem] font-extrabold leading-[0.98] text-foreground sm:text-[3rem] xl:text-[3.55rem]">
               Felippe Toscano Nalim
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-[1.15rem]">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-[1.02rem]">
               {h.description}
             </p>
 
@@ -111,8 +111,8 @@ const Hero3D = () => {
               <div className="grid gap-4 sm:grid-cols-3">
                 {h.stats.map((stat) => (
                   <div key={stat.label} className="editorial-card min-h-[132px] p-5">
-                    <p className="text-[2rem] font-extrabold tracking-tight text-foreground sm:text-[2.3rem]">{stat.value}</p>
-                    <p className="mt-2 text-xs leading-5 text-muted-foreground sm:text-sm sm:leading-6">{stat.label}</p>
+                    <p className="text-[1.75rem] font-extrabold tracking-tight text-foreground sm:text-[2rem]">{stat.value}</p>
+                    <p className="mt-2 text-[0.72rem] leading-5 text-muted-foreground sm:text-[0.82rem] sm:leading-6">{stat.label}</p>
                   </div>
                 ))}
               </div>

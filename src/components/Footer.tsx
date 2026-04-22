@@ -129,14 +129,14 @@ const Footer = () => {
                 <img src={logo} alt="Felippe logo" className="h-10 w-10 object-contain" />
               </span>
               <div>
-                <p className="text-2xl font-extrabold tracking-tight text-foreground">Felippe</p>
+                <p className="text-[1.35rem] font-extrabold tracking-tight text-foreground">Felippe</p>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                   Software Engineer
                 </p>
               </div>
             </Link>
 
-            <p className="mt-5 text-sm leading-7 text-muted-foreground sm:text-[0.96rem]">
+            <p className="mt-5 text-[0.9rem] leading-6 text-muted-foreground sm:text-[0.94rem]">
               {copy.intro}
             </p>
 

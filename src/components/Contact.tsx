@@ -27,7 +27,7 @@ const Contact = () => {
             <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
                 <span className="eyebrow">06 / {c.title}</span>
-                <h2 className="mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl lg:text-6xl">
+                <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.7rem] lg:text-[3.1rem]">
                   {c.description}
                 </h2>
 
@@ -51,7 +51,7 @@ const Contact = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.24em] text-primary/80">
                   WhatsApp
                 </p>
-                <p className="mt-4 text-lg leading-8 text-muted-foreground">
+                <p className="mt-4 text-[0.98rem] leading-7 text-muted-foreground">
                   {c.description}
                 </p>
                 <a

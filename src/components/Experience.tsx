@@ -17,7 +17,7 @@ const Experience = () => {
           className="mb-6"
         >
           <span className="eyebrow">03 / {ex.title}</span>
-          <h2 className="mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
+          <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
             {ex.description}
           </h2>
         </motion.div>
@@ -37,16 +37,16 @@ const Experience = () => {
                   <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary/85">
                     {item.period}
                   </p>
-                  <h3 className="mt-4 text-3xl font-bold leading-tight text-foreground">
+                  <h3 className="mt-4 text-[1.8rem] font-bold leading-tight text-foreground">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-base leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-muted-foreground">
                     {item.company}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-base leading-8 text-muted-foreground">{item.description}</p>
+                  <p className="text-[0.96rem] leading-7 text-muted-foreground">{item.description}</p>
 
                   <div className="mt-6 grid gap-3 md:grid-cols-2">
                     {item.achievements.map((achievement) => (
@@ -55,7 +55,7 @@ const Experience = () => {
                         className="soft-panel flex items-start gap-3 px-4 py-4"
                       >
                         <ArrowRight className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                        <p className="text-sm leading-7 text-foreground/88">{achievement}</p>
+                        <p className="text-[0.88rem] leading-6 text-foreground/88">{achievement}</p>
                       </div>
                     ))}
                   </div>

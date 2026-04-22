@@ -17,7 +17,7 @@ const Skills = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="eyebrow">02 / {s.title}</span>
-              <h2 className="mt-6 text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
+              <h2 className="mt-6 text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
                 {s.description}
               </h2>
             </motion.div>
@@ -33,7 +33,7 @@ const Skills = () => {
                   className="editorial-card p-5 sm:p-6"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-lg font-bold text-foreground">{category.title}</h3>
+                    <h3 className="text-base font-bold text-foreground">{category.title}</h3>
                     <span className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-primary/80">
                       {String(index + 1).padStart(2, '0')}
                     </span>

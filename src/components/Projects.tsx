@@ -17,7 +17,7 @@ const Projects = () => {
           className="mb-6"
         >
           <span className="eyebrow">05 / {p.title}</span>
-          <h2 className="mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
+          <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
             {p.description}
           </h2>
         </motion.div>
@@ -49,8 +49,8 @@ const Projects = () => {
                 </a>
               </div>
 
-              <h3 className="mt-8 text-2xl font-bold text-foreground">{project.title}</h3>
-              <p className="mt-4 flex-1 text-sm leading-7 text-muted-foreground">
+              <h3 className="mt-8 text-[1.45rem] font-bold text-foreground">{project.title}</h3>
+              <p className="mt-4 flex-1 text-[0.9rem] leading-6 text-muted-foreground">
                 {project.description}
               </p>
 

@@ -17,7 +17,7 @@ const Education = () => {
           className="mb-6"
         >
           <span className="eyebrow">04 / {ed.title}</span>
-          <h2 className="mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
+          <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
             {ed.description}
           </h2>
         </motion.div>
@@ -42,13 +42,13 @@ const Education = () => {
                         <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary/80">
                           {item.period}
                         </p>
-                        <h3 className="mt-2 text-2xl font-bold text-foreground">{item.degree}</h3>
+                        <h3 className="mt-2 text-[1.55rem] font-bold text-foreground">{item.degree}</h3>
                         <p className="mt-2 text-sm text-muted-foreground">{item.institution}</p>
                       </div>
                     </div>
                   </div>
 
-                  <p className="mt-8 text-base leading-8 text-muted-foreground">{item.description}</p>
+                  <p className="mt-8 text-[0.96rem] leading-7 text-muted-foreground">{item.description}</p>
 
                   <div className="mt-8 grid gap-3 sm:grid-cols-2">
                     {item.highlights.map((highlight) => (
@@ -57,7 +57,7 @@ const Education = () => {
                         className="soft-panel flex items-center gap-3 px-4 py-4"
                       >
                         <NotebookPen className="h-4 w-4 flex-shrink-0 text-secondary" />
-                        <span className="text-sm font-semibold text-foreground/88">{highlight}</span>
+                        <span className="text-[0.88rem] font-semibold text-foreground/88">{highlight}</span>
                       </div>
                     ))}
                   </div>
@@ -81,7 +81,7 @@ const Education = () => {
                 <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary/80">
                   05 / {ed.certificationsLabel}
                 </p>
-                <h3 className="mt-1 text-2xl font-bold text-foreground">{ed.certificationsLabel}</h3>
+                <h3 className="mt-1 text-[1.45rem] font-bold text-foreground">{ed.certificationsLabel}</h3>
               </div>
             </div>
 
@@ -92,8 +92,8 @@ const Education = () => {
                 <div key={certification.title} className="soft-panel px-4 py-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <h4 className="text-base font-bold text-foreground">{certification.title}</h4>
-                      <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                      <h4 className="text-[0.96rem] font-bold text-foreground">{certification.title}</h4>
+                      <p className="mt-1 text-[0.88rem] leading-6 text-muted-foreground">
                         {certification.institution}
                       </p>
                     </div>

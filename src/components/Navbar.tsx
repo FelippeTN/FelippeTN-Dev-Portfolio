@@ -57,7 +57,7 @@ const Navbar = () => {
               <img src={logo} alt="Felippe logo" className="h-full w-full object-contain" />
             </span>
             <div className="hidden sm:block">
-              <p className="text-xl font-extrabold tracking-tight text-foreground">Felippe</p>
+              <p className="text-lg font-extrabold tracking-tight text-foreground">Felippe</p>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Software Engineer
               </p>
@@ -179,7 +179,7 @@ const Navbar = () => {
                   <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-secondary">
                     <img src={logo} alt="Felippe logo" className="h-9 w-9 object-contain" />
                   </span>
-                  <p className="text-3xl font-extrabold tracking-tight text-foreground">Felippe</p>
+                  <p className="text-[1.7rem] font-extrabold tracking-tight text-foreground">Felippe</p>
                 </Link>
 
                 <button

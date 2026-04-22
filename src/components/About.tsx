@@ -1,66 +1,159 @@
 import { motion } from 'framer-motion';
-import { BrainCircuit, Layers3, LineChart, Rocket, Server, Users } from 'lucide-react';
+import { BriefcaseBusiness, GraduationCap, MapPin, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const a = t.about;
+  const hero = t.hero;
+  const experience = t.experience.items;
+  const education = t.education.items;
 
-  const featureIcons = [Server, BrainCircuit, LineChart, Layers3, Users, Rocket];
+  const introParagraphs =
+    locale === 'pt'
+      ? [
+          'Olá! Sou Felippe Toscano Nalim, engenheiro de software com foco em backend de alta performance e sistemas prontos para produção com IA.',
+          'Hoje atuo na PGE-RJ, conectando engenharia de software sólida com inteligência artificial moderna para construir soluções confiáveis, observáveis e escaláveis.',
+          'Minha missão é transformar complexidade técnica em sistemas elegantes, úteis e sustentáveis, sempre com atenção real a performance, arquitetura e impacto no negócio.',
+        ]
+      : [
+          'Hi! I am Felippe Toscano Nalim, a software engineer focused on high-performance backend systems and production-grade AI solutions.',
+          'Today I work at PGE-RJ, connecting solid software engineering with modern artificial intelligence to build reliable, observable, and scalable systems.',
+          'My mission is to turn technical complexity into elegant, useful, and sustainable systems, always with real attention to performance, architecture, and business impact.',
+        ];
+
+  const achievements =
+    locale === 'pt'
+      ? [
+          'Backend de alta performance com Go, Python e TypeScript',
+          'IA operacionalizada para ambientes de produção reais',
+          'Arquiteturas observáveis, escaláveis e confiáveis',
+          'Experiência em setor público e produtos de tecnologia',
+        ]
+      : [
+          'High-performance backend with Go, Python, and TypeScript',
+          'AI operationalized for real production environments',
+          'Observable, scalable, and reliable architectures',
+          'Experience across public sector and product teams',
+        ];
+
+  const detailCards = [
+    {
+      icon: GraduationCap,
+      label: locale === 'pt' ? 'Formação' : 'Education',
+      value: education[0]?.degree ?? '',
+      detail: education[0]?.institution ?? '',
+      meta: locale === 'pt' ? 'Atual' : 'Current',
+    },
+    {
+      icon: BriefcaseBusiness,
+      label: locale === 'pt' ? 'Experiência' : 'Experience',
+      value: locale === 'pt' ? '3+ anos construindo sistemas' : '3+ years building systems',
+      detail: experience[0]?.company ?? '',
+      meta: experience[0]?.period ?? '',
+    },
+    {
+      icon: MapPin,
+      label: locale === 'pt' ? 'Localização' : 'Location',
+      value: hero.stats[2]?.label ?? hero.locationBadge,
+      detail: hero.locationBadge,
+      meta: locale === 'pt' ? 'Base atual' : 'Current base',
+    },
+    {
+      icon: Sparkles,
+      label: locale === 'pt' ? 'Posição' : 'Role',
+      value: hero.roleBadge,
+      detail: experience[0]?.title ?? hero.roleBadge,
+      meta: experience[0]?.period ?? '',
+    },
+  ];
 
   return (
     <section id="about" className="px-4 py-10 sm:px-6">
-      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.55 }}
-          className="section-frame"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="px-1 sm:px-2 lg:pt-6"
         >
-          <div className="section-inner p-6 sm:p-8 lg:p-10">
-            <span className="eyebrow">01 / {a.title}</span>
-            <h2 className="text-balance mt-6 max-w-lg text-4xl font-bold leading-[1] text-foreground sm:text-5xl">
-              {a.description}
-            </h2>
-            <div className="accent-line my-8" />
-            <div className="rounded-[1.55rem] bg-secondary p-6">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
-                {a.funFactLabel}
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-foreground/88">{a.funFact}</p>
+          <span className="inline-flex items-center rounded-full border border-border/70 bg-card px-3 py-2 text-[0.72rem] font-semibold tracking-tight text-foreground shadow-[0_10px_24px_-22px_rgba(17,17,17,0.12)]">
+            {locale === 'pt' ? 'Sobre Felippe Toscano' : 'About Felippe Toscano'}
+          </span>
+
+          <h2 className="mt-7 max-w-xl text-balance text-[2.15rem] font-extrabold leading-[0.98] tracking-tight text-foreground sm:text-[2.8rem]">
+            {locale === 'pt'
+              ? 'Construindo backend robusto com foco em clareza e escala'
+              : 'Building robust backend systems with clarity and scale'}
+          </h2>
+
+          <p className="mt-5 text-base text-muted-foreground sm:text-[1.02rem]">{a.description}</p>
+
+          <div className="mt-8 space-y-5 text-[0.94rem] leading-7 text-muted-foreground sm:text-[1rem]">
+            {introParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <p className="text-base font-bold text-foreground">
+              {locale === 'pt' ? 'Principais destaques' : 'Key highlights'}
+            </p>
+
+            <div className="mt-5 grid gap-x-8 gap-y-3 text-[0.92rem] text-foreground sm:grid-cols-2">
+              {achievements.map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-foreground" />
+                  <span className="leading-6 text-muted-foreground">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {a.features.map((feature, index) => {
-            const Icon = featureIcons[index];
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, delay: 0.05 }}
+          className="flex flex-col gap-4 lg:pt-6"
+        >
+          <div className="grid gap-4">
+            {detailCards.map((card, index) => {
+              const Icon = card.icon;
 
-            return (
-              <motion.article
-                key={feature.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, delay: index * 0.05 }}
-                className="editorial-card p-6 sm:p-7"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] bg-secondary text-foreground">
-                    <Icon className="h-5 w-5" />
+              return (
+                <motion.article
+                  key={card.label}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="rounded-[1.6rem] border border-border/70 bg-card px-5 py-5 shadow-[0_18px_34px_-30px_rgba(17,17,17,0.12)] sm:px-6"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-[1rem] bg-secondary text-foreground">
+                        <Icon className="h-[18px] w-[18px]" />
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-medium text-muted-foreground">{card.label}</p>
+                        <p className="mt-1 text-[0.92rem] font-semibold text-foreground">
+                          {card.value}
+                        </p>
+                        <p className="mt-1 text-[0.9rem] text-muted-foreground">{card.detail}</p>
+                      </div>
+                    </div>
+
+                    <span className="text-xs text-muted-foreground">{card.meta}</span>
                   </div>
-                  <span className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-muted-foreground">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <h3 className="mt-8 text-xl font-bold text-foreground">{feature.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{feature.description}</p>
-              </motion.article>
-            );
-          })}
-        </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
