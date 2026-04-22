@@ -1,76 +1,33 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
+  Blocks,
   BriefcaseBusiness,
-  FolderKanban,
+  FolderGit2,
   GraduationCap,
   Home,
   Menu,
-  MessageCircleMore,
+  MessageSquareText,
   UserRound,
-  Wrench,
   X,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const { t, toggleLocale, locale } = useLanguage();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('about');
-  const clickLockRef = useRef<{ id: string; until: number } | null>(null);
+  const location = useLocation();
 
-  const navItems = t.navbar.items;
-  const navIcons = [
-    Home,
-    UserRound,
-    Wrench,
-    BriefcaseBusiness,
-    GraduationCap,
-    FolderKanban,
-    MessageCircleMore,
+  const navItems = [
+    { label: locale === 'pt' ? 'Início' : 'Home', href: '/', icon: Home },
+    { ...t.navbar.items[0], href: '/about', icon: UserRound },
+    { ...t.navbar.items[1], href: '/skills', icon: Blocks },
+    { ...t.navbar.items[2], href: '/experience', icon: BriefcaseBusiness },
+    { ...t.navbar.items[3], href: '/education', icon: GraduationCap },
+    { ...t.navbar.items[4], href: '/projects', icon: FolderGit2 },
+    { ...t.navbar.items[5], href: '/contact', icon: MessageSquareText },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
-
-      const now = Date.now();
-      if (clickLockRef.current && now < clickLockRef.current.until) {
-        setActiveSection(clickLockRef.current.id);
-        return;
-      }
-
-      const currentPosition = window.scrollY + 160;
-      let currentActiveSection = 'about';
-
-      for (const item of navItems) {
-        const id = item.href.replace('#', '');
-        const el = document.getElementById(id);
-        if (!el) continue;
-
-        if (el.offsetTop <= currentPosition) {
-          currentActiveSection = id;
-        }
-      }
-
-      setActiveSection(currentActiveSection);
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [navItems]);
-
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
-
-    const targetId = href.replace('#', '');
-    clickLockRef.current = { id: targetId, until: Date.now() + 900 };
-    setActiveSection(targetId);
-
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <>
@@ -81,66 +38,46 @@ const Navbar = () => {
         className="sticky inset-x-0 top-0 z-50 bg-background/96 px-4 py-3 backdrop-blur-sm sm:px-6"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <a
-            href="#about"
-            onClick={(event) => {
-              event.preventDefault();
-              handleNavClick('#about');
-            }}
-            className="flex items-center gap-3"
-          >
+          <Link to="/" className="flex items-center gap-3">
             <span className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-sm font-extrabold tracking-tight text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.08)]">
               FT
             </span>
             <div className="hidden sm:block">
-              <p className="text-xl font-extrabold tracking-tight text-foreground">
-                Felippe
-              </p>
+              <p className="text-xl font-extrabold tracking-tight text-foreground">Felippe</p>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Software Engineer
               </p>
             </div>
-          </a>
+          </Link>
 
-          <div
-            className={`subtle-stroke hidden items-center rounded-[1.6rem] px-2 py-2 transition-all duration-300 lg:flex ${
-              isScrolled
-                ? 'bg-secondary/75 shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)]'
-                : 'bg-secondary/65'
-            }`}
-          >
-            {navItems.map((item, index) => {
-              const Icon = navIcons[index] ?? Home;
-              const sectionId = item.href.replace('#', '');
-              const isActive = activeSection === sectionId;
+          <div className="ml-auto flex items-center gap-2">
+            <div className="hidden items-center rounded-[1.8rem] bg-card px-2 py-2 shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] lg:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.href;
 
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    handleNavClick(item.href);
-                  }}
-                  className={`relative flex h-11 items-center gap-2 rounded-[1rem] px-4 text-sm font-semibold transition-all duration-300 ${
-                    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  {isActive && <span>{item.label}</span>}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active-pill"
-                      className="subtle-stroke absolute inset-0 -z-10 rounded-[1rem] bg-card shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)]"
-                      transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                    />
-                  )}
-                </a>
-              );
-            })}
-          </div>
+                return (
+                  <NavLink
+                    key={item.href}
+                    to={item.href}
+                    className={`relative flex h-11 items-center gap-2 rounded-[1rem] px-4 text-sm font-semibold transition-all duration-300 ${
+                      isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {isActive && <span>{item.label}</span>}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 -z-10 rounded-[1rem] bg-background shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] [box-shadow:0_10px_24px_-18px_rgba(17,17,17,0.08),inset_0_0_0_1px_rgba(17,17,17,0.07)]"
+                        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                      />
+                    )}
+                  </NavLink>
+                );
+              })}
+            </div>
 
-          <div className="flex items-center gap-2">
             <button
               onClick={toggleLocale}
               className="subtle-stroke hidden h-11 rounded-[1rem] bg-secondary px-4 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] sm:flex"
@@ -200,27 +137,25 @@ const Navbar = () => {
               </div>
 
               <div className="space-y-2">
-                {navItems.map((item, index) => {
-                  const Icon = navIcons[index] ?? Home;
+                {navItems.map((item) => {
+                  const Icon = item.icon;
 
                   return (
-                    <a
+                    <NavLink
                       key={item.href}
-                      href={item.href}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        handleNavClick(item.href);
-                      }}
-                      className="flex items-center justify-between rounded-[1.15rem] bg-secondary/55 px-4 py-3 text-sm font-semibold text-foreground"
+                      to={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`flex items-center justify-between rounded-[1.15rem] px-4 py-3 text-sm font-semibold ${
+                        location.pathname === item.href
+                          ? 'subtle-stroke bg-card text-foreground'
+                          : 'bg-secondary/55 text-foreground'
+                      }`}
                     >
                       <span className="flex items-center gap-3">
                         <Icon className="h-4 w-4 text-muted-foreground" />
                         {item.label}
                       </span>
-                      <span className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </a>
+                    </NavLink>
                   );
                 })}
               </div>

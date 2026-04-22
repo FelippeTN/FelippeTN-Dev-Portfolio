@@ -8,6 +8,7 @@ import {
   Sparkles,
   Star,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Felippe from '@/assets/Felippe.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -66,29 +67,21 @@ const Hero3D = () => {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href="#projects"
-                onClick={(event) => {
-                  event.preventDefault();
-                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link
+                to="/projects"
                 className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-sm font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)]"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
 
-              <a
-                href="#contact"
-                onClick={(event) => {
-                  event.preventDefault();
-                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link
+                to="/contact"
                 className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-sm font-bold text-foreground"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </motion.div>
 
