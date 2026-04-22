@@ -19,7 +19,7 @@ const Hero3D = () => {
   const highlightIcons = [Star, CheckCircle2, Sparkles, Globe2];
 
   return (
-    <section className="site-shell px-4 pb-10 pt-8 sm:px-6 sm:pt-10">
+    <section className="site-shell px-4 pb-10 pt-4 sm:px-6 sm:pt-5">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-card shadow-[0_18px_42px_-34px_rgba(17,17,17,0.08)]">
         <div className="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-0">
           <motion.div
@@ -39,19 +39,19 @@ const Hero3D = () => {
               </span>
             </div>
 
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-sm">
               {h.subtitle}
             </p>
 
-            <h1 className="mt-5 text-balance text-5xl font-extrabold leading-[0.92] text-foreground sm:text-6xl xl:text-[4.6rem]">
+            <h1 className="mt-5 text-balance text-[2.8rem] font-extrabold leading-[0.95] text-foreground sm:text-[3.5rem] xl:text-[4.1rem]">
               Felippe Toscano Nalim
             </h1>
 
-            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-[1.15rem]">
               {h.description}
             </p>
 
-            <div className="mt-8 grid gap-4 text-base text-foreground sm:grid-cols-2">
+            <div className="mt-8 grid gap-4 text-sm text-foreground sm:grid-cols-2 sm:text-[0.95rem]">
               {h.highlights.map((item, index) => {
                 const Icon = highlightIcons[index] ?? Sparkles;
 
@@ -60,7 +60,7 @@ const Hero3D = () => {
                     <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-foreground">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <span className="leading-7">{item}</span>
+                    <span className="leading-6">{item}</span>
                   </div>
                 );
               })}
@@ -69,7 +69,7 @@ const Hero3D = () => {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-sm font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)]"
+                className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
@@ -77,7 +77,7 @@ const Hero3D = () => {
 
               <Link
                 to="/contact"
-                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-sm font-bold text-foreground"
+                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-[0.8rem] font-bold text-foreground sm:text-sm"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
@@ -111,8 +111,8 @@ const Hero3D = () => {
               <div className="grid gap-4 sm:grid-cols-3">
                 {h.stats.map((stat) => (
                   <div key={stat.label} className="editorial-card min-h-[132px] p-5">
-                    <p className="text-4xl font-extrabold tracking-tight text-foreground">{stat.value}</p>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{stat.label}</p>
+                    <p className="text-[2rem] font-extrabold tracking-tight text-foreground sm:text-[2.3rem]">{stat.value}</p>
+                    <p className="mt-2 text-xs leading-5 text-muted-foreground sm:text-sm sm:leading-6">{stat.label}</p>
                   </div>
                 ))}
               </div>
