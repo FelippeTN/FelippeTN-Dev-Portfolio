@@ -106,11 +106,11 @@ const Navbar = () => {
 
             <button
               onClick={toggleLocale}
-              className="hidden h-11 items-center rounded-[1rem] bg-card px-1 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] transition-all duration-300 sm:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]"
+              className="hidden items-center rounded-[1rem] bg-card px-1 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] transition-all duration-300 sm:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]"
               aria-label="Toggle language"
             >
               <span
-                className={`relative flex h-full min-w-[3rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
+                className={`relative flex h-11 min-w-[3.5rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
                   locale === 'pt' ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >
@@ -125,7 +125,7 @@ const Navbar = () => {
               </span>
               <span className="px-1.5 text-[0.65rem] font-medium text-foreground/30">/</span>
               <span
-                className={`relative flex h-full min-w-[3rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
+                className={`relative flex h-11 min-w-[3.5rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
                   locale === 'en' ? 'text-foreground' : 'text-muted-foreground'
                 }`}
               >

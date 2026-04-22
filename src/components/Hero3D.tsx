@@ -21,7 +21,7 @@ const Hero3D = () => {
   return (
     <section className="site-shell px-4 pb-10 pt-8 sm:px-6 sm:pt-10">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-card shadow-[0_18px_42px_-34px_rgba(17,17,17,0.08)]">
-        <div className="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-14">
+        <div className="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
