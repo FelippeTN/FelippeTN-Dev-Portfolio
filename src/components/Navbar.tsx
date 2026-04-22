@@ -78,7 +78,7 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
+        className="sticky inset-x-0 top-0 z-50 bg-background/96 px-4 py-3 backdrop-blur-sm sm:px-6"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <a
@@ -89,7 +89,7 @@ const Navbar = () => {
             }}
             className="flex items-center gap-3"
           >
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-foreground/14 bg-card text-sm font-extrabold tracking-tight text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.35)]">
+            <span className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-sm font-extrabold tracking-tight text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.08)]">
               FT
             </span>
             <div className="hidden sm:block">
@@ -103,10 +103,10 @@ const Navbar = () => {
           </a>
 
           <div
-            className={`hidden items-center rounded-[1.6rem] border px-2 py-2 transition-all duration-300 lg:flex ${
+            className={`subtle-stroke hidden items-center rounded-[1.6rem] px-2 py-2 transition-all duration-300 lg:flex ${
               isScrolled
-                ? 'border-border bg-card/92 shadow-[0_18px_45px_-28px_rgba(17,17,17,0.28)] backdrop-blur-lg'
-                : 'border-border/80 bg-card/88 backdrop-blur-lg'
+                ? 'bg-secondary/75 shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)]'
+                : 'bg-secondary/65'
             }`}
           >
             {navItems.map((item, index) => {
@@ -131,7 +131,7 @@ const Navbar = () => {
                   {isActive && (
                     <motion.span
                       layoutId="nav-active-pill"
-                      className="absolute inset-0 -z-10 rounded-[1rem] border border-border bg-secondary"
+                      className="subtle-stroke absolute inset-0 -z-10 rounded-[1rem] bg-card shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)]"
                       transition={{ type: 'spring', stiffness: 300, damping: 28 }}
                     />
                   )}
@@ -143,7 +143,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={toggleLocale}
-              className="hidden h-11 rounded-[1rem] border border-border bg-card px-4 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.25)] sm:flex"
+              className="subtle-stroke hidden h-11 rounded-[1rem] bg-secondary px-4 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] sm:flex"
               aria-label="Toggle language"
             >
               <span className={locale === 'pt' ? 'text-foreground' : 'text-muted-foreground'}>PT</span>
@@ -153,7 +153,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setIsMobileMenuOpen((current) => !current)}
-              className="flex h-11 w-11 items-center justify-center rounded-[1rem] border border-border bg-card text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.25)] lg:hidden"
+              className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-[1rem] bg-secondary text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] lg:hidden"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -180,7 +180,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -14 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-x-4 top-20 z-50 rounded-[1.8rem] border border-border bg-card p-5 shadow-[0_24px_60px_-34px_rgba(17,17,17,0.28)] lg:hidden"
+              className="fixed inset-x-4 top-[76px] z-50 rounded-[1.8rem] bg-card p-5 shadow-[0_24px_60px_-34px_rgba(17,17,17,0.14)] lg:hidden"
             >
               <div className="mb-4 flex items-center justify-between rounded-[1.2rem] bg-secondary px-4 py-3">
                 <div>
@@ -192,7 +192,7 @@ const Navbar = () => {
 
                 <button
                   onClick={toggleLocale}
-                  className="rounded-full border border-border bg-card px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] text-foreground"
+                  className="subtle-stroke rounded-full bg-card px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.08)]"
                   aria-label="Toggle language"
                 >
                   {locale === 'pt' ? 'EN' : 'PT'}
@@ -211,7 +211,7 @@ const Navbar = () => {
                         event.preventDefault();
                         handleNavClick(item.href);
                       }}
-                      className="flex items-center justify-between rounded-[1.15rem] border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground"
+                      className="flex items-center justify-between rounded-[1.15rem] bg-secondary/55 px-4 py-3 text-sm font-semibold text-foreground"
                     >
                       <span className="flex items-center gap-3">
                         <Icon className="h-4 w-4 text-muted-foreground" />

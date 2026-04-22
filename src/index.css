@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 36 18% 97%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 11%;
 
     --card: 0 0% 100%;
@@ -18,10 +18,10 @@
     --primary: 0 0% 11%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 94%;
+    --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 20%;
 
-    --muted: 36 12% 93%;
+    --muted: 0 0% 95%;
     --muted-foreground: 0 0% 47%;
 
     --accent: 0 0% 94%;
@@ -30,8 +30,8 @@
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 12% 87%;
-    --input: 30 12% 87%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
     --ring: 0 0% 18%;
 
     --radius: 1.25rem;
@@ -48,41 +48,13 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Manrope', system-ui, sans-serif;
-    background:
-      linear-gradient(180deg, hsl(36 18% 98%) 0%, hsl(var(--background)) 100%);
+    background: hsl(var(--background));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      linear-gradient(
-        90deg,
-        transparent calc(50% - 575px),
-        hsl(var(--border) / 0.75) calc(50% - 575px),
-        hsl(var(--border) / 0.75) calc(50% - 574px),
-        transparent calc(50% - 574px),
-        transparent 50%,
-        hsl(var(--border) / 0.55) 50%,
-        hsl(var(--border) / 0.55) calc(50% + 1px),
-        transparent calc(50% + 1px),
-        transparent calc(50% + 575px),
-        hsl(var(--border) / 0.75) calc(50% + 575px),
-        hsl(var(--border) / 0.75) calc(50% + 576px),
-        transparent calc(50% + 576px)
-      ),
-      linear-gradient(
-        180deg,
-        transparent 70px,
-        hsl(var(--border) / 0.7) 70px,
-        hsl(var(--border) / 0.7) 71px,
-        transparent 71px
-      );
-    z-index: -1;
+    content: none;
   }
 
   h1,
@@ -137,7 +109,10 @@
   }
 
   .section-frame {
-    @apply relative rounded-[1.8rem] border border-border bg-card shadow-[0_12px_30px_-22px_rgba(17,17,17,0.18)];
+    @apply relative rounded-[1.8rem] bg-card shadow-[0_14px_34px_-26px_rgba(17,17,17,0.08)];
+    box-shadow:
+      0 14px 34px -26px rgba(17, 17, 17, 0.08),
+      0 0 0 1px rgba(17, 17, 17, 0.04);
   }
 
   .section-frame::before {
@@ -154,15 +129,19 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground;
+    @apply inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground;
   }
 
   .editorial-card {
-    @apply rounded-[1.55rem] border border-border bg-card shadow-[0_10px_28px_-22px_rgba(17,17,17,0.16)];
+    @apply rounded-[1.55rem] bg-card shadow-[0_14px_30px_-24px_rgba(17,17,17,0.07)];
+    box-shadow:
+      0 14px 30px -24px rgba(17, 17, 17, 0.07),
+      0 0 0 1px rgba(17, 17, 17, 0.035);
   }
 
   .soft-panel {
-    @apply rounded-[1.35rem] border border-border bg-secondary/75;
+    @apply rounded-[1.35rem] bg-secondary/75;
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.045);
   }
 
   .accent-line {
@@ -178,6 +157,10 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .subtle-stroke {
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.06);
   }
 }
 

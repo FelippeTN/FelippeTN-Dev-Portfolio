@@ -24,7 +24,7 @@ const About = () => {
               {a.description}
             </h2>
             <div className="accent-line my-8" />
-            <div className="rounded-[1.55rem] border border-border bg-secondary p-6">
+            <div className="rounded-[1.55rem] bg-secondary p-6">
               <p className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
                 {a.funFactLabel}
               </p>

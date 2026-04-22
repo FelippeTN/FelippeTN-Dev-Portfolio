@@ -38,7 +38,7 @@ const Contact = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-white/75 px-4 py-3 text-sm font-semibold text-foreground"
+                      className="subtle-stroke inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-3 text-sm font-semibold text-foreground"
                     >
                       <social.icon className="h-4 w-4 text-primary" />
                       {social.label}

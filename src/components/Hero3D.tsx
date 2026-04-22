@@ -18,8 +18,8 @@ const Hero3D = () => {
   const highlightIcons = [Star, CheckCircle2, Sparkles, Globe2];
 
   return (
-    <section className="site-shell px-4 pb-10 pt-28 sm:px-6 sm:pt-32">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-border bg-background/70">
+    <section className="site-shell px-4 pb-10 pt-8 sm:px-6 sm:pt-10">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-card shadow-[0_18px_42px_-34px_rgba(17,17,17,0.08)]">
         <div className="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -28,11 +28,11 @@ const Hero3D = () => {
             className="flex flex-col justify-center lg:pr-8"
           >
             <div className="flex flex-wrap gap-3">
-              <span className="eyebrow">
+              <span className="eyebrow subtle-stroke">
                 <MapPin className="h-3.5 w-3.5" />
                 {h.locationBadge}
               </span>
-              <span className="eyebrow">
+              <span className="eyebrow subtle-stroke">
                 <BriefcaseBusiness className="h-3.5 w-3.5" />
                 {h.roleBadge}
               </span>
@@ -84,7 +84,7 @@ const Hero3D = () => {
                   event.preventDefault();
                   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="inline-flex items-center gap-2 rounded-[1rem] border border-border bg-card px-6 py-4 text-sm font-bold text-foreground"
+                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-sm font-bold text-foreground"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
@@ -99,7 +99,7 @@ const Hero3D = () => {
             className="relative lg:pl-6"
           >
             <div className="grid gap-4">
-              <div className="relative rounded-[1.8rem] border border-border bg-card p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.3)]">
+              <div className="rounded-[1.8rem] bg-card p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)]">
                 <div className="relative overflow-hidden rounded-[1.5rem] bg-secondary">
                   <img
                     src={Felippe}
@@ -107,8 +107,7 @@ const Hero3D = () => {
                     className="h-[430px] w-full object-cover object-top sm:h-[520px]"
                   />
                 </div>
-
-                <div className="absolute bottom-0 right-0 translate-y-6 rounded-[1.2rem] border border-[#cfe8d6] bg-card px-6 py-5 shadow-[0_20px_30px_-22px_rgba(34,197,94,0.35)] sm:right-4">
+                <div className="subtle-stroke mt-4 rounded-[1.2rem] bg-[rgba(114,212,142,0.08)] px-6 py-5 shadow-[0_18px_28px_-24px_rgba(34,197,94,0.12)]">
                   <div className="flex items-center gap-3">
                     <span className="animate-pulse-soft h-3 w-3 rounded-full bg-[#72d48e]" />
                     <p className="text-sm font-semibold text-foreground">{h.available}</p>
@@ -118,7 +117,7 @@ const Hero3D = () => {
 
               <div className="grid gap-4 sm:grid-cols-3">
                 {h.stats.map((stat) => (
-                  <div key={stat.label} className="editorial-card p-5">
+                  <div key={stat.label} className="editorial-card min-h-[132px] p-5">
                     <p className="text-4xl font-extrabold tracking-tight text-foreground">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-muted-foreground">{stat.label}</p>
                   </div>
