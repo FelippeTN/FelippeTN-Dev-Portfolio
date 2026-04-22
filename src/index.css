@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,89 +6,211 @@
 
 @layer base {
   :root {
-    --background: 225 20% 4%;
-    --foreground: 210 20% 95%;
+    --background: 36 18% 97%;
+    --foreground: 0 0% 11%;
 
-    --card: 225 18% 7%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
 
-    --popover: 225 18% 7%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
 
-    --primary: 217 91% 60%;
+    --primary: 0 0% 11%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 18% 13%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 225 16% 12%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 36 12% 93%;
+    --muted-foreground: 0 0% 47%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 20%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 95%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 225 16% 12%;
-    --input: 225 18% 13%;
-    --ring: 217 91% 60%;
+    --border: 30 12% 87%;
+    --input: 30 12% 87%;
+    --ring: 0 0% 18%;
 
-    --radius: 0.75rem;
+    --radius: 1.25rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    font-family: 'Manrope', system-ui, sans-serif;
+    background:
+      linear-gradient(180deg, hsl(36 18% 98%) 0%, hsl(var(--background)) 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted));
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(
+        90deg,
+        transparent calc(50% - 575px),
+        hsl(var(--border) / 0.75) calc(50% - 575px),
+        hsl(var(--border) / 0.75) calc(50% - 574px),
+        transparent calc(50% - 574px),
+        transparent 50%,
+        hsl(var(--border) / 0.55) 50%,
+        hsl(var(--border) / 0.55) calc(50% + 1px),
+        transparent calc(50% + 1px),
+        transparent calc(50% + 575px),
+        hsl(var(--border) / 0.75) calc(50% + 575px),
+        hsl(var(--border) / 0.75) calc(50% + 576px),
+        transparent calc(50% + 576px)
+      ),
+      linear-gradient(
+        180deg,
+        transparent 70px,
+        hsl(var(--border) / 0.7) 70px,
+        hsl(var(--border) / 0.7) 71px,
+        transparent 71px
+      );
+    z-index: -1;
   }
 
-  /* Selection */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Manrope', system-ui, sans-serif;
+    letter-spacing: -0.045em;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  section[id] {
+    scroll-margin-top: 110px;
+  }
+
   ::selection {
-    background: hsl(217 91% 60% / 0.3);
+    background: hsl(var(--foreground) / 0.14);
     color: hsl(var(--foreground));
   }
 
-  /* Scroll offset for fixed navbar */
-  section[id] {
-    scroll-margin-top: 80px;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--foreground) / 0.18);
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground) / 0.28);
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply relative min-h-screen;
+  }
+
+  .site-shell {
+    @apply relative;
+  }
+
+  .section-frame {
+    @apply relative rounded-[1.8rem] border border-border bg-card shadow-[0_12px_30px_-22px_rgba(17,17,17,0.18)];
+  }
+
+  .section-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.66), transparent 22%);
+  }
+
+  .section-inner {
+    @apply relative z-10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .editorial-card {
+    @apply rounded-[1.55rem] border border-border bg-card shadow-[0_10px_28px_-22px_rgba(17,17,17,0.16)];
+  }
+
+  .soft-panel {
+    @apply rounded-[1.35rem] border border-border bg-secondary/75;
+  }
+
+  .accent-line {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--foreground) / 0.12) 0%,
+      hsl(var(--foreground) / 0.08) 45%,
+      transparent 100%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
 @layer utilities {
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+  @keyframes float-gentle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
   }
 
-  .animate-spin-slow {
-    animation: spin-slow 8s linear infinite;
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.65;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.04);
+    }
   }
 
-  /* Subtle line separator */
-  .section-line {
-    @apply w-16 h-px bg-primary/40 mx-auto mt-4;
+  .animate-float-gentle {
+    animation: float-gentle 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2.8s ease-in-out infinite;
   }
 }

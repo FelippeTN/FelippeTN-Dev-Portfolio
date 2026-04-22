@@ -4,55 +4,57 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Skills = () => {
   const { t } = useLanguage();
   const s = t.skills;
-  const skillCategories = s.categories;
 
   return (
-    <section id="skills" className="py-28 relative">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            {s.title}
-          </h2>
-          <div className="section-line" />
-          <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
-            {s.description}
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {skillCategories.map((category, categoryIndex) => (
+    <section id="skills" className="px-4 py-10 sm:px-6">
+      <div className="section-frame mx-auto max-w-7xl">
+        <div className="section-inner px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
+          <div className="grid gap-6 lg:grid-cols-[0.5fr_1.5fr] lg:items-start">
             <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: categoryIndex * 0.06 }}
-              className="group"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.5 }}
             >
-              <div className="p-6 rounded-xl bg-card/40 border border-white/[0.06] hover:border-primary/30 transition-all duration-300">
-                <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
-                  {category.title}
-                </h3>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 text-xs font-medium rounded-md bg-white/[0.04] text-foreground/80 border border-white/[0.06] hover:border-primary/30 hover:text-primary transition-all duration-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <span className="eyebrow">02 / {s.title}</span>
+              <h2 className="mt-6 text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
+                {s.description}
+              </h2>
             </motion.div>
-          ))}
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {s.categories.map((category, index) => (
+                <motion.article
+                  key={category.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="editorial-card p-5 sm:p-6"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-lg font-bold text-foreground">{category.title}</h3>
+                    <span className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-primary/80">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <div className="accent-line my-5" />
+
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-2 text-xs font-semibold text-foreground"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,74 +1,66 @@
 import { motion } from 'framer-motion';
-import { Server, Sparkles, Zap, Target, Users, Rocket } from 'lucide-react';
+import { BrainCircuit, Layers3, LineChart, Rocket, Server, Users } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import fastapiPhoto from '@/assets/fastapi.jpeg';
 
 const About = () => {
   const { t } = useLanguage();
   const a = t.about;
 
-  const featureIcons = [Server, Sparkles, Zap, Target, Users, Rocket];
-  const features = a.features.map((f, i) => ({ ...f, icon: featureIcons[i] }));
+  const featureIcons = [Server, BrainCircuit, LineChart, Layers3, Users, Rocket];
 
   return (
-    <section id="about" className="py-28 relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="about" className="px-4 py-10 sm:px-6">
+      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.92fr_1.08fr]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55 }}
+          className="section-frame"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            {a.title}
-          </h2>
-          <div className="section-line" />
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed mt-6">
-            {a.description}
-          </p>
+          <div className="section-inner p-6 sm:p-8 lg:p-10">
+            <span className="eyebrow">01 / {a.title}</span>
+            <h2 className="text-balance mt-6 max-w-lg text-4xl font-bold leading-[1] text-foreground sm:text-5xl">
+              {a.description}
+            </h2>
+            <div className="accent-line my-8" />
+            <div className="rounded-[1.55rem] border border-border bg-secondary p-6">
+              <p className="text-sm font-bold uppercase tracking-[0.24em] text-muted-foreground">
+                {a.funFactLabel}
+              </p>
+              <p className="mt-4 text-lg leading-relaxed text-foreground/88">{a.funFact}</p>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="group"
-            >
-              <div className="p-6 rounded-xl bg-card/40 border border-white/[0.06] hover:border-primary/30 transition-all duration-300 h-full">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-                  <feature.icon className="w-5 h-5 text-primary" />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {a.features.map((feature, index) => {
+            const Icon = featureIcons[index];
+
+            return (
+              <motion.article
+                key={feature.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+                className="editorial-card p-6 sm:p-7"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] bg-secondary text-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="text-[0.7rem] font-bold uppercase tracking-[0.24em] text-muted-foreground">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                 </div>
-                
-                <h3 className="text-base font-semibold mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10 max-w-2xl mx-auto rounded-xl bg-primary/10 border border-primary/20 overflow-hidden"
-        >
-          <img
-            src={fastapiPhoto}
-            alt="Felippe com Tiangolo, criador do FastAPI"
-            className="w-full max-h-72 object-cover object-top"
-          />
-          <p className="px-5 py-3 text-sm text-primary/90 leading-relaxed">
-            {a.funFact}
-          </p>
-        </motion.div>
+                <h3 className="mt-8 text-xl font-bold text-foreground">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">{feature.description}</p>
+              </motion.article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

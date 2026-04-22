@@ -1,109 +1,113 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, BookOpen } from 'lucide-react';
+import { GraduationCap, Medal, NotebookPen } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Education = () => {
   const { t } = useLanguage();
   const ed = t.education;
-  const education = ed.items;
-  const certifications = ed.certifications;
 
   return (
-    <section id="education" className="py-28 relative">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="education" className="px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-6"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold mb-3 tracking-tight">
-            {ed.title}
-          </h2>
-          <div className="section-line" />
-          <p className="text-muted-foreground text-base max-w-xl mx-auto mt-6">
+          <span className="eyebrow">04 / {ed.title}</span>
+          <h2 className="mt-6 max-w-3xl text-balance text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl">
             {ed.description}
-          </p>
+          </h2>
         </motion.div>
 
-        {/* Formação Acadêmica */}
-        <div className="mb-12">
-          {education.map((edu) => (
-            <motion.div
-              key={edu.degree}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="group"
-            >
-              <div className="p-6 rounded-xl bg-card/40 border border-white/[0.06] hover:border-primary/30 transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="w-5 h-5 text-primary" />
-                  </div>
-                  
-                  <div className="flex-grow">
-                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
-                      <div>
-                        <h3 className="text-lg font-semibold text-foreground">{edu.degree}</h3>
-                        <p className="text-sm text-muted-foreground">{edu.institution}</p>
+        <div className="grid gap-5 lg:grid-cols-[1.12fr_0.88fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45 }}
+            className="section-frame"
+          >
+            <div className="section-inner p-6 sm:p-8">
+              {ed.items.map((item) => (
+                <div key={item.degree}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-primary/12 text-primary">
+                        <GraduationCap className="h-6 w-6" />
                       </div>
-                      <span className="text-xs font-medium text-primary/80 bg-primary/[0.08] px-3 py-1 rounded-full self-start">
-                        {edu.period}
-                      </span>
+                      <div>
+                        <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary/80">
+                          {item.period}
+                        </p>
+                        <h3 className="mt-2 text-2xl font-bold text-foreground">{item.degree}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">{item.institution}</p>
+                      </div>
                     </div>
-                    
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{edu.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {edu.highlights.map((highlight, i) => (
-                        <span
-                          key={i}
-                          className="flex items-center gap-1.5 text-xs text-muted-foreground px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.05]"
-                        >
-                          <BookOpen className="w-3 h-3 text-primary/60" />
-                          {highlight}
-                        </span>
-                      ))}
-                    </div>
+                  </div>
+
+                  <p className="mt-8 text-base leading-8 text-muted-foreground">{item.description}</p>
+
+                  <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                    {item.highlights.map((highlight) => (
+                      <div
+                        key={highlight}
+                        className="soft-panel flex items-center gap-3 px-4 py-4"
+                      >
+                        <NotebookPen className="h-4 w-4 flex-shrink-0 text-secondary" />
+                        <span className="text-sm font-semibold text-foreground/88">{highlight}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Certificações */}
-        <motion.h3
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-5 text-center"
-        >
-          {ed.certificationsLabel}
-        </motion.h3>
-        
-        <div className="grid sm:grid-cols-3 gap-4">
-          {certifications.map((cert, index) => (
-            <motion.div
-              key={cert.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.06 }}
-              className="group"
-            >
-              <div className="p-5 rounded-xl bg-card/40 border border-white/[0.06] hover:border-primary/30 transition-all duration-300 h-full">
-                <Award className="w-5 h-5 text-primary/60 mb-3" />
-                <h4 className="text-sm font-semibold mb-1.5 text-foreground">{cert.title}</h4>
-                <p className="text-xs text-muted-foreground mb-2">{cert.institution}</p>
-                <span className="text-xs font-medium text-primary/70">{cert.year}</span>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="editorial-card p-6 sm:p-8"
+          >
+            <div className="flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] bg-secondary/12 text-secondary">
+                <Medal className="h-5 w-5" />
               </div>
-            </motion.div>
-          ))}
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-primary/80">
+                  05 / {ed.certificationsLabel}
+                </p>
+                <h3 className="mt-1 text-2xl font-bold text-foreground">{ed.certificationsLabel}</h3>
+              </div>
+            </div>
+
+            <div className="accent-line my-6" />
+
+            <div className="grid gap-4">
+              {ed.certifications.map((certification, index) => (
+                <div key={certification.title} className="soft-panel px-4 py-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h4 className="text-base font-bold text-foreground">{certification.title}</h4>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                        {certification.institution}
+                      </p>
+                    </div>
+                    <span className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-primary/80">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-xs font-bold uppercase tracking-[0.22em] text-secondary/85">
+                    {certification.year}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,37 +1,48 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  BriefcaseBusiness,
+  FolderKanban,
+  GraduationCap,
+  Home,
+  Menu,
+  MessageCircleMore,
+  UserRound,
+  Wrench,
+  X,
+} from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const { t, toggleLocale, locale } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('about');
   const clickLockRef = useRef<{ id: string; until: number } | null>(null);
 
   const navItems = t.navbar.items;
+  const navIcons = [
+    Home,
+    UserRound,
+    Wrench,
+    BriefcaseBusiness,
+    GraduationCap,
+    FolderKanban,
+    MessageCircleMore,
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 24);
 
       const now = Date.now();
-      const isAtPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-
-      if (isAtPageBottom) {
-        setActiveSection('contact');
-        return;
-      }
-
       if (clickLockRef.current && now < clickLockRef.current.until) {
         setActiveSection(clickLockRef.current.id);
         return;
       }
 
-      const offset = 120;
-      const currentPosition = window.scrollY + offset;
-      let currentActiveSection = '';
+      const currentPosition = window.scrollY + 160;
+      let currentActiveSection = 'about';
 
       for (const item of navItems) {
         const id = item.href.replace('#', '');
@@ -49,112 +60,103 @@ const Navbar = () => {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
-
-    if (href === '#') {
-      clickLockRef.current = null;
-      setActiveSection('');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
 
     const targetId = href.replace('#', '');
     clickLockRef.current = { id: targetId, until: Date.now() + 900 };
     setActiveSection(targetId);
 
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'bg-background/70 backdrop-blur-xl border-b border-white/[0.06]'
-            : 'bg-transparent'
-        }`}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
+        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
       >
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.a
-              href="#"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#'); }}
-              className="text-foreground font-semibold text-lg tracking-tight hover:text-primary transition-colors duration-300"
-              whileTap={{ scale: 0.98 }}
-            >
-              felippe<span className="text-primary">.</span>dev
-            </motion.a>
-
-            <div className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => {
-                const sectionId = item.href.replace('#', '');
-                const isActive = activeSection === sectionId;
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                    className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                      isActive ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  >
-                    {item.label}
-                    {isActive && (
-                      <motion.div
-                        layoutId="nav-indicator"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                  </a>
-                );
-              })}
-
-              {/* Flag toggle */}
-              <button
-                onClick={toggleLocale}
-                aria-label="Toggle language"
-                className="ml-3 relative flex items-center gap-0 rounded-full border border-white/[0.1] bg-white/[0.04] p-0.5 hover:border-primary/40 transition-all duration-300"
-              >
-                <span
-                  className={`relative z-10 flex items-center justify-center w-8 h-7 rounded-full text-base transition-all duration-300 ${
-                    locale === 'pt' ? 'opacity-100' : 'opacity-40'
-                  }`}
-                >
-                  🇧🇷
-                </span>
-                <span
-                  className={`relative z-10 flex items-center justify-center w-8 h-7 rounded-full text-base transition-all duration-300 ${
-                    locale === 'en' ? 'opacity-100' : 'opacity-40'
-                  }`}
-                >
-                  🇺🇸
-                </span>
-                {/* sliding indicator */}
-                <motion.span
-                  layout
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                  className="absolute top-0.5 bottom-0.5 w-8 rounded-full bg-primary/20 border border-primary/30"
-                  style={{ left: locale === 'pt' ? '2px' : 'calc(50% + 0px)' }}
-                />
-              </button>
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+          <a
+            href="#about"
+            onClick={(event) => {
+              event.preventDefault();
+              handleNavClick('#about');
+            }}
+            className="flex items-center gap-3"
+          >
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-foreground/14 bg-card text-sm font-extrabold tracking-tight text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.35)]">
+              FT
+            </span>
+            <div className="hidden sm:block">
+              <p className="text-xl font-extrabold tracking-tight text-foreground">
+                Felippe
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Software Engineer
+              </p>
             </div>
+          </a>
+
+          <div
+            className={`hidden items-center rounded-[1.6rem] border px-2 py-2 transition-all duration-300 lg:flex ${
+              isScrolled
+                ? 'border-border bg-card/92 shadow-[0_18px_45px_-28px_rgba(17,17,17,0.28)] backdrop-blur-lg'
+                : 'border-border/80 bg-card/88 backdrop-blur-lg'
+            }`}
+          >
+            {navItems.map((item, index) => {
+              const Icon = navIcons[index] ?? Home;
+              const sectionId = item.href.replace('#', '');
+              const isActive = activeSection === sectionId;
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleNavClick(item.href);
+                  }}
+                  className={`relative flex h-11 items-center gap-2 rounded-[1rem] px-4 text-sm font-semibold transition-all duration-300 ${
+                    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {isActive && <span>{item.label}</span>}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      className="absolute inset-0 -z-10 rounded-[1rem] border border-border bg-secondary"
+                      transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleLocale}
+              className="hidden h-11 rounded-[1rem] border border-border bg-card px-4 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.25)] sm:flex"
+              aria-label="Toggle language"
+            >
+              <span className={locale === 'pt' ? 'text-foreground' : 'text-muted-foreground'}>PT</span>
+              <span className="mx-1 text-foreground/25">/</span>
+              <span className={locale === 'en' ? 'text-foreground' : 'text-muted-foreground'}>EN</span>
+            </button>
 
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/[0.05] transition-all duration-300"
+              onClick={() => setIsMobileMenuOpen((current) => !current)}
+              className="flex h-11 w-11 items-center justify-center rounded-[1rem] border border-border bg-card text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.25)] lg:hidden"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -163,60 +165,64 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            <motion.div
+            <motion.button
+              type="button"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 z-40 bg-foreground/10 backdrop-blur-sm lg:hidden"
+              aria-label="Close menu"
             />
+
             <motion.div
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-card/95 backdrop-blur-xl border-l border-white/[0.06] z-50 md:hidden"
+              initial={{ opacity: 0, y: -14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -14 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-x-4 top-20 z-50 rounded-[1.8rem] border border-border bg-card p-5 shadow-[0_24px_60px_-34px_rgba(17,17,17,0.28)] lg:hidden"
             >
-              <div className="flex flex-col p-8 pt-20 space-y-1">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="block px-4 py-3 text-foreground/80 hover:text-primary hover:bg-white/[0.03] rounded-lg transition-all duration-300 font-medium"
-                  >
-                    {item.label}
-                  </motion.a>
-                ))}
-                {/* Mobile flag toggle */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
-                  className="mt-3 flex items-center justify-between px-4 py-3 rounded-lg border border-white/[0.06] bg-white/[0.02]"
+              <div className="mb-4 flex items-center justify-between rounded-[1.2rem] bg-secondary px-4 py-3">
+                <div>
+                  <p className="text-sm font-extrabold tracking-tight text-foreground">Felippe</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                    Portfolio
+                  </p>
+                </div>
+
+                <button
+                  onClick={toggleLocale}
+                  className="rounded-full border border-border bg-card px-3 py-2 text-xs font-bold uppercase tracking-[0.22em] text-foreground"
+                  aria-label="Toggle language"
                 >
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {locale === 'pt' ? 'Idioma' : 'Language'}
-                  </span>
-                  <button
-                    onClick={toggleLocale}
-                    aria-label="Toggle language"
-                    className="relative flex items-center rounded-full border border-white/[0.1] bg-white/[0.04] p-0.5 hover:border-primary/40 transition-all duration-300"
-                  >
-                    <span className={`relative z-10 flex items-center justify-center w-9 h-8 rounded-full text-lg transition-all duration-300 ${locale === 'pt' ? 'opacity-100' : 'opacity-35'}`}>🇧🇷</span>
-                    <span className={`relative z-10 flex items-center justify-center w-9 h-8 rounded-full text-lg transition-all duration-300 ${locale === 'en' ? 'opacity-100' : 'opacity-35'}`}>🇺🇸</span>
-                    <motion.span
-                      layout
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                      className="absolute top-0.5 bottom-0.5 w-9 rounded-full bg-primary/20 border border-primary/30"
-                      style={{ left: locale === 'pt' ? '2px' : 'calc(50% + 0px)' }}
-                    />
-                  </button>
-                </motion.div>
+                  {locale === 'pt' ? 'EN' : 'PT'}
+                </button>
+              </div>
+
+              <div className="space-y-2">
+                {navItems.map((item, index) => {
+                  const Icon = navIcons[index] ?? Home;
+
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        handleNavClick(item.href);
+                      }}
+                      className="flex items-center justify-between rounded-[1.15rem] border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground"
+                    >
+                      <span className="flex items-center gap-3">
+                        <Icon className="h-4 w-4 text-muted-foreground" />
+                        {item.label}
+                      </span>
+                      <span className="text-[0.68rem] uppercase tracking-[0.22em] text-muted-foreground">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </a>
+                  );
+                })}
               </div>
             </motion.div>
           </>
