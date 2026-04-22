@@ -13,6 +13,7 @@ import {
 import { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logo from '../../F_logo.png';
 
 const Navbar = () => {
   const { t, toggleLocale, locale } = useLanguage();
@@ -38,9 +39,9 @@ const Navbar = () => {
         className="sticky inset-x-0 top-0 z-50 bg-background/96 px-4 py-3 backdrop-blur-sm sm:px-6"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-sm font-extrabold tracking-tight text-foreground shadow-[0_8px_18px_-14px_rgba(17,17,17,0.08)]">
-              FT
+          <Link to="/" className="flex items-center">
+            <span className="flex h-14 w-14 items-center justify-center overflow-hidden">
+              <img src={logo} alt="Felippe logo" className="h-full w-full object-contain" />
             </span>
             <div className="hidden sm:block">
               <p className="text-xl font-extrabold tracking-tight text-foreground">Felippe</p>
@@ -105,12 +106,38 @@ const Navbar = () => {
 
             <button
               onClick={toggleLocale}
-              className="subtle-stroke hidden h-11 rounded-[1rem] bg-secondary px-4 text-xs font-bold uppercase tracking-[0.22em] text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] sm:flex"
+              className="hidden h-11 items-center rounded-[1rem] bg-card px-1 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-foreground shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] transition-all duration-300 sm:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]"
               aria-label="Toggle language"
             >
-              <span className={locale === 'pt' ? 'text-foreground' : 'text-muted-foreground'}>PT</span>
-              <span className="mx-1 text-foreground/25">/</span>
-              <span className={locale === 'en' ? 'text-foreground' : 'text-muted-foreground'}>EN</span>
+              <span
+                className={`relative flex h-full min-w-[3rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
+                  locale === 'pt' ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                {locale === 'pt' && (
+                  <motion.span
+                    layoutId="locale-active-pill"
+                    className="absolute inset-0 -z-10 rounded-[1rem] bg-background shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] [box-shadow:0_10px_24px_-18px_rgba(17,17,17,0.08),inset_0_0_0_1.5px_rgba(17,17,17,0.16)]"
+                    transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+                  />
+                )}
+                PT
+              </span>
+              <span className="px-1.5 text-[0.65rem] font-medium text-foreground/30">/</span>
+              <span
+                className={`relative flex h-full min-w-[3rem] items-center justify-center rounded-[1rem] px-3 transition-colors duration-300 ${
+                  locale === 'en' ? 'text-foreground' : 'text-muted-foreground'
+                }`}
+              >
+                {locale === 'en' && (
+                  <motion.span
+                    layoutId="locale-active-pill"
+                    className="absolute inset-0 -z-10 rounded-[1rem] bg-background shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] [box-shadow:0_10px_24px_-18px_rgba(17,17,17,0.08),inset_0_0_0_1.5px_rgba(17,17,17,0.16)]"
+                    transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+                  />
+                )}
+                EN
+              </span>
             </button>
 
             <button
