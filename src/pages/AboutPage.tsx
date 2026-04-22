@@ -1,12 +1,7 @@
 import About from '@/components/About';
-import PageLayout from '@/components/PageLayout';
 
 const AboutPage = () => {
-  return (
-    <PageLayout>
-      <About />
-    </PageLayout>
-  );
+  return <About />;
 };
 
 export default AboutPage;

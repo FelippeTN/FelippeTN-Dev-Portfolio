@@ -1,15 +1,24 @@
-import type { ReactNode } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 
-type PageLayoutProps = {
-  children: ReactNode;
-};
+const PageLayout = () => {
+  const location = useLocation();
 
-const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div className="page-shell min-h-screen bg-background">
       <Navbar />
-      {children}
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={location.pathname}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.24, ease: 'easeOut' }}
+        >
+          <Outlet />
+        </motion.main>
+      </AnimatePresence>
     </div>
   );
 };

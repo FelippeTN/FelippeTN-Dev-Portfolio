@@ -1,12 +1,7 @@
 import Contact from '@/components/Contact';
-import PageLayout from '@/components/PageLayout';
 
 const ContactPage = () => {
-  return (
-    <PageLayout>
-      <Contact />
-    </PageLayout>
-  );
+  return <Contact />;
 };
 
 export default ContactPage;

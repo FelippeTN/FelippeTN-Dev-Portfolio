@@ -51,7 +51,7 @@ const Navbar = () => {
           </Link>
 
           <div className="ml-auto flex items-center gap-2">
-            <div className="hidden items-center rounded-[1.8rem] bg-card px-2 py-2 shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] lg:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]">
+            <div className="hidden items-center rounded-[1rem] bg-card px-1 py-1 shadow-[0_14px_32px_-28px_rgba(17,17,17,0.12)] lg:flex [box-shadow:0_14px_32px_-28px_rgba(17,17,17,0.12),inset_0_0_0_1px_rgba(17,17,17,0.08)]">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
@@ -60,17 +60,42 @@ const Navbar = () => {
                   <NavLink
                     key={item.href}
                     to={item.href}
-                    className={`relative flex h-11 items-center gap-2 rounded-[1rem] px-4 text-sm font-semibold transition-all duration-300 ${
-                      isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+                    className={`relative flex h-11 items-center rounded-[1rem] px-4 text-sm font-semibold transition-colors duration-300 ${
+                      isActive ? 'border text-foreground' : 'text-muted-foreground hover:text-foreground'
                     }`}
                   >
-                    <Icon className="h-4 w-4" />
-                    {isActive && <span>{item.label}</span>}
+                    <motion.span
+                      animate={{ x: isActive ? 0 : 2, scale: isActive ? 1 : 0.96 }}
+                      transition={{ duration: 0.22, ease: 'easeOut' }}
+                      className="flex items-center"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </motion.span>
+
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.span
+                          key={`${item.href}-label`}
+                          initial={{ width: 0, opacity: 0, x: -6 }}
+                          animate={{ width: 'auto', opacity: 1, x: 0 }}
+                          exit={{ width: 0, opacity: 0, x: -6 }}
+                          transition={{
+                            width: { duration: 0.28, ease: 'easeOut' },
+                            opacity: { duration: 0.18, ease: 'easeOut' },
+                            x: { duration: 0.22, ease: 'easeOut' },
+                          }}
+                          className="overflow-hidden whitespace-nowrap"
+                        >
+                          <span className="ml-2 block">{item.label}</span>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+
                     {isActive && (
                       <motion.span
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 -z-10 rounded-[1rem] bg-background shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] [box-shadow:0_10px_24px_-18px_rgba(17,17,17,0.08),inset_0_0_0_1px_rgba(17,17,17,0.07)]"
-                        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                        className="absolute inset-0 -z-10 rounded-[1rem] bg-background shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] [box-shadow:0_10px_24px_-18px_rgba(17,17,17,0.08),inset_0_0_0_1.5px_rgba(17,17,17,0.16)]"
+                        transition={{ type: 'spring', stiffness: 280, damping: 24 }}
                       />
                     )}
                   </NavLink>
@@ -147,7 +172,7 @@ const Navbar = () => {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`flex items-center justify-between rounded-[1.15rem] px-4 py-3 text-sm font-semibold ${
                         location.pathname === item.href
-                          ? 'subtle-stroke bg-card text-foreground'
+                          ? 'bg-card text-foreground [box-shadow:inset_0_0_0_1.5px_rgba(17,17,17,0.16)]'
                           : 'bg-secondary/55 text-foreground'
                       }`}
                     >

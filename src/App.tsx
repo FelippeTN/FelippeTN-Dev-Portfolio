@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PageLayout from "./components/PageLayout";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import SkillsPage from "./pages/SkillsPage";
@@ -23,13 +24,15 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route element={<PageLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<SkillsPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
