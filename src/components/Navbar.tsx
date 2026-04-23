@@ -204,7 +204,7 @@ const Navbar = () => {
             <div className="mx-auto w-full max-w-md">
               <div className="flex items-center justify-between border-b border-border/70 pb-6">
                 <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl bg-secondary">
+                  <span className="flex h-11 w-11 items-center justify-center overflow-hidden">
                     <img src={logo} alt="Felippe logo" className="h-9 w-9 object-contain" />
                   </span>
                   <p className="text-[1.7rem] font-extrabold tracking-tight text-foreground">Felippe</p>
@@ -237,7 +237,8 @@ const Navbar = () => {
                         title={item.label}
                         className="flex min-h-[5.4rem] flex-col items-center justify-center rounded-[1.4rem] px-2 text-center text-[0.92rem] font-semibold text-muted-foreground transition-colors duration-200"
                       >
-                        <Icon className="h-[1.1rem] w-[1.1rem]" />
+                        <Icon className="mb-2 h-[1.1rem] w-[1.1rem]" />
+                        <span>{item.label}</span>
                       </a>
                     );
                   }

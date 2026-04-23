@@ -36,12 +36,18 @@ const Hero3D = () => {
             transition={{ duration: 0.55 }}
             className="flex flex-col justify-center lg:pr-8"
           >
-            <div className="flex flex-wrap gap-3">
-              <span className="eyebrow subtle-stroke" style={{ fontSize: '0.56rem', letterSpacing: '0.12em' }}>
+            <div className="flex flex-nowrap items-center gap-2 overflow-x-auto sm:flex-wrap sm:gap-3">
+              <span
+                className="eyebrow subtle-stroke whitespace-nowrap"
+                style={{ fontSize: '0.52rem', letterSpacing: '0.1em' }}
+              >
                 <MapPin className="h-3.5 w-3.5" />
                 {h.locationBadge}
               </span>
-              <span className="eyebrow subtle-stroke" style={{ fontSize: '0.56rem', letterSpacing: '0.12em' }}>
+              <span
+                className="eyebrow subtle-stroke whitespace-nowrap"
+                style={{ fontSize: '0.52rem', letterSpacing: '0.1em' }}
+              >
                 <BriefcaseBusiness className="h-3.5 w-3.5" />
                 {h.roleBadge}
               </span>
@@ -59,16 +65,16 @@ const Hero3D = () => {
               {h.description}
             </p>
 
-            <div className="mt-8 grid gap-4 text-sm text-foreground sm:grid-cols-2 sm:text-[0.95rem]">
+            <div className="mt-6 grid gap-2 text-[0.82rem] text-foreground sm:mt-8 sm:grid-cols-2 sm:gap-4 sm:text-[0.95rem]">
               {h.highlights.map((item, index) => {
                 const Icon = highlightIcons[index] ?? Sparkles;
 
                 return (
-                  <div key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full text-foreground">
-                      <Icon className="h-4 w-4" />
+                  <div key={item} className="flex items-start gap-2 sm:gap-3">
+                    <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-foreground sm:h-5 sm:w-5">
+                      <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </span>
-                    <span className="leading-6">{item}</span>
+                    <span className="leading-5 sm:leading-6">{item}</span>
                   </div>
                 );
               })}
