@@ -6,8 +6,6 @@ const About = () => {
   const { t, locale } = useLanguage();
   const a = t.about;
   const hero = t.hero;
-  const experience = t.experience.items;
-  const education = t.education.items;
 
   const introParagraphs =
     locale === 'pt'
@@ -39,20 +37,38 @@ const About = () => {
 
   const detailCards = [
     {
+      id: 'education-mba',
       icon: GraduationCap,
       label: locale === 'pt' ? 'Formação' : 'Education',
-      value: education[0]?.degree ?? '',
-      detail: education[0]?.institution ?? '',
+      value: locale === 'pt' ? 'MBA - Engenharia de Software' : 'MBA - Software Engineering',
+      detail: locale === 'pt' ? 'MBA USP/Esalq' : 'MBA USP/Esalq',
       meta: locale === 'pt' ? 'Atual' : 'Current',
     },
     {
+      id: 'education-ads',
+      icon: GraduationCap,
+      label: locale === 'pt' ? 'Formação' : 'Education',
+      value:
+        locale === 'pt'
+          ? 'Análise e Desenvolvimento de Sistemas'
+          : 'Systems Analysis and Development',
+      detail:
+        locale === 'pt' ? 'Universidade Estácio de Sá' : 'Estacio de Sa University',
+      meta: '',
+    },
+    {
+      id: 'experience',
       icon: BriefcaseBusiness,
       label: locale === 'pt' ? 'Experiência' : 'Experience',
       value: locale === 'pt' ? '3+ anos construindo sistemas' : '3+ years building systems',
-      detail: experience[0]?.company ?? '',
-      meta: experience[0]?.period ?? '',
+      detail:
+        locale === 'pt'
+          ? 'PGE-RJ - Procuradoria-Geral do Estado do Rio de Janeiro'
+          : 'PGE-RJ - Attorney General of the State of Rio de Janeiro',
+      meta: locale === 'pt' ? '2024 - Presente' : '2024 - Present',
     },
     {
+      id: 'location',
       icon: MapPin,
       label: locale === 'pt' ? 'Localização' : 'Location',
       value: hero.stats[2]?.label ?? hero.locationBadge,
@@ -60,11 +76,13 @@ const About = () => {
       meta: locale === 'pt' ? 'Base atual' : 'Current base',
     },
     {
+      id: 'role',
       icon: Sparkles,
       label: locale === 'pt' ? 'Posição' : 'Role',
-      value: hero.roleBadge,
-      detail: experience[0]?.title ?? hero.roleBadge,
-      meta: experience[0]?.period ?? '',
+      value: 'Software Engineer',
+      detail:
+        locale === 'pt' ? 'Engenheiro de Software Autônomo' : 'Independent Software Engineer',
+      meta: locale === 'pt' ? '2023 - Presente' : '2023 - Present',
     },
   ];
 
@@ -125,7 +143,7 @@ const About = () => {
 
               return (
                 <motion.article
-                  key={card.label}
+                  key={card.id}
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}

@@ -37,11 +37,11 @@ const Hero3D = () => {
             className="flex flex-col justify-center lg:pr-8"
           >
             <div className="flex flex-wrap gap-3">
-              <span className="eyebrow subtle-stroke">
+              <span className="eyebrow subtle-stroke" style={{ fontSize: '0.56rem', letterSpacing: '0.12em' }}>
                 <MapPin className="h-3.5 w-3.5" />
                 {h.locationBadge}
               </span>
-              <span className="eyebrow subtle-stroke">
+              <span className="eyebrow subtle-stroke" style={{ fontSize: '0.56rem', letterSpacing: '0.12em' }}>
                 <BriefcaseBusiness className="h-3.5 w-3.5" />
                 {h.roleBadge}
               </span>
@@ -77,7 +77,7 @@ const Hero3D = () => {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] transition-colors duration-200 hover:bg-zinc-700 sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-[0.8rem] bg-foreground px-12 py-3 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] transition-colors duration-200 hover:bg-zinc-700 sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
@@ -85,7 +85,7 @@ const Hero3D = () => {
 
               <Link
                 to="/contact"
-                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-zinc-200 sm:text-sm"
+                className="subtle-stroke inline-flex items-center gap-2 rounded-[0.8rem] bg-secondary px-12 py-3 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-zinc-200 sm:text-sm"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
@@ -127,17 +127,19 @@ const Hero3D = () => {
           >
             <div className="grid gap-4">
               <div className="rounded-[1.8rem] bg-card p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)]">
-                <div className="relative overflow-hidden rounded-[1.5rem] bg-secondary">
-                  <img
-                    src={Felippe}
-                    alt="Felippe Toscano Nalim"
-                    className="h-[430px] w-full object-cover object-top sm:h-[520px]"
-                  />
-                </div>
-                <div className="subtle-stroke mt-4 rounded-[1.2rem] bg-[rgba(114,212,142,0.08)] px-6 py-5 shadow-[0_18px_28px_-24px_rgba(34,197,94,0.12)]">
-                  <div className="flex items-center gap-3">
-                    <span className="animate-pulse-soft h-3 w-3 rounded-full bg-[#72d48e]" />
-                    <p className="text-sm font-semibold text-foreground">{h.available}</p>
+                <div className="relative rounded-[1.5rem]">
+                  <div className="overflow-hidden rounded-[1.5rem] bg-secondary">
+                    <img
+                      src={Felippe}
+                      alt="Felippe Toscano Nalim"
+                      className="h-[430px] w-full object-cover object-top sm:h-[520px]"
+                    />
+                  </div>
+                  <div className="subtle-stroke absolute -bottom-3 -right-3 z-10 w-fit max-w-[85%] rounded-[1rem] bg-[rgba(255,255,255)] px-6 py-5 shadow-[0_18px_28px_-24px_rgba(34,197,94,0.28)] backdrop-blur-[2px] sm:-bottom-4 sm:-right-4 sm:max-w-[75%]">
+                    <div className="flex items-center gap-3">
+                      <span className="animate-pulse-soft h-3 w-3 rounded-full bg-[#72d48e]" />
+                      <p className="text-sm font-semibold text-foreground">{h.available}</p>
+                    </div>
                   </div>
                 </div>
               </div>
