@@ -129,8 +129,8 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl rounded-[2rem] bg-card px-6 py-8 shadow-[0_18px_45px_-30px_rgba(17,17,17,0.1)] [box-shadow:0_18px_45px_-30px_rgba(17,17,17,0.1),inset_0_0_0_1px_rgba(17,17,17,0.06)] sm:px-8 sm:py-10 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
           <div className="max-w-sm">
-            <Link to="/" className="inline-flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl bg-secondary">
+            <Link to="/" className="inline-flex items-center">
+              <span className="flex h-12 w-12 items-center justify-center overflow-hidden">
                 <img src={logo} alt="Felippe logo" className="h-10 w-10 object-contain" />
               </span>
               <div>

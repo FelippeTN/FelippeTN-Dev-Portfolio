@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Instagram, Linkedin, MessageCircleMore } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, MessageCircleMore } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const socialLinks = [
@@ -11,6 +11,8 @@ const socialLinks = [
 const Contact = () => {
   const { t } = useLanguage();
   const c = t.contact;
+  const email = 'felippenalim2004@gmail.com';
+  const emailHref = `mailto:${email}`;
   const whatsappHref = 'https://wa.me/5521979076630';
 
   return (
@@ -63,6 +65,17 @@ const Contact = () => {
                   <MessageCircleMore className="h-4 w-4" />
                   {c.btnWhatsapp}
                 </a>
+
+                <div className="mt-6 border-t border-border/60 pt-6">
+                  <p className="text-sm font-bold uppercase tracking-[0.24em] text-primary/80">E-mail</p>
+                  <a
+                    href={emailHref}
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    <Mail className="h-4 w-4" />
+                    {email}
+                  </a>
+                </div>
               </div>
             </div>
 

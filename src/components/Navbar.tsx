@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   Blocks,
   BriefcaseBusiness,
-  FolderGit2,
+  Github,
   GraduationCap,
   Home,
   Linkedin,
@@ -29,7 +29,12 @@ const Navbar = () => {
     { ...t.navbar.items[1], href: '/skills', icon: Blocks },
     { ...t.navbar.items[2], href: '/experience', icon: BriefcaseBusiness },
     { ...t.navbar.items[3], href: '/education', icon: GraduationCap },
-    { ...t.navbar.items[4], href: '/projects', icon: FolderGit2 },
+    {
+      label: 'GitHub',
+      href: 'https://github.com/FelippeTN',
+      icon: Github,
+      external: true,
+    },
     { ...t.navbar.items[5], href: '/contact', icon: MessageSquareText },
   ];
 
@@ -69,6 +74,29 @@ const Navbar = () => {
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.href;
+                const showLabel = isActive;
+
+                if (item.external) {
+                  return (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={item.label}
+                      title={item.label}
+                      className="relative flex h-11 w-11 items-center justify-center rounded-[1rem] text-sm font-semibold text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                    >
+                      <motion.span
+                        animate={{ x: 2, scale: 0.96 }}
+                        transition={{ duration: 0.22, ease: 'easeOut' }}
+                        className="flex items-center"
+                      >
+                        <Icon className="h-4 w-4" />
+                      </motion.span>
+                    </a>
+                  );
+                }
 
                 return (
                   <NavLink
@@ -87,7 +115,7 @@ const Navbar = () => {
                     </motion.span>
 
                     <AnimatePresence initial={false}>
-                      {isActive && (
+                      {showLabel && (
                         <motion.span
                           key={`${item.href}-label`}
                           initial={{ width: 0, opacity: 0, x: -6 }}
@@ -196,6 +224,23 @@ const Navbar = () => {
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
+
+                  if (item.external) {
+                    return (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        aria-label={item.label}
+                        title={item.label}
+                        className="flex min-h-[5.4rem] flex-col items-center justify-center rounded-[1.4rem] px-2 text-center text-[0.92rem] font-semibold text-muted-foreground transition-colors duration-200"
+                      >
+                        <Icon className="h-[1.1rem] w-[1.1rem]" />
+                      </a>
+                    );
+                  }
 
                   return (
                     <NavLink
