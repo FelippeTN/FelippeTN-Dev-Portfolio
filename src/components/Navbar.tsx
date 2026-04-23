@@ -13,7 +13,7 @@ import {
   Youtube,
   X,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '../../F_logo.png';
@@ -22,6 +22,30 @@ const Navbar = () => {
   const { t, toggleLocale, locale } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (documentHeight <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+
+      const progress = Math.min(window.scrollY / documentHeight, 1);
+      setScrollProgress(progress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('resize', updateScrollProgress);
+    };
+  }, [location.pathname]);
 
   const navItems = [
     { label: locale === 'pt' ? 'Início' : 'Home', href: '/', icon: Home },
@@ -54,8 +78,14 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="sticky inset-x-0 top-0 z-50 border-b border-border/60 bg-background px-4 py-3 shadow-[0_10px_24px_-22px_rgba(17,17,17,0.35)] md:bg-background lg:border-b-0 lg:shadow-none"
+        className="sticky inset-x-0 top-0 z-50 overflow-hidden border-b border-border/60 bg-background px-4 py-3 shadow-[0_10px_24px_-22px_rgba(17,17,17,0.35)] md:bg-background lg:border-b-0 lg:shadow-none"
       >
+        <motion.div
+          aria-hidden="true"
+          className="absolute left-0 top-0 h-[3px] bg-black"
+          animate={{ width: `${scrollProgress * 100}%` }}
+          transition={{ ease: 'easeOut', duration: 0.12 }}
+        />
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <Link to="/" className="flex items-center">
             <span className="flex h-14 w-14 items-center justify-center overflow-hidden">

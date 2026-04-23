@@ -33,7 +33,7 @@ const translations = {
         { value: 'Brasil', label: 'Rio de Janeiro' },
       ],
       available: 'Disponível para oportunidades',
-      btnProjects: 'Ver Projetos',
+      btnProjects: 'Ver GitHub',
       btnContact: 'Fale comigo',
     },
     about: {
@@ -452,8 +452,6 @@ const translations = {
       description:
         'Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto desafiador ou uma posição que faça sentido, entre em contato.',
       btnWhatsapp: 'Chamar no WhatsApp',
-      footer: 'Feito com',
-      footerStack: 'React, Three.js & Framer Motion',
     },
   },
 
@@ -490,7 +488,7 @@ const translations = {
         { value: 'BR', label: 'Rio de Janeiro' },
       ],
       available: 'Available for opportunities',
-      btnProjects: 'View Projects',
+      btnProjects: 'View GitHub',
       btnContact: 'Get in Touch',
     },
     about: {
@@ -913,8 +911,6 @@ const translations = {
       description:
         "I'm always open to new opportunities and collaborations. If you have a challenging project or a role that makes sense, reach out.",
       btnWhatsapp: 'Chat on WhatsApp',
-      footer: 'Made with',
-      footerStack: 'React, Three.js & Framer Motion',
     },
   },
 } as const;
