@@ -100,11 +100,11 @@ const About = () => {
             {locale === 'pt' ? 'Sobre Felippe Toscano' : 'About Felippe Toscano'}
           </span>
 
-          <h2 className="mt-7 max-w-xl text-balance text-[2.15rem] font-extrabold leading-[0.98] tracking-tight text-foreground sm:text-[2.8rem]">
+          <h1 className="mt-7 max-w-xl text-balance text-[2.15rem] font-extrabold leading-[0.98] tracking-tight text-foreground sm:text-[2.8rem]">
             {locale === 'pt'
               ? 'Construindo backend robusto com foco em clareza e escala'
               : 'Building robust backend systems with clarity and scale'}
-          </h2>
+          </h1>
 
           <p className="mt-5 text-base text-muted-foreground sm:text-[1.02rem]">{a.description}</p>
 

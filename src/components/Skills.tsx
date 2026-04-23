@@ -17,9 +17,9 @@ const Skills = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="eyebrow">02 / {s.title}</span>
-              <h2 className="mt-6 text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
+              <h1 className="mt-6 text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
                 {s.description}
-              </h2>
+              </h1>
             </motion.div>
 
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

@@ -29,9 +29,9 @@ const Contact = () => {
             <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
               <div>
                 <span className="eyebrow">06 / {c.title}</span>
-                <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.7rem] lg:text-[3.1rem]">
+                <h1 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.7rem] lg:text-[3.1rem]">
                   {c.description}
-                </h2>
+                </h1>
 
                 <div className="mt-8 flex flex-wrap gap-3">
                   {socialLinks.map((social) => (

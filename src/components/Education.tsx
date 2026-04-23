@@ -17,9 +17,9 @@ const Education = () => {
           className="mb-6"
         >
           <span className="eyebrow">04 / {ed.title}</span>
-          <h2 className="mt-5 max-w-3xl text-balance text-[1.9rem] font-bold leading-[1.08] text-foreground sm:text-[2.2rem]">
+          <h1 className="mt-5 max-w-3xl text-balance text-[1.9rem] font-bold leading-[1.08] text-foreground sm:text-[2.2rem]">
             {ed.description}
-          </h2>
+          </h1>
         </motion.div>
 
         <div className="grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">

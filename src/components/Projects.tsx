@@ -17,9 +17,9 @@ const Projects = () => {
           className="mb-6"
         >
           <span className="eyebrow">05 / {p.title}</span>
-          <h2 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
+          <h1 className="mt-6 max-w-3xl text-balance text-[2.1rem] font-bold leading-[1.04] text-foreground sm:text-[2.65rem]">
             {p.description}
-          </h2>
+          </h1>
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
