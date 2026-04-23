@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Instagram, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, MapPin, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '../../F_logo.png';
@@ -39,6 +39,7 @@ const Footer = () => {
               href: 'https://www.linkedin.com/in/felippe-toscano-nalim/',
               external: true,
             },
+            { label: 'YouTube', href: 'https://www.youtube.com/@felippetndev', external: true },
             { label: 'WhatsApp', href: 'https://wa.me/5521979076630', external: true },
           ],
         },
@@ -54,6 +55,7 @@ const Footer = () => {
       bottomLinks: [
         { label: 'GitHub', href: 'https://github.com/FelippeTN', external: true },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', external: true },
+        { label: 'YouTube', href: 'https://www.youtube.com/@felippetndev', external: true },
       ],
     },
     en: {
@@ -86,6 +88,7 @@ const Footer = () => {
               href: 'https://www.linkedin.com/in/felippe-toscano-nalim/',
               external: true,
             },
+            { label: 'YouTube', href: 'https://www.youtube.com/@felippetndev', external: true },
             { label: 'WhatsApp', href: 'https://wa.me/5521979076630', external: true },
           ],
         },
@@ -101,6 +104,7 @@ const Footer = () => {
       bottomLinks: [
         { label: 'GitHub', href: 'https://github.com/FelippeTN', external: true },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/', external: true },
+        { label: 'YouTube', href: 'https://www.youtube.com/@felippetndev', external: true },
       ],
     },
   } as const;
@@ -109,6 +113,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, label: 'GitHub', href: 'https://github.com/FelippeTN' },
     { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/felippe-toscano-nalim/' },
+    { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@felippetndev' },
     { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/felippetn/' },
     { icon: Mail, label: 'Email', href: 'mailto:felippetn@gmail.com' },
   ];

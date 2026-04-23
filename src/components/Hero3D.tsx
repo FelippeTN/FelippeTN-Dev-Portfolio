@@ -7,14 +7,22 @@ import {
   MapPin,
   Sparkles,
   Star,
+  Youtube,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Felippe from '@/assets/Felippe.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero3D = () => {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const h = t.hero;
+  const youtubeChannels = [
+    {
+      handle: '@felippetndev',
+      href: 'https://www.youtube.com/@felippetndev',
+      isNew: true,
+    },
+  ];
 
   const highlightIcons = [Star, CheckCircle2, Sparkles, Globe2];
 
@@ -69,7 +77,7 @@ const Hero3D = () => {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] sm:text-sm"
+                className="inline-flex items-center gap-2 rounded-[1rem] bg-foreground px-6 py-4 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] transition-colors duration-200 hover:bg-zinc-700 sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
@@ -77,11 +85,37 @@ const Hero3D = () => {
 
               <Link
                 to="/contact"
-                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-[0.8rem] font-bold text-foreground sm:text-sm"
+                className="subtle-stroke inline-flex items-center gap-2 rounded-[1rem] bg-secondary px-6 py-4 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-zinc-200 sm:text-sm"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
               </Link>
+            </div>
+
+            <div className="mt-7 px-4 py-4 sm:px-5">
+              <p className="text-sm font-semibold text-muted-foreground">
+                {locale === 'pt' ? 'Canais no YouTube:' : 'YouTube Channels:'}
+              </p>
+
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                {youtubeChannels.map((channel) => (
+                  <a
+                    key={channel.handle}
+                    href={channel.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-zinc-200"
+                  >
+                    <Youtube className="h-4 w-4" />
+                    <span>{channel.handle}</span>
+                    {channel.isNew && (
+                      <span className="rounded-full bg-secondary px-2 py-0.5 text-[0.68rem] font-bold uppercase tracking-[0.08em] text-muted-foreground">
+                        {locale === 'pt' ? 'Novo' : 'New'}
+                      </span>
+                    )}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
