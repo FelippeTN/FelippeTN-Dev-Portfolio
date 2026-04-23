@@ -49,7 +49,7 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="sticky inset-x-0 top-0 z-50 bg-background px-4 py-3 sm:px-6"
+        className="sticky inset-x-0 top-0 z-50 border-b border-border/60 bg-background px-4 py-3 shadow-[0_10px_24px_-22px_rgba(17,17,17,0.35)] md:bg-background lg:border-b-0 lg:shadow-none"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <Link to="/" className="flex items-center">
@@ -171,7 +171,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-background/98 px-5 pb-10 pt-6 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-50 overflow-y-auto bg-background px-5 pb-10 pt-6 lg:hidden"
           >
             <div className="mx-auto w-full max-w-md">
               <div className="flex items-center justify-between border-b border-border/70 pb-6">
