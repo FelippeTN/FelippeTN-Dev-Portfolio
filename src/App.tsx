@@ -11,6 +11,7 @@ import ExperiencePage from "./pages/ExperiencePage";
 import EducationPage from "./pages/EducationPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/BlogPage";
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/education" element={<EducationPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/blog" element={<BlogPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -18,6 +18,7 @@ const Footer = () => {
           links: [
             { label: 'Inicio', href: '/' },
             { label: 'Sobre', href: '/about' },
+            { label: 'Blog', href: '/blog' },
             { label: 'Projetos', href: '/projects' },
             { label: 'Contato', href: '/contact' },
           ],
@@ -67,6 +68,7 @@ const Footer = () => {
           links: [
             { label: 'Home', href: '/' },
             { label: 'About', href: '/about' },
+            { label: 'Blog', href: '/blog' },
             { label: 'Projects', href: '/projects' },
             { label: 'Contact', href: '/contact' },
           ],

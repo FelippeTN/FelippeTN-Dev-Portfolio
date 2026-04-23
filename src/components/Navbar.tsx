@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   Blocks,
+  BookOpenText,
   BriefcaseBusiness,
   Github,
   GraduationCap,
@@ -53,6 +54,7 @@ const Navbar = () => {
     { ...t.navbar.items[1], href: '/skills', icon: Blocks },
     { ...t.navbar.items[2], href: '/experience', icon: BriefcaseBusiness },
     { ...t.navbar.items[3], href: '/education', icon: GraduationCap },
+    { label: locale === 'pt' ? 'Blog' : 'Blog', href: '/blog', icon: BookOpenText },
     {
       label: 'GitHub',
       href: 'https://github.com/FelippeTN',
