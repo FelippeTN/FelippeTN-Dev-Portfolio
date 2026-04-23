@@ -16,9 +16,9 @@ const translations = {
     hero: {
       locationBadge: 'Rio de Janeiro, Brasil',
       roleBadge: 'Software Engineer',
-      subtitle: 'Software Engineer & Especialista em Backend',
+      subtitle: 'Engenheiro de Software | Liderança Técnica em Backend & IA',
       description:
-        'Engenheiro de Software na PGE-RJ, especializado em backend de alta performance e na construção de sistemas confiáveis, observáveis e escaláveis com IA.',
+        'Engenheiro de Software na PGE-RJ com atuação em liderança técnica de projetos, arquitetura de soluções escaláveis e entregas end-to-end. Especialista em backend de alta performance, IA aplicada, observabilidade e confiabilidade em ambientes de produção.',
       highlights: [
         'Engenharia de backend para produção real',
         'Operacionalização de IA com foco em escala',
@@ -39,7 +39,7 @@ const translations = {
     about: {
       title: 'Sobre Mim',
       description:
-        'Engenheiro de Software com foco em backend de alta performance e na criação de sistemas com IA. Atualmente na PGE-RJ, conectando Engenharia de Software sólida com o poder da Inteligência Artificial moderna.',
+        'Engenheiro de Software com perfil de liderança técnica, focado em backend de alta performance e produtos com IA. Na PGE-RJ, lidero iniciativas do desenho da arquitetura ao go-live, alinhando stakeholders, acelerando entregas e garantindo qualidade, escalabilidade e impacto real no negócio.',
         
       funFact: 'Curiosidade: já conheci pessoalmente o Tiangolo — o criador do FastAPI. Sim, aquele cara que fez a biblioteca que provavelmente está rodando em produção agora mesmo em algum lugar do planeta.',
       funFactLabel: 'Fun fact',
@@ -268,6 +268,10 @@ const translations = {
       title: 'Formação & Certificações',
       description: 'Formação acadêmica sólida e certificações internacionais',
       certificationsLabel: 'Certificações',
+      issuedLabel: 'Emitida em',
+      credentialIdLabel: 'Código da credencial',
+      skillsLabel: 'Competências',
+      viewCredentialLabel: 'Exibir credencial',
       items: [
         {
           degree: 'Engenharia de Software',
@@ -283,11 +287,114 @@ const translations = {
             'Metodologias Ágeis (Scrum, Kanban)',
           ],
         },
+        {
+          degree: 'Pós-graduação Lato Sensu - MBA em Engenharia de Software',
+          institution: 'MBA USP/Esalq',
+          period: 'out de 2025 — abr de 2027',
+          description:
+            'MBA com foco em engenharia de software aplicada a escala, arquitetura corporativa, liderança técnica e gestão estratégica de produtos e times de tecnologia.',
+          highlights: [
+            'Arquitetura de Software em Contextos Corporativos',
+            'Liderança Técnica e Gestão de Times',
+            'Engenharia de Produto e Escalabilidade',
+            'Boas Práticas de Qualidade de Software',
+            'Estratégia, Inovação e Transformação Digital',
+          ],
+        },
+        {
+          degree: 'Pós-graduação Lato Sensu - Especialização em Engenharia de Software',
+          institution: 'Faculdade Líbano',
+          period: 'jun de 2025 — nov de 2025',
+          description:
+            'Especialização voltada para fundamentos e práticas avançadas de engenharia de software, cobrindo ciclo completo de desenvolvimento, arquitetura e qualidade.',
+          highlights: [
+            'Ciclo de Vida de Desenvolvimento de Software',
+            'Padrões Arquiteturais e Design de Sistemas',
+            'Modelagem, Requisitos e Documentação Técnica',
+            'Qualidade, Testes e Melhoria Contínua',
+            'Boas Práticas de Engenharia para Produção',
+          ],
+        },
+        {
+          degree: 'Pós-graduação Lato Sensu - Especialização em Ciência de Dados e Inteligência Artificial',
+          institution: 'Faculdade Líbano',
+          period: 'fev de 2025 — out de 2025',
+          description:
+            'Especialização em ciência de dados e IA, com foco em análise estatística, machine learning e aplicação prática de modelos inteligentes em cenários reais.',
+          highlights: [
+            'Estatística Aplicada e Análise de Dados',
+            'Machine Learning e Modelagem Preditiva',
+            'Fluxos de Dados e Preparação de Features',
+            'Aplicações Práticas de Inteligência Artificial',
+            'Certificado de Conclusão: Ciência de Dados e IA',
+          ],
+        },
+        {
+          degree: 'Tecnólogo em Análise e Desenvolvimento de Sistemas',
+          institution: 'Estácio',
+          period: 'jan de 2022 — dez de 2024',
+          description:
+            'Formação tecnológica com base sólida em desenvolvimento de sistemas, banco de dados, programação e construção de aplicações para ambientes corporativos.',
+          highlights: [
+            'Fundamentos de Programação e Estruturas de Dados',
+            'Desenvolvimento Web e Aplicações Corporativas',
+            'Banco de Dados Relacionais e SQL',
+            'Análise de Sistemas e Engenharia de Requisitos',
+            'Certificado de Conclusão de Curso',
+          ],
+        },
       ],
       certifications: [
-        { title: 'University of Michigan — Certified', institution: 'Coursera / University of Michigan', year: '2024' },
-        { title: 'React — The Complete Guide', institution: 'Udemy', year: '2023' },
-        { title: 'Node.js: Desenvolvedor Backend', institution: 'Udemy', year: '2023' },
+        {
+          title: 'Generative AI for Data Science',
+          institution: 'Microsoft',
+          year: 'abr de 2025',
+          issued: 'abr de 2025',
+          credentialId: '0YGWX2B0KD0E',
+        },
+        {
+          title: 'Applied Data Science with Python',
+          institution: 'University of Michigan',
+          year: 'abr de 2025',
+          issued: 'abr de 2025',
+          credentialId: '74DA9FWZFD6G',
+        },
+        {
+          title: 'Applied Social Network Analysis in Python',
+          institution: 'University of Michigan',
+          year: 'mar de 2025',
+          issued: 'mar de 2025',
+          credentialId: 'PNO6SQ5UQKZ2',
+        },
+        {
+          title: 'Applied Text Mining in Python',
+          institution: 'University of Michigan',
+          year: 'mar de 2025',
+          issued: 'mar de 2025',
+          skills: ['text mining', 'Mineração de textos', '+1 competência'],
+        },
+        {
+          title: 'Applied Plotting, Charting & Data Representation in Python',
+          institution: 'University of Michigan',
+          year: 'mar de 2025',
+          issued: 'mar de 2025',
+          skills: ['data visualization', 'data virtualization', '+1 competência'],
+        },
+        {
+          title: 'Introduction to Data Science in Python',
+          institution: 'University of Michigan',
+          year: 'mar de 2025',
+          issued: 'mar de 2025',
+          credentialId: 'VXVIKTIUKQ65',
+          skills: ['NumPy', 'pandas'],
+        },
+        {
+          title: 'Applied Machine Learning in Python',
+          institution: 'University of Michigan',
+          year: 'abr de 2025',
+          issued: 'abr de 2025',
+          skills: ['Algoritmos de aprendizado de máquina', 'Scikit-Learn'],
+        },
       ],
     },
     projects: {
@@ -366,9 +473,9 @@ const translations = {
     hero: {
       locationBadge: 'Rio de Janeiro, Brazil',
       roleBadge: 'Software Engineer',
-      subtitle: 'Software Engineer & Backend Specialist',
+      subtitle: 'Software Engineer | Technical Leadership in Backend & AI',
       description:
-        'Software Engineer at PGE-RJ, specialized in high-performance backend systems and building reliable, observable, and scalable production systems with AI.',
+        'Software Engineer at PGE-RJ driving technical leadership across projects, scalable solution architecture, and end-to-end delivery. Specialized in high-performance backend, applied AI, observability, and reliability in production environments.',
       highlights: [
         'Backend engineering for real-world production',
         'AI operationalization focused on scale',
@@ -389,7 +496,7 @@ const translations = {
     about: {
       title: 'About Me',
       description:
-        'Software Engineer focused on high-performance backend systems and building production-grade systems with AI. Currently at PGE-RJ, combining solid Software Engineering with the power of modern Artificial Intelligence.',
+        'Software Engineer with a technical leadership profile, focused on high-performance backend and AI-powered products. At PGE-RJ, I lead initiatives from architecture design to go-live, align stakeholders, accelerate delivery, and ensure quality, scalability, and measurable business impact.',
       funFact: '🎉 Fun fact: I\'ve met Tiangolo in person — the creator of FastAPI. Yeah, the guy who built the library probably running in production somewhere on the planet right now.',
       funFactLabel: 'Fun fact',
 
@@ -617,6 +724,10 @@ const translations = {
       title: 'Education & Certifications',
       description: 'Solid academic background and international certifications',
       certificationsLabel: 'Certifications',
+      issuedLabel: 'Issued',
+      credentialIdLabel: 'Credential ID',
+      skillsLabel: 'Skills',
+      viewCredentialLabel: 'View credential',
       items: [
         {
           degree: 'Software Engineering',
@@ -632,11 +743,114 @@ const translations = {
             'Agile Methodologies (Scrum, Kanban)',
           ],
         },
+        {
+          degree: 'Lato Sensu Graduate Program - MBA in Software Engineering',
+          institution: 'MBA USP/Esalq',
+          period: 'Oct 2025 — Apr 2027',
+          description:
+            'MBA focused on software engineering at scale, enterprise architecture, technical leadership, and strategic management of products and technology teams.',
+          highlights: [
+            'Software Architecture in Enterprise Contexts',
+            'Technical Leadership and Team Management',
+            'Product Engineering and Scalability',
+            'Software Quality Best Practices',
+            'Strategy, Innovation, and Digital Transformation',
+          ],
+        },
+        {
+          degree: 'Lato Sensu Graduate Program - Specialization in Software Engineering',
+          institution: 'Faculdade Libano',
+          period: 'Jun 2025 — Nov 2025',
+          description:
+            'Specialization focused on advanced software engineering foundations and practices, covering the full development lifecycle, architecture, and quality.',
+          highlights: [
+            'Software Development Lifecycle',
+            'Architectural Patterns and System Design',
+            'Modeling, Requirements, and Technical Documentation',
+            'Quality, Testing, and Continuous Improvement',
+            'Production-Oriented Engineering Practices',
+          ],
+        },
+        {
+          degree: 'Lato Sensu Graduate Program - Specialization in Data Science and Artificial Intelligence',
+          institution: 'Faculdade Libano',
+          period: 'Feb 2025 — Oct 2025',
+          description:
+            'Specialization in data science and AI, focused on statistical analysis, machine learning, and practical application of intelligent models in real-world scenarios.',
+          highlights: [
+            'Applied Statistics and Data Analysis',
+            'Machine Learning and Predictive Modeling',
+            'Data Pipelines and Feature Preparation',
+            'Practical Artificial Intelligence Applications',
+            'Completion Certificate: Data Science and AI',
+          ],
+        },
+        {
+          degree: 'Technology Degree in Systems Analysis and Development',
+          institution: 'Estacio',
+          period: 'Jan 2022 — Dec 2024',
+          description:
+            'Technology degree with a strong foundation in systems development, databases, programming, and application building for enterprise environments.',
+          highlights: [
+            'Programming Fundamentals and Data Structures',
+            'Web Development and Enterprise Applications',
+            'Relational Databases and SQL',
+            'Systems Analysis and Requirements Engineering',
+            'Course Completion Certificate',
+          ],
+        },
       ],
       certifications: [
-        { title: 'University of Michigan — Certified', institution: 'Coursera / University of Michigan', year: '2024' },
-        { title: 'React — The Complete Guide', institution: 'Udemy', year: '2023' },
-        { title: 'Node.js: Backend Developer', institution: 'Udemy', year: '2023' },
+        {
+          title: 'Generative AI for Data Science',
+          institution: 'Microsoft',
+          year: 'Apr 2025',
+          issued: 'Apr 2025',
+          credentialId: '0YGWX2B0KD0E',
+        },
+        {
+          title: 'Applied Data Science with Python',
+          institution: 'University of Michigan',
+          year: 'Apr 2025',
+          issued: 'Apr 2025',
+          credentialId: '74DA9FWZFD6G',
+        },
+        {
+          title: 'Applied Social Network Analysis in Python',
+          institution: 'University of Michigan',
+          year: 'Mar 2025',
+          issued: 'Mar 2025',
+          credentialId: 'PNO6SQ5UQKZ2',
+        },
+        {
+          title: 'Applied Text Mining in Python',
+          institution: 'University of Michigan',
+          year: 'Mar 2025',
+          issued: 'Mar 2025',
+          skills: ['Text mining', 'Text mining', '+1 skill'],
+        },
+        {
+          title: 'Applied Plotting, Charting & Data Representation in Python',
+          institution: 'University of Michigan',
+          year: 'Mar 2025',
+          issued: 'Mar 2025',
+          skills: ['Data visualization', 'Data virtualization', '+1 skill'],
+        },
+        {
+          title: 'Introduction to Data Science in Python',
+          institution: 'University of Michigan',
+          year: 'Mar 2025',
+          issued: 'Mar 2025',
+          credentialId: 'VXVIKTIUKQ65',
+          skills: ['NumPy', 'pandas'],
+        },
+        {
+          title: 'Applied Machine Learning in Python',
+          institution: 'University of Michigan',
+          year: 'Apr 2025',
+          issued: 'Apr 2025',
+          skills: ['Machine learning algorithms', 'Scikit-Learn'],
+        },
       ],
     },
     projects: {
