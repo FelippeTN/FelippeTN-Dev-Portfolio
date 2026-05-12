@@ -42,7 +42,7 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="subtle-stroke flex h-10 w-10 items-center justify-center rounded-full bg-white/75 text-foreground hover:text-primary"
+                  className="subtle-stroke flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-foreground hover:text-primary"
                   aria-label={project.title}
                 >
                   <ArrowUpRight className="h-4 w-4" />
@@ -83,7 +83,7 @@ const Projects = () => {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="subtle-stroke inline-flex items-center gap-2 rounded-full bg-white/75 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-foreground"
+                    className="subtle-stroke inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-foreground"
                   >
                     <ArrowUpRight className="h-4 w-4" />
                     {p.demoLabel}

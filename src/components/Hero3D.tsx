@@ -28,7 +28,7 @@ const Hero3D = () => {
 
   return (
     <section className="site-shell px-4 pb-10 pt-4 sm:px-6 sm:pt-5">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-card shadow-[0_18px_42px_-34px_rgba(17,17,17,0.08)]">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem]shadow-[0_18px_42px_-34px_rgba(17,17,17,0.08)]">
         <div className="grid gap-10 px-6 py-10 sm:px-8 lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ const Hero3D = () => {
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-stretch">
               <Link
                 to="/projects"
-                className="inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-foreground px-8 py-3 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(17,17,17,0.5)] transition-colors duration-200 hover:bg-zinc-700 sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
+                className="inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-foreground px-8 py-3 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-foreground/85 sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
@@ -91,7 +91,7 @@ const Hero3D = () => {
 
               <Link
                 to="/contact"
-                className="subtle-stroke inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-secondary px-8 py-3 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-zinc-200 sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
+                className="subtle-stroke inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-secondary px-8 py-3 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-accent sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
@@ -110,7 +110,7 @@ const Hero3D = () => {
                     href={channel.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-zinc-200"
+                    className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-accent"
                   >
                     <Youtube className="h-4 w-4" />
                     <span>{channel.handle}</span>
@@ -132,7 +132,7 @@ const Hero3D = () => {
             className="relative lg:pl-6"
           >
             <div className="grid gap-4">
-              <div className="rounded-[1.8rem] bg-card p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)]">
+              <div className="rounded-[1.8rem]  p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)]">
                 <div className="relative rounded-[1.5rem]">
                   <div className="overflow-hidden rounded-[1.5rem] bg-secondary">
                     <img
@@ -141,7 +141,7 @@ const Hero3D = () => {
                       className="h-[430px] w-full object-cover object-top sm:h-[520px]"
                     />
                   </div>
-                  <div className="subtle-stroke absolute -bottom-3 -right-3 z-10 w-fit max-w-[85%] rounded-[1rem] bg-[rgba(255,255,255)] px-6 py-5 shadow-[0_18px_28px_-24px_rgba(34,197,94,0.28)] backdrop-blur-[2px] sm:-bottom-4 sm:-right-4 sm:max-w-[75%]">
+                  <div className="subtle-stroke absolute -bottom-3 -right-3 z-10 w-fit max-w-[85%] rounded-[1rem] bg-card/95 px-6 py-5 shadow-[0_18px_28px_-24px_rgba(0,0,0,0.5)] backdrop-blur-[2px] sm:-bottom-4 sm:-right-4 sm:max-w-[75%]">
                     <div className="flex items-center gap-3">
                       <span className="animate-pulse-soft h-3 w-3 rounded-full bg-[#72d48e]" />
                       <p className="text-sm font-semibold text-foreground">{h.available}</p>
