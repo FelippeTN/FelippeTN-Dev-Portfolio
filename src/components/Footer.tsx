@@ -199,10 +199,13 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(17,17,17,0.12),rgba(17,17,17,0.06),transparent)]" />
-
         <div className="mt-6 flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>{copy.rights}</p>
+          <div>
+            <p>{copy.rights}</p>
+            <p className="mt-1 text-[0.68rem] text-muted-foreground/70">
+              Inspiração para o site: Augusto Galego
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-5">
             {copy.bottomLinks.map((link) => (
               <a
