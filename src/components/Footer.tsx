@@ -2,7 +2,8 @@ import { motion } from 'framer-motion';
 import { Github, Instagram, Linkedin, Mail, MapPin, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import logo from '../../F_logo.png';
+
+const logo = '/code.svg';
 
 const Footer = () => {
   const { locale } = useLanguage();

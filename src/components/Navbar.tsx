@@ -17,7 +17,8 @@ import {
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import logo from '../../F_logo.png';
+
+const logo = '/code.svg';
 
 const Navbar = () => {
   const { t, toggleLocale, locale } = useLanguage();
@@ -84,13 +85,13 @@ const Navbar = () => {
       >
         <motion.div
           aria-hidden="true"
-          className="absolute left-0 top-0 h-[3px] bg-black"
+          className="absolute left-0 top-0 h-[3px] bg-foreground"
           animate={{ width: `${scrollProgress * 100}%` }}
           transition={{ ease: 'easeOut', duration: 0.12 }}
         />
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <Link to="/" className="flex items-center">
-            <span className="flex h-14 w-14 items-center justify-center overflow-hidden">
+            <span className="flex h-12 w-12 items-center justify-center overflow-hidden pe-2">
               <img src={logo} alt="Felippe logo" className="h-full w-full object-contain" />
             </span>
             <div className="hidden sm:block">
