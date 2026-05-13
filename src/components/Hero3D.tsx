@@ -81,13 +81,15 @@ const Hero3D = () => {
             </div>
 
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-stretch">
-              <Link
-                to="/projects"
+              <a
+                href="https://github.com/FelippeTN"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-foreground px-8 py-3 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-foreground/85 sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
 
               <Link
                 to="/contact"
