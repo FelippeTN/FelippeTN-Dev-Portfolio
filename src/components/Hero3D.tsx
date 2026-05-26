@@ -74,18 +74,18 @@ const Hero3D = () => {
                     <span className="mt-0.5 flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-foreground sm:h-5 sm:w-5">
                       <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </span>
-                    <span className="leading-5 sm:leading-6">{item}</span>
+                    <span className="leading-[1.35rem] sm:leading-6">{item}</span>
                   </div>
                 );
               })}
             </div>
 
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-stretch">
+            <div className="mt-7 flex flex-col items-center gap-2.5 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-stretch sm:gap-3">
               <a
                 href="https://github.com/FelippeTN"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-foreground px-8 py-3 text-[0.8rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-foreground/85 sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
+                className="inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-foreground px-7 py-2.5 text-[0.76rem] font-bold text-background shadow-[0_12px_30px_-20px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-foreground/85 sm:w-auto sm:max-w-none sm:px-12 sm:py-3 sm:text-sm"
               >
                 {h.btnProjects}
                 <ArrowRight className="h-4 w-4" />
@@ -93,15 +93,15 @@ const Hero3D = () => {
 
               <Link
                 to="/contact"
-                className="subtle-stroke inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-secondary px-8 py-3 text-[0.8rem] font-bold text-foreground transition-colors duration-200 hover:bg-accent sm:w-auto sm:max-w-none sm:px-12 sm:text-sm"
+                className="subtle-stroke inline-flex w-[min(92vw,18rem)] max-w-full items-center justify-center gap-2 rounded-[0.8rem] bg-secondary px-7 py-2.5 text-[0.76rem] font-bold text-foreground transition-colors duration-200 hover:bg-accent sm:w-auto sm:max-w-none sm:px-12 sm:py-3 sm:text-sm"
               >
                 {h.btnContact}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <div className="mt-7 px-4 py-4 sm:px-5">
-              <p className="text-sm font-semibold text-muted-foreground">
+            <div className="mt-5 px-2 py-2 sm:mt-7 sm:px-5 sm:py-4">
+              <p className="text-xs font-semibold text-muted-foreground sm:text-sm">
                 {locale === 'pt' ? 'Canais no YouTube:' : 'YouTube Channels:'}
               </p>
 
@@ -112,7 +112,7 @@ const Hero3D = () => {
                     href={channel.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-2 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-accent"
+                    className="inline-flex items-center gap-2 rounded-full bg-card px-3 py-1.5 text-xs font-semibold text-foreground transition-colors duration-200 hover:bg-accent sm:py-2 sm:text-sm"
                   >
                     <Youtube className="h-4 w-4" />
                     <span>{channel.handle}</span>
@@ -134,19 +134,19 @@ const Hero3D = () => {
             className="relative lg:pl-6"
           >
             <div className="grid gap-4">
-              <div className="rounded-[1.8rem]  p-4 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)]">
+              <div className="rounded-[1.8rem] p-2 shadow-[0_18px_40px_-30px_rgba(17,17,17,0.12)] sm:p-4">
                 <div className="relative rounded-[1.5rem]">
                   <div className="overflow-hidden rounded-[1.5rem] bg-secondary">
                     <img
                       src={Felippe}
                       alt="Felippe Toscano Nalim"
-                      className="h-[430px] w-full object-cover object-top sm:h-[520px]"
+                      className="h-[310px] w-full object-cover object-top sm:h-[520px]"
                     />
                   </div>
-                  <div className="subtle-stroke absolute -bottom-3 -right-3 z-10 w-fit max-w-[85%] rounded-[1rem] bg-card/95 px-6 py-5 shadow-[0_18px_28px_-24px_rgba(0,0,0,0.5)] backdrop-blur-[2px] sm:-bottom-4 sm:-right-4 sm:max-w-[75%]">
+                  <div className="subtle-stroke absolute -bottom-3 -right-3 z-10 w-fit max-w-[85%] rounded-[1rem] bg-card/95 px-4 py-3 shadow-[0_18px_28px_-24px_rgba(0,0,0,0.5)] backdrop-blur-[2px] sm:-bottom-4 sm:-right-4 sm:max-w-[75%] sm:px-6 sm:py-5">
                     <div className="flex items-center gap-3">
                       <span className="animate-pulse-soft h-3 w-3 rounded-full bg-[#72d48e]" />
-                      <p className="text-sm font-semibold text-foreground">{h.available}</p>
+                      <p className="text-xs font-semibold text-foreground sm:text-sm">{h.available}</p>
                     </div>
                   </div>
                 </div>
@@ -154,9 +154,9 @@ const Hero3D = () => {
 
               <div className="grid gap-4 sm:grid-cols-3">
                 {h.stats.map((stat) => (
-                  <div key={stat.label} className="editorial-card min-h-[132px] p-5">
-                    <p className="text-[1.75rem] font-extrabold tracking-tight text-foreground sm:text-[2rem]">{stat.value}</p>
-                    <p className="mt-2 text-[0.72rem] leading-5 text-muted-foreground sm:text-[0.82rem] sm:leading-6">{stat.label}</p>
+                  <div key={stat.label} className="editorial-card min-h-[92px] p-4 sm:min-h-[132px] sm:p-5">
+                    <p className="text-[1.45rem] font-extrabold tracking-tight text-foreground sm:text-[2rem]">{stat.value}</p>
+                    <p className="mt-1 text-[0.68rem] leading-4 text-muted-foreground sm:mt-2 sm:text-[0.82rem] sm:leading-6">{stat.label}</p>
                   </div>
                 ))}
               </div>

@@ -219,7 +219,7 @@ const Navbar = () => {
               className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-[1rem] bg-secondary text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] lg:hidden"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <MoreHorizontal className="h-5 w-5" />}
+              {isMobileMenuOpen ? <X className="h-4 w-4" /> : <MoreHorizontal className="h-4 w-4" />}
             </button>
           </div>
         </div>
@@ -232,15 +232,15 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 overflow-y-auto bg-background px-5 pb-10 pt-6 lg:hidden"
+            className="fixed inset-0 z-50 overflow-y-auto bg-background px-5 pb-8 pt-5 lg:hidden"
           >
             <div className="mx-auto w-full max-w-md">
-              <div className="flex items-center justify-between border-b border-border/70 pb-6">
+              <div className="flex items-center justify-between border-b border-border/70 pb-4">
                 <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <span className="flex h-11 w-11 items-center justify-center overflow-hidden">
-                    <img src={logo} alt="Felippe logo" className="h-9 w-9 object-contain" />
+                  <span className="flex h-9 w-9 items-center justify-center overflow-hidden">
+                    <img src={logo} alt="Felippe logo" className="h-8 w-8 object-contain" />
                   </span>
-                  <p className="text-[1.7rem] font-extrabold tracking-tight text-foreground">Felippe</p>
+                  <p className="text-[1.35rem] font-extrabold tracking-tight text-foreground">Felippe</p>
                 </Link>
 
                 <button
@@ -249,11 +249,11 @@ const Navbar = () => {
                   className="flex h-10 w-10 items-center justify-center rounded-full text-foreground"
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-4 w-4" />
                 </button>
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-x-3 gap-y-6">
+              <div className="mt-7 grid grid-cols-3 gap-x-2.5 gap-y-3">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const isActive = location.pathname === item.href;
@@ -268,9 +268,9 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         aria-label={item.label}
                         title={item.label}
-                        className="flex min-h-[5.4rem] flex-col items-center justify-center rounded-[1.4rem] px-2 text-center text-[0.92rem] font-semibold text-muted-foreground transition-colors duration-200"
+                        className="flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.1rem] px-2 text-center text-[0.76rem] font-semibold text-muted-foreground transition-colors duration-200"
                       >
-                        <Icon className="mb-2 h-[1.1rem] w-[1.1rem]" />
+                        <Icon className="mb-1.5 h-4 w-4" />
                         <span>{item.label}</span>
                       </a>
                     );
@@ -281,13 +281,13 @@ const Navbar = () => {
                       key={item.href}
                       to={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex min-h-[5.4rem] flex-col items-center justify-center rounded-[1.4rem] px-2 text-center text-[0.92rem] font-semibold transition-colors duration-200 ${
+                      className={`flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.1rem] px-2 text-center text-[0.76rem] font-semibold transition-colors duration-200 ${
                         isActive
                           ? 'bg-card text-foreground [box-shadow:0_14px_30px_-26px_rgba(17,17,17,0.18),inset_0_0_0_1.4px_rgba(17,17,17,0.12)]'
                           : 'text-muted-foreground'
                       }`}
                     >
-                      <Icon className="mb-2 h-[1.1rem] w-[1.1rem]" />
+                      <Icon className="mb-1.5 h-4 w-4" />
                       <span>{item.label}</span>
                     </NavLink>
                   );
@@ -297,18 +297,18 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={toggleLocale}
-                className="mt-10 flex w-full items-center justify-center rounded-[1rem] bg-secondary px-4 py-3 text-sm font-extrabold uppercase tracking-[0.14em] text-muted-foreground"
+                className="mt-7 flex w-full items-center justify-center rounded-[0.9rem] bg-secondary px-4 py-2.5 text-xs font-extrabold uppercase tracking-[0.12em] text-muted-foreground"
                 aria-label="Toggle language"
               >
                 {locale === 'pt' ? 'Switch to English' : 'Mudar para Portugues'}
               </button>
 
-              <div className="mt-8 border-t border-border/70 pt-7">
-                <p className="text-center text-sm font-extrabold uppercase tracking-[0.08em] text-muted-foreground">
+              <div className="mt-6 border-t border-border/70 pt-5">
+                <p className="text-center text-xs font-extrabold uppercase tracking-[0.08em] text-muted-foreground">
                   {locale === 'pt' ? 'Redes Sociais' : 'Social Media'}
                 </p>
 
-                <div className="mt-5 flex items-center justify-center gap-5">
+                <div className="mt-4 flex items-center justify-center gap-4">
                   {socialLinks.map((social) => (
                     <a
                       key={social.label}
@@ -316,9 +316,9 @@ const Navbar = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-12 w-12 items-center justify-center rounded-2xl bg-card text-muted-foreground [box-shadow:inset_0_0_0_1px_rgba(17,17,17,0.08)]"
+                      className="flex h-10 w-10 items-center justify-center rounded-[1rem] bg-card text-muted-foreground [box-shadow:inset_0_0_0_1px_rgba(17,17,17,0.08)]"
                     >
-                      <social.icon className="h-5 w-5" />
+                      <social.icon className="h-4 w-4" />
                     </a>
                   ))}
                 </div>
