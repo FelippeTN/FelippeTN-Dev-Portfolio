@@ -53,7 +53,7 @@ const Hero3D = () => {
               </span>
             </div>
 
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:text-sm">
+            <p className="mt-8 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-xs">
               {h.subtitle}
             </p>
 

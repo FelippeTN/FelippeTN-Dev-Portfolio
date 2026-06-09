@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,20 +31,30 @@ const AdminLoginPage = () => {
       setError('E-mail ou senha inválidos.');
       return;
     }
+
     navigate('/admin', { replace: true });
   };
 
   return (
-    <section className="site-shell flex min-h-[70vh] items-center justify-center px-4 py-10">
+    <section className="site-shell flex min-h-[72vh] items-center justify-center px-4 py-10">
       <Seo title="Login do painel" description="Acesso restrito ao painel do blog." path="/admin/login" noindex />
-      <div className="w-full max-w-md rounded-[1.8rem] bg-card p-8 [box-shadow:0_24px_64px_-34px_rgba(17,17,17,0.14),inset_0_0_0_1px_rgba(17,17,17,0.06)]">
-        <span className="eyebrow">Admin</span>
-        <h1 className="mt-4 text-3xl font-extrabold text-foreground">Entrar no painel</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Área restrita para gerenciar os posts do blog.</p>
 
-        <form onSubmit={handleSubmit} className="mt-7 space-y-5">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.28, ease: 'easeOut' }}
+        className="w-full max-w-sm rounded-[1.5rem] bg-card p-6 [box-shadow:0_24px_64px_-44px_rgba(0,0,0,0.65),inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:p-7"
+      >
+        <div className="text-center">
+          <span className="eyebrow">Admin</span>
+          <h1 className="mt-4 text-2xl font-bold tracking-tight text-foreground">Entrar</h1>
+        </div>
+
+        <form onSubmit={handleSubmit} className="mt-7 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
+            <Label htmlFor="email" className="text-sm font-semibold text-foreground">
+              E-mail
+            </Label>
             <Input
               id="email"
               type="email"
@@ -51,11 +62,14 @@ const AdminLoginPage = () => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="h-11 rounded-xl bg-background/70"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
+            <Label htmlFor="password" className="text-sm font-semibold text-foreground">
+              Senha
+            </Label>
             <Input
               id="password"
               type="password"
@@ -63,17 +77,18 @@ const AdminLoginPage = () => {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="h-11 rounded-xl bg-background/70"
             />
           </div>
 
           {error && <p className="text-sm font-medium text-destructive">{error}</p>}
 
-          <Button type="submit" disabled={submitting} className="w-full">
+          <Button type="submit" disabled={submitting} className="h-11 w-full rounded-xl font-bold">
             <LogIn className="h-4 w-4" />
-            {submitting ? 'Entrando…' : 'Entrar'}
+            {submitting ? 'Entrando...' : 'Entrar'}
           </Button>
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 };

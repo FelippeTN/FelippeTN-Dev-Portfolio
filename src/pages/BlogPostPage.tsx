@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Clock } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -9,14 +9,18 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { usePost } from '@/hooks/usePosts';
 import { getBreadcrumbStructuredData } from '@/lib/seo';
 
+/** Tempo de leitura aproximado (200 palavras/min). */
+const readingMinutes = (content: string) =>
+  Math.max(1, Math.round(content.trim().split(/\s+/).filter(Boolean).length / 200));
+
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { locale } = useLanguage();
   const { data: post, isLoading, isError } = usePost(slug);
 
   const copy = locale === 'pt'
-    ? { back: 'Voltar para o blog', notFound: 'Post não encontrado', loading: 'Carregando…' }
-    : { back: 'Back to the blog', notFound: 'Post not found', loading: 'Loading…' };
+    ? { back: 'Voltar para o blog', notFound: 'Post não encontrado', loading: 'Carregando…', min: 'min de leitura' }
+    : { back: 'Back to the blog', notFound: 'Post not found', loading: 'Loading…', min: 'min read' };
 
   const dateFormatter = new Intl.DateTimeFormat(locale === 'pt' ? 'pt-BR' : 'en-US', {
     day: '2-digit',
@@ -26,7 +30,7 @@ const BlogPostPage = () => {
 
   return (
     <section className="site-shell px-4 py-6 sm:px-6 sm:py-10">
-      <div className="mx-auto max-w-3xl rounded-[1.75rem] bg-card px-6 py-9 [box-shadow:0_24px_64px_-40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:px-10 sm:py-12">
+      <div className="mx-auto max-w-7xl rounded-[1.75rem] bg-card px-6 py-9 [box-shadow:0_24px_64px_-40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:px-12 sm:py-12">
         {isLoading ? (
           <p className="text-sm text-muted-foreground">{copy.loading}</p>
         ) : isError || !post ? (
@@ -79,16 +83,21 @@ const BlogPostPage = () => {
               {copy.back}
             </Link>
 
-            <p className="mt-7 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+            <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
               <time dateTime={post.created_at}>{dateFormatter.format(new Date(post.created_at))}</time>
-            </p>
+              <span aria-hidden className="text-foreground/20">•</span>
+              <span className="inline-flex items-center gap-1">
+                <Clock className="h-3 w-3" />
+                {readingMinutes(post.content)} {copy.min}
+              </span>
+            </div>
 
-            <h1 className="mt-3 text-balance text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
+            <h1 className="mt-3 max-w-4xl text-balance text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
               {post.title}
             </h1>
 
             {post.excerpt && (
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{post.excerpt}</p>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">{post.excerpt}</p>
             )}
 
             <div className="mt-7 h-px w-full bg-foreground/10" />

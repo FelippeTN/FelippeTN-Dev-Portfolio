@@ -1,10 +1,15 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowUpRight, Heart, PenLine } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Clock, Heart, PenLine } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { usePublishedPosts } from '@/hooks/usePosts';
 import { getBreadcrumbStructuredData } from '@/lib/seo';
+import type { Post } from '@/lib/supabase';
+
+/** Tempo de leitura aproximado (200 palavras/min). */
+const readingMinutes = (content: string) =>
+  Math.max(1, Math.round(content.trim().split(/\s+/).filter(Boolean).length / 200));
 
 const BlogPage = () => {
   const { locale } = useLanguage();
@@ -19,7 +24,8 @@ const BlogPage = () => {
         back: 'Voltar para o início',
         empty: 'Em breve os primeiros posts.',
         emptyHint: 'A estrutura já está pronta — é só escrever.',
-        read: 'Ler',
+        read: 'Ler artigo',
+        min: 'min de leitura',
         count: (n: number) => `${n} ${n === 1 ? 'artigo' : 'artigos'}`,
       }
     : {
@@ -30,7 +36,8 @@ const BlogPage = () => {
         back: 'Back to home',
         empty: 'The first posts are coming soon.',
         emptyHint: 'The structure is ready — just write.',
-        read: 'Read',
+        read: 'Read article',
+        min: 'min read',
         count: (n: number) => `${n} ${n === 1 ? 'article' : 'articles'}`,
       };
 
@@ -39,6 +46,22 @@ const BlogPage = () => {
     month: 'short',
     year: 'numeric',
   });
+
+  const Meta = ({ post }: { post: Post }) => (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+      <time dateTime={post.created_at}>{dateFormatter.format(new Date(post.created_at))}</time>
+      <span aria-hidden className="text-foreground/20">•</span>
+      <span className="inline-flex items-center gap-1">
+        <Clock className="h-3 w-3" />
+        {readingMinutes(post.content)} {copy.min}
+      </span>
+      <span aria-hidden className="text-foreground/20">•</span>
+      <span className="inline-flex items-center gap-1">
+        <Heart className="h-3 w-3" />
+        {post.likes_count}
+      </span>
+    </div>
+  );
 
   return (
     <>
@@ -67,7 +90,7 @@ const BlogPage = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
-          className="mx-auto max-w-3xl rounded-[1.75rem] bg-card px-6 py-9 [box-shadow:0_24px_64px_-40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:px-10 sm:py-12"
+          className="mx-auto max-w-7xl"
         >
           {/* Cabeçalho */}
           <header>
@@ -80,28 +103,31 @@ const BlogPage = () => {
               )}
             </div>
 
-            <h1 className="mt-5 text-balance text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
+            <h1 className="mt-6 text-balance text-3xl font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-[2.6rem]">
               {copy.title}
             </h1>
 
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
               {copy.description}
             </p>
           </header>
 
-          <div className="mt-8 h-px w-full bg-foreground/10" />
+          <div className="accent-line mt-9" />
 
           {/* Conteúdo */}
           {isLoading ? (
-            <div className="mt-8 space-y-8">
+            <ul className="mt-4 divide-y divide-foreground/10">
               {[0, 1, 2].map((i) => (
-                <div key={i} className="space-y-3">
+                <li key={i} className="grid gap-6 py-7 sm:grid-cols-[10rem_1fr]">
                   <div className="h-3 w-28 animate-pulse rounded bg-foreground/10" />
-                  <div className="h-5 w-3/4 animate-pulse rounded bg-foreground/10" />
-                  <div className="h-3 w-full animate-pulse rounded bg-foreground/5" />
-                </div>
+                  <div className="space-y-3">
+                    <div className="h-5 w-2/3 animate-pulse rounded bg-foreground/10" />
+                    <div className="h-3 w-full animate-pulse rounded bg-foreground/5" />
+                    <div className="h-3 w-4/5 animate-pulse rounded bg-foreground/5" />
+                  </div>
+                </li>
               ))}
-            </div>
+            </ul>
           ) : posts && posts.length > 0 ? (
             <ul className="mt-2 divide-y divide-foreground/10">
               {posts.map((post, index) => (
@@ -109,29 +135,25 @@ const BlogPage = () => {
                   key={post.id}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 + index * 0.05 }}
+                  transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 + index * 0.04 }}
                 >
-                  <Link to={`/blog/${post.slug}`} className="group block py-6">
-                    <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
-                      <time dateTime={post.created_at}>{dateFormatter.format(new Date(post.created_at))}</time>
-                      <span aria-hidden className="text-foreground/20">•</span>
-                      <span className="inline-flex items-center gap-1">
-                        <Heart className="h-3 w-3" />
-                        {post.likes_count}
-                      </span>
-                    </div>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="group block py-7"
+                  >
+                    <Meta post={post} />
 
-                    <h2 className="mt-2 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/60 sm:text-xl">
+                    <h2 className="mt-2.5 text-balance text-xl font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/65 sm:text-2xl">
                       {post.title}
                     </h2>
 
                     {post.excerpt && (
-                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
                         {post.excerpt}
                       </p>
                     )}
 
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                    <span className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/70 transition-colors group-hover:text-foreground">
                       {copy.read}
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
@@ -140,7 +162,7 @@ const BlogPage = () => {
               ))}
             </ul>
           ) : (
-            <div className="mt-8 flex items-start gap-4 rounded-2xl bg-secondary/50 p-5 subtle-stroke">
+            <div className="mt-10 flex items-start gap-4 rounded-2xl bg-secondary/50 p-5 subtle-stroke">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-foreground">
                 <PenLine className="h-4 w-4" />
               </div>
@@ -151,7 +173,7 @@ const BlogPage = () => {
             </div>
           )}
 
-          <div className="mt-9">
+          <div className="mt-12">
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
