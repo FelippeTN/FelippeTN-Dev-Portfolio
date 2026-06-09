@@ -48,15 +48,17 @@ const BlogPage = () => {
   });
 
   const Meta = ({ post }: { post: Post }) => (
-    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
-      <time dateTime={post.created_at}>{dateFormatter.format(new Date(post.created_at))}</time>
-      <span aria-hidden className="text-foreground/20">•</span>
-      <span className="inline-flex items-center gap-1">
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground sm:flex-col sm:items-start sm:gap-2">
+      <time dateTime={post.created_at} className="text-foreground/80">
+        {dateFormatter.format(new Date(post.created_at))}
+      </time>
+      <span aria-hidden className="text-foreground/20 sm:hidden">•</span>
+      <span className="inline-flex items-center gap-1.5">
         <Clock className="h-3 w-3" />
         {readingMinutes(post.content)} {copy.min}
       </span>
-      <span aria-hidden className="text-foreground/20">•</span>
-      <span className="inline-flex items-center gap-1">
+      <span aria-hidden className="text-foreground/20 sm:hidden">•</span>
+      <span className="inline-flex items-center gap-1.5">
         <Heart className="h-3 w-3" />
         {post.likes_count}
       </span>
@@ -116,10 +118,13 @@ const BlogPage = () => {
 
           {/* Conteúdo */}
           {isLoading ? (
-            <ul className="mt-4 divide-y divide-foreground/10">
+            <ul className="mt-8 space-y-4">
               {[0, 1, 2].map((i) => (
-                <li key={i} className="grid gap-6 py-7 sm:grid-cols-[10rem_1fr]">
-                  <div className="h-3 w-28 animate-pulse rounded bg-foreground/10" />
+                <li
+                  key={i}
+                  className="grid gap-4 rounded-2xl bg-card p-6 sm:grid-cols-[12rem_1fr] sm:gap-10 sm:p-7"
+                >
+                  <div className="h-3 w-32 animate-pulse rounded bg-foreground/10" />
                   <div className="space-y-3">
                     <div className="h-5 w-2/3 animate-pulse rounded bg-foreground/10" />
                     <div className="h-3 w-full animate-pulse rounded bg-foreground/5" />
@@ -129,7 +134,7 @@ const BlogPage = () => {
               ))}
             </ul>
           ) : posts && posts.length > 0 ? (
-            <ul className="mt-2 divide-y divide-foreground/10">
+            <ul className="mt-8 space-y-4">
               {posts.map((post, index) => (
                 <motion.li
                   key={post.id}
@@ -139,24 +144,30 @@ const BlogPage = () => {
                 >
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="group block py-7"
+                    className="group grid gap-4 rounded-2xl bg-card p-6 outline-none transition-all duration-300 [box-shadow:0_0_0_1px_rgba(235,236,237,0.08)] hover:[box-shadow:0_20px_44px_-30px_rgba(0,0,0,0.55),0_0_0_1px_rgba(235,236,237,0.16)] focus-visible:[box-shadow:0_0_0_2px_hsl(var(--ring))] sm:grid-cols-[12rem_1fr] sm:items-start sm:gap-10 sm:p-7"
                   >
-                    <Meta post={post} />
+                    {/* Trilho de metadados */}
+                    <div className="sm:border-r sm:border-foreground/10 sm:pr-6">
+                      <Meta post={post} />
+                    </div>
 
-                    <h2 className="mt-2.5 text-balance text-xl font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/65 sm:text-2xl">
-                      {post.title}
-                    </h2>
+                    {/* Conteúdo */}
+                    <div>
+                      <h2 className="text-balance text-xl font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/65 sm:text-2xl">
+                        {post.title}
+                      </h2>
 
-                    {post.excerpt && (
-                      <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-                        {post.excerpt}
-                      </p>
-                    )}
+                      {post.excerpt && (
+                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
+                          {post.excerpt}
+                        </p>
+                      )}
 
-                    <span className="mt-3.5 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/70 transition-colors group-hover:text-foreground">
-                      {copy.read}
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </span>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/70 transition-colors group-hover:text-foreground">
+                        {copy.read}
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </div>
                   </Link>
                 </motion.li>
               ))}
