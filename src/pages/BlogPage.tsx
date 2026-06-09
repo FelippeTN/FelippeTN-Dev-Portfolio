@@ -1,72 +1,57 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, CircleDotDashed, Rocket, Waves } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Heart, PenLine } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { usePublishedPosts } from '@/hooks/usePosts';
 import { getBreadcrumbStructuredData } from '@/lib/seo';
 
 const BlogPage = () => {
   const { locale } = useLanguage();
+  const { data: posts, isLoading } = usePublishedPosts();
 
   const copy = locale === 'pt'
     ? {
         badge: 'Blog',
-        title: 'Em desenvolvimento',
+        title: 'Ideias, engenharia e bastidores reais',
         description:
-          'Estou montando uma área com artigos, experimentos, bastidores de arquitetura e conteúdo técnico com a mesma atenção ao detalhe do restante do portfólio.',
+          'Artigos, experimentos e aprendizados sobre backend, IA aplicada, arquitetura e engenharia em produção.',
         back: 'Voltar para o início',
-        cards: [
-          {
-            title: 'Artigos técnicos',
-            description: 'Conteúdo sobre backend, IA aplicada, arquitetura e engenharia em produção.',
-          },
-          {
-            title: 'Bastidores reais',
-            description: 'Aprendizados de projetos, decisões de design e trade-offs do dia a dia.',
-          },
-          {
-            title: 'Lançamento em breve',
-            description: 'A estrutura está sendo preparada para receber posts e atualizações contínuas.',
-          },
-        ],
+        empty: 'Em breve os primeiros posts.',
+        emptyHint: 'A estrutura já está pronta — é só escrever.',
+        read: 'Ler',
+        count: (n: number) => `${n} ${n === 1 ? 'artigo' : 'artigos'}`,
       }
     : {
         badge: 'Blog',
-        title: 'In development',
+        title: 'Ideas, engineering, and real behind the scenes',
         description:
-          'I am building a space for articles, experiments, architecture notes, and technical writing with the same care as the rest of the portfolio.',
+          'Articles, experiments, and lessons about backend, applied AI, architecture, and production engineering.',
         back: 'Back to home',
-        cards: [
-          {
-            title: 'Technical articles',
-            description: 'Content about backend, applied AI, architecture, and production engineering.',
-          },
-          {
-            title: 'Real behind the scenes',
-            description: 'Project lessons, design decisions, and day-to-day trade-offs.',
-          },
-          {
-            title: 'Launching soon',
-            description: 'The structure is being prepared for regular posts and updates.',
-          },
-        ],
+        empty: 'The first posts are coming soon.',
+        emptyHint: 'The structure is ready — just write.',
+        read: 'Read',
+        count: (n: number) => `${n} ${n === 1 ? 'article' : 'articles'}`,
       };
 
-  const icons = [Rocket, Waves, CircleDotDashed];
+  const dateFormatter = new Intl.DateTimeFormat(locale === 'pt' ? 'pt-BR' : 'en-US', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  });
 
   return (
     <>
       <Seo
-        title={locale === 'pt' ? 'Blog em desenvolvimento' : 'Blog in development'}
+        title="Blog"
         description={copy.description}
         path="/blog"
-        noindex
         keywords={locale === 'pt' ? ['blog de tecnologia', 'artigos técnicos'] : ['tech blog', 'technical articles']}
         structuredData={[
           {
             '@context': 'https://schema.org',
-            '@type': 'WebPage',
-            name: locale === 'pt' ? 'Blog em desenvolvimento' : 'Blog in development',
+            '@type': 'Blog',
+            name: copy.title,
             description: copy.description,
             url: typeof window !== 'undefined' ? `${window.location.origin}/blog` : '/blog',
             inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
@@ -77,60 +62,105 @@ const BlogPage = () => {
           ]),
         ]}
       />
-      <section className="site-shell px-4 py-6 sm:px-6 sm:py-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-card px-6 py-8 shadow-[0_24px_64px_-34px_rgba(17,17,17,0.14)] [box-shadow:0_24px_64px_-34px_rgba(17,17,17,0.14),inset_0_0_0_1px_rgba(17,17,17,0.06)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="relative overflow-hidden rounded-[1.8rem] bg-secondary/60 p-6 [box-shadow:inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:p-8 lg:p-10"
-          >
-            <div className="absolute -right-14 top-6 h-40 w-40 rounded-full bg-foreground/5 blur-3xl" />
-            <div className="absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-foreground/5 blur-3xl" />
+      <section className="site-shell px-4 py-6 sm:px-6 sm:py-10">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          className="mx-auto max-w-3xl rounded-[1.75rem] bg-card px-6 py-9 [box-shadow:0_24px_64px_-40px_rgba(0,0,0,0.5),inset_0_0_0_1px_rgba(235,236,237,0.08)] sm:px-10 sm:py-12"
+        >
+          {/* Cabeçalho */}
+          <header>
+            <div className="flex items-center justify-between gap-4">
+              <span className="eyebrow">{copy.badge}</span>
+              {posts && posts.length > 0 && (
+                <span className="text-xs font-medium tracking-wide text-muted-foreground">
+                  {copy.count(posts.length)}
+                </span>
+              )}
+            </div>
 
-            <span className="eyebrow relative">
-              {copy.badge}
-            </span>
-
-            <h1 className="relative mt-5 text-balance text-4xl font-extrabold leading-none text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 text-balance text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
               {copy.title}
             </h1>
 
-            <p className="relative mt-5 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {copy.description}
             </p>
+          </header>
 
-            <div className="relative mt-8 grid gap-4 lg:grid-cols-3">
-              {copy.cards.map((card, index) => {
-                const Icon = icons[index] ?? CircleDotDashed;
+          <div className="mt-8 h-px w-full bg-foreground/10" />
 
-                return (
-                  <motion.div
-                    key={card.title}
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 + index * 0.08 }}
-                    className="editorial-card p-5"
-                  >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h2 className="mt-5 text-xl font-bold text-foreground">{card.title}</h2>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{card.description}</p>
-                  </motion.div>
-                );
-              })}
+          {/* Conteúdo */}
+          {isLoading ? (
+            <div className="mt-8 space-y-8">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="space-y-3">
+                  <div className="h-3 w-28 animate-pulse rounded bg-foreground/10" />
+                  <div className="h-5 w-3/4 animate-pulse rounded bg-foreground/10" />
+                  <div className="h-3 w-full animate-pulse rounded bg-foreground/5" />
+                </div>
+              ))}
             </div>
+          ) : posts && posts.length > 0 ? (
+            <ul className="mt-2 divide-y divide-foreground/10">
+              {posts.map((post, index) => (
+                <motion.li
+                  key={post.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 + index * 0.05 }}
+                >
+                  <Link to={`/blog/${post.slug}`} className="group block py-6">
+                    <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                      <time dateTime={post.created_at}>{dateFormatter.format(new Date(post.created_at))}</time>
+                      <span aria-hidden className="text-foreground/20">•</span>
+                      <span className="inline-flex items-center gap-1">
+                        <Heart className="h-3 w-3" />
+                        {post.likes_count}
+                      </span>
+                    </div>
 
+                    <h2 className="mt-2 text-lg font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground/60 sm:text-xl">
+                      {post.title}
+                    </h2>
+
+                    {post.excerpt && (
+                      <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                        {post.excerpt}
+                      </p>
+                    )}
+
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                      {copy.read}
+                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </span>
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          ) : (
+            <div className="mt-8 flex items-start gap-4 rounded-2xl bg-secondary/50 p-5 subtle-stroke">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary text-foreground">
+                <PenLine className="h-4 w-4" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-foreground">{copy.empty}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{copy.emptyHint}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="mt-9">
             <Link
               to="/"
-              className="relative mt-8 inline-flex items-center gap-2 rounded-[0.9rem] bg-foreground px-5 py-3 text-sm font-bold text-background shadow-[0_12px_30px_-20px_rgba(0,0,0,0.5)] transition-colors duration-200 hover:bg-foreground/85"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
               {copy.back}
             </Link>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
     </>
   );

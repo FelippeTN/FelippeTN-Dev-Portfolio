@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Clock3, NotebookPen } from 'lucide-react';
+import { ArrowUpRight, NotebookPen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -13,7 +13,6 @@ const BlogTeaser = () => {
         description:
           'Estou preparando um espaço para compartilhar arquitetura, backend, IA aplicada e aprendizados do dia a dia em projetos de produção.',
         primary: 'Ir para o blog',
-        secondary: 'Em breve',
         tags: ['Artigos técnicos', 'Estudos de caso', 'Aprendizados práticos'],
       }
     : {
@@ -22,7 +21,6 @@ const BlogTeaser = () => {
         description:
           'I am preparing a place to share architecture, backend, applied AI, and practical lessons from real production work.',
         primary: 'Visit the blog',
-        secondary: 'Coming soon',
         tags: ['Technical articles', 'Case studies', 'Practical lessons'],
       };
 
@@ -59,10 +57,6 @@ const BlogTeaser = () => {
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
 
-              <div className="subtle-stroke inline-flex items-center justify-center gap-2 rounded-[0.9rem] bg-secondary px-6 py-3 text-sm font-semibold text-foreground">
-                <Clock3 className="h-4 w-4" />
-                {copy.secondary}
-              </div>
             </div>
           </div>
 

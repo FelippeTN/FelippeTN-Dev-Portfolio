@@ -1,112 +1,135 @@
-# 🚀 Felippe Toscano Nalim - Portfolio Profissional
+# Felippe Toscano Nalim - Dev Portfolio
 
-Portfolio interativo e moderno desenvolvido com React, TypeScript, Three.js e Tailwind CSS, apresentando projetos, habilidades e experiência profissional.
+Este é o meu portfólio pessoal como Engenheiro de Software. A ideia aqui é centralizar minha trajetória, stack, experiências, projetos, contatos e também um blog técnico que eu consigo administrar pelo próprio site.
 
-## ✨ Características
+O projeto foi construído com React, TypeScript, Vite, Tailwind CSS e Supabase. Também uso Framer Motion, componentes baseados em shadcn/ui e alguns recursos visuais para deixar a experiência mais fluida sem perder o foco no conteúdo.
 
-- 🎨 **Design Moderno e Responsivo** - Interface adaptável para todos os dispositivos
-- 🌌 **Elementos 3D Interativos** - Animações com Three.js e Framer Motion
-- ⚡ **Performance Otimizada** - Carregamento rápido e experiência fluida
-- 🎯 **Navegação Intuitiva** - Menu responsivo e navegação suave entre seções
-- 📱 **Mobile-First** - Desenvolvido com foco em dispositivos móveis
-- 🔍 **SEO Friendly** - Otimizado para motores de busca
+## Sobre o projeto
 
-## 🛠️ Tecnologias Utilizadas
+Este portfólio apresenta minha atuação em backend, IA aplicada, arquitetura de software, sistemas em produção e liderança técnica. Além da página inicial, ele conta com páginas dedicadas para:
 
-### Frontend
-- **React 18** - Biblioteca JavaScript para interfaces
-- **TypeScript** - Superset tipado do JavaScript
-- **Vite** - Build tool moderna e rápida
-- **Tailwind CSS** - Framework CSS utility-first
-- **Framer Motion** - Biblioteca de animações
+- Sobre mim
+- Habilidades
+- Experiência profissional
+- Formação e certificações
+- Projetos em destaque
+- Blog
+- Contato
+- Painel administrativo para posts
 
-### 3D & Animações
-- **Three.js** - Biblioteca 3D para WebGL
-- **@react-three/fiber** - React renderer para Three.js
-- **@react-three/drei** - Helpers para React Three Fiber
+Também inclui suporte a idioma português/inglês, rotas públicas para posts e uma área `/admin` protegida por login via Supabase.
 
-### UI Components
-- **Shadcn/ui** - Componentes de UI reutilizáveis
-- **Lucide React** - Ícones modernos
-- **React Router** - Roteamento do aplicativo
+## Funcionalidades
 
-## 📋 Seções do Portfolio
+- Interface responsiva para desktop e mobile
+- Navegação por rotas com React Router
+- Conteúdo em português e inglês
+- Seções animadas com Framer Motion
+- Blog com posts publicados, rascunhos e página individual por slug
+- Sistema de curtidas por visitante
+- Painel admin para criar, editar, publicar e excluir posts
+- Integração com Supabase Auth, Database e Row Level Security
+- SEO configurável por página
 
-1. **Hero** - Apresentação inicial com elementos 3D animados
-2. **Sobre Mim** - Informações profissionais e valores
-3. **Habilidades** - Stack tecnológico e soft skills
-4. **Experiência** - Trajetória profissional detalhada
-5. **Formação** - Educação e certificações
-6. **Projetos** - Portfolio de projetos desenvolvidos
-7. **Contato** - Links para redes sociais e formulário
+## Stack principal
 
-## 🚀 Como Executar
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui e Radix UI
+- Framer Motion
+- React Router DOM
+- TanStack React Query
+- Supabase
+- Lucide React
 
-### Pré-requisitos
-- Node.js (v18 ou superior)
-- npm ou yarn
+## Estrutura
 
-### Instalação
+```txt
+src/
+  assets/          imagens usadas no site
+  components/      componentes principais e UI
+  contexts/        idioma e autenticação
+  hooks/           posts, likes, toast e helpers
+  lib/             Supabase, SEO, traduções e utilitários
+  pages/           páginas e rotas do site
+supabase/
+  schema.sql       tabelas, policies e triggers do blog
+  SETUP.md         passo a passo para configurar o Supabase
+```
 
-```sh
-# Clone o repositório
-git clone <YOUR_GIT_URL>
+## Como rodar localmente
 
-# Entre no diretório
+Pré-requisitos:
+
+- Node.js 18 ou superior
+- npm
+
+Instalação:
+
+```bash
+git clone https://github.com/FelippeTN/FelippeTN-Dev-Portfolio.git
 cd FelippeTN-Dev-Portfolio
-
-# Instale as dependências
 npm install
-
-# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-O projeto estará disponível em `http://localhost:5173`
+Por padrão, o Vite está configurado para rodar em:
 
-## 📦 Scripts Disponíveis
-
-```sh
-npm run dev        # Inicia o servidor de desenvolvimento
-npm run build      # Cria build de produção
-npm run preview    # Preview do build de produção
-npm run lint       # Executa o linter
+```txt
+http://localhost:8080
 ```
 
-## 🎨 Personalização
+## Variáveis de ambiente
 
-O projeto utiliza Tailwind CSS para estilização, permitindo fácil customização através do arquivo `tailwind.config.ts`. As cores e temas podem ser ajustados no arquivo de configuração.
+Copie o arquivo `.env.example` para `.env` e preencha:
 
-## 📱 Responsividade
+```env
+VITE_SITE_URL=https://seudominio.com
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+VITE_ADMIN_EMAIL=
+```
 
-O portfolio é totalmente responsivo e otimizado para:
-- 📱 Smartphones (320px+)
-- 📱 Tablets (768px+)
-- 💻 Laptops (1024px+)
-- 🖥️ Desktops (1280px+)
+Essas variáveis são usadas para SEO, conexão com o Supabase e controle do e-mail autorizado no painel administrativo.
 
-## 📄 Licença
+Para configurar o banco, execute o conteúdo de `supabase/schema.sql` no SQL Editor do Supabase. O passo a passo completo está em `supabase/SETUP.md`.
 
-Este projeto é de uso pessoal.
+## Scripts
 
-## 👨‍💻 Desenvolvedor
+```bash
+npm run dev        # inicia o servidor de desenvolvimento
+npm run build      # gera o build de produção
+npm run build:dev  # gera build em modo development
+npm run preview    # abre o preview do build
+npm run lint       # executa o ESLint
+```
 
-**Felippe Toscano Nalim**
-- LinkedIn: [felippe-toscano-nalim](https://www.linkedin.com/in/felippe-toscano-nalim/)
+## Rotas principais
+
+- `/` - página inicial
+- `/about` - sobre mim
+- `/skills` - habilidades
+- `/experience` - experiência
+- `/education` - formação
+- `/contact` - contato
+- `/blog` - listagem de posts publicados
+- `/blog/:slug` - post individual
+- `/admin/login` - login do administrador
+- `/admin` - painel de gerenciamento do blog
+
+## Deploy
+
+O projeto pode ser publicado em plataformas como Vercel, Netlify ou qualquer serviço que suporte aplicações Vite.
+
+No deploy, configure as mesmas variáveis do `.env` no painel da plataforma. Como o projeto usa rotas no cliente, o servidor precisa redirecionar as rotas para `index.html` quando necessário.
+
+## Autor
+
+Desenvolvido por **Felippe Toscano Nalim**.
+
 - GitHub: [@FelippeTN](https://github.com/FelippeTN)
+- LinkedIn: [felippe-toscano-nalim](https://www.linkedin.com/in/felippe-toscano-nalim/)
+- YouTube: [@felippetndev](https://www.youtube.com/@felippetndev)
 - Email: felippenalim2004@gmail.com
-
----
-
-Desenvolvido usando React + TypeScript + Three.js
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
