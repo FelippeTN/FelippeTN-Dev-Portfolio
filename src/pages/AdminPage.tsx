@@ -19,7 +19,7 @@ import {
 } from '@/hooks/usePosts';
 import type { Post } from '@/lib/supabase';
 
-const EMPTY_FORM: PostInput = { title: '', slug: '', excerpt: '', content: '', published: false };
+const EMPTY_FORM: PostInput = { title: '', slug: '', excerpt: '', content: '', category: '', published: false };
 
 function slugify(value: string): string {
   return value
@@ -56,6 +56,7 @@ const AdminPage = () => {
       slug: post.slug,
       excerpt: post.excerpt ?? '',
       content: post.content,
+      category: post.category ?? '',
       published: post.published,
     });
     setSlugTouched(true);
@@ -97,6 +98,10 @@ const AdminPage = () => {
   };
 
   const saving = createPost.isPending || updatePost.isPending;
+
+  const existingCategories = Array.from(
+    new Set((posts ?? []).map((p) => p.category?.trim()).filter((c): c is string => !!c)),
+  ).sort((a, b) => a.localeCompare(b));
 
   return (
     <section className="site-shell px-4 py-8 sm:px-6">
@@ -153,6 +158,23 @@ const AdminPage = () => {
               }}
             />
             <p className="text-xs text-muted-foreground">/blog/{form.slug || 'seu-post'}</p>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="category">Categoria</Label>
+            <Input
+              id="category"
+              list="category-suggestions"
+              placeholder="Ex.: Backend, Carreira, IA aplicada"
+              value={form.category}
+              onChange={(e) => setForm((prev) => ({ ...prev, category: e.target.value }))}
+            />
+            <datalist id="category-suggestions">
+              {existingCategories.map((c) => (
+                <option key={c} value={c} />
+              ))}
+            </datalist>
+            <p className="text-xs text-muted-foreground">Agrupa o post na barra lateral do blog.</p>
           </div>
 
           <div className="space-y-2">
@@ -243,6 +265,7 @@ const AdminPage = () => {
                   </div>
                   <p className="truncate text-xs text-muted-foreground">
                     /blog/{post.slug} · {post.likes_count} curtidas
+                    {post.category ? ` · ${post.category}` : ''}
                   </p>
                 </div>
                 <div className="flex shrink-0 gap-2">

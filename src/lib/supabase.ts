@@ -22,6 +22,7 @@ export interface Post {
   slug: string;
   excerpt: string | null;
   content: string;
+  category: string | null;
   published: boolean;
   likes_count: number;
   created_at: string;

@@ -11,11 +11,15 @@ create table if not exists public.posts (
   slug        text not null unique,
   excerpt     text,
   content     text not null default '',
+  category    text,
   published   boolean not null default false,
   likes_count integer not null default 0,
   created_at  timestamptz not null default now(),
   updated_at  timestamptz not null default now()
 );
+
+-- Caso a tabela já existisse de uma versão anterior, garante a coluna de categoria.
+alter table public.posts add column if not exists category text;
 
 -- 2) Tabela de curtidas (1 por visitante por post) ---------------------------
 create table if not exists public.post_likes (

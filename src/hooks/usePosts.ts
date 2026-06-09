@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase, type Post } from '@/lib/supabase';
 
-const POST_COLUMNS = 'id, title, slug, excerpt, content, published, likes_count, created_at, updated_at';
+const POST_COLUMNS = 'id, title, slug, excerpt, content, category, published, likes_count, created_at, updated_at';
 
 /** Posts publicados, mais recentes primeiro — usado na listagem pública do blog. */
 export function usePublishedPosts() {
@@ -59,6 +59,7 @@ export interface PostInput {
   slug: string;
   excerpt: string;
   content: string;
+  category: string;
   published: boolean;
 }
 
