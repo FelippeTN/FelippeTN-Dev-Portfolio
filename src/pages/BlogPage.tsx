@@ -297,7 +297,7 @@ const ArticleRow = ({
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.35, ease: 'easeOut', delay: 0.04 * index }}
   >
-    <Link to={`/blog/${post.slug}`} className="group flex items-start gap-4 py-8 first:pt-0">
+    <Link to={`/blog/${post.slug}`} className="group flex items-start gap-4 py-8">
       <div className="min-w-0 flex-1">
         <p className="text-xs font-medium text-muted-foreground">{dateLabel}</p>
 
