@@ -6,6 +6,8 @@ import {
   getBreadcrumbStructuredData,
   getLocalizedBaseDescription,
   getPersonStructuredData,
+  getWebPageStructuredData,
+  getWebSiteStructuredData,
 } from '@/lib/seo';
 
 const Home = () => {
@@ -45,21 +47,13 @@ const Home = () => {
         }
         structuredData={[
           getPersonStructuredData(locale, '/'),
-          {
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'Felippe Toscano Nalim Portfolio',
-            url: typeof window !== 'undefined' ? window.location.origin : '/',
-            inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
-          },
-          {
-            '@context': 'https://schema.org',
-            '@type': 'WebPage',
+          getWebSiteStructuredData(locale),
+          getWebPageStructuredData({
+            locale,
+            path: '/',
             name: locale === 'pt' ? 'Página inicial' : 'Home page',
-            url: typeof window !== 'undefined' ? `${window.location.origin}/` : '/',
             description,
-            inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
-          },
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
           ]),

@@ -1,7 +1,7 @@
 import Contact from '@/components/Contact';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getBreadcrumbStructuredData } from '@/lib/seo';
+import { getBreadcrumbStructuredData, getWebPageStructuredData } from '@/lib/seo';
 
 const ContactPage = () => {
   const { locale } = useLanguage();
@@ -22,14 +22,13 @@ const ContactPage = () => {
             : ['contact software engineer', 'backend freelancer', 'technical consulting', 'software project']
         }
         structuredData={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'ContactPage',
+          getWebPageStructuredData({
+            locale,
+            path: '/contact',
+            type: 'ContactPage',
             name: locale === 'pt' ? 'Contato' : 'Contact',
             description,
-            url: typeof window !== 'undefined' ? `${window.location.origin}/contact` : '/contact',
-            inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
-          },
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
             { name: locale === 'pt' ? 'Contato' : 'Contact', path: '/contact' },

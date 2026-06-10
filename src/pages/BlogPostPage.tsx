@@ -7,7 +7,7 @@ import LikeButton from '@/components/LikeButton';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { usePost } from '@/hooks/usePosts';
-import { getBreadcrumbStructuredData } from '@/lib/seo';
+import { SITE_NAME, getBreadcrumbStructuredData, toAbsoluteUrl } from '@/lib/seo';
 
 /** Tempo de leitura aproximado (200 palavras/min). */
 const readingMinutes = (content: string) =>
@@ -56,15 +56,39 @@ const BlogPostPage = () => {
               description={post.excerpt ?? post.title}
               path={`/blog/${post.slug}`}
               type="article"
+              keywords={[post.category, 'Felippe Toscano Nalim', 'backend', 'software engineering'].filter(
+                Boolean,
+              ) as string[]}
+              publishedTime={post.created_at}
+              modifiedTime={post.updated_at}
+              section={post.category}
+              tags={[post.category, 'backend', 'software engineering'].filter(Boolean) as string[]}
               structuredData={[
                 {
                   '@context': 'https://schema.org',
                   '@type': 'BlogPosting',
+                  '@id': `${toAbsoluteUrl(`/blog/${post.slug}`)}#article`,
                   headline: post.title,
                   description: post.excerpt ?? '',
                   datePublished: post.created_at,
                   dateModified: post.updated_at,
-                  url: typeof window !== 'undefined' ? `${window.location.origin}/blog/${post.slug}` : `/blog/${post.slug}`,
+                  url: toAbsoluteUrl(`/blog/${post.slug}`),
+                  mainEntityOfPage: {
+                    '@type': 'WebPage',
+                    '@id': toAbsoluteUrl(`/blog/${post.slug}`),
+                  },
+                  author: {
+                    '@type': 'Person',
+                    name: SITE_NAME,
+                    url: toAbsoluteUrl('/about'),
+                  },
+                  publisher: {
+                    '@type': 'Person',
+                    name: SITE_NAME,
+                    url: toAbsoluteUrl('/about'),
+                  },
+                  articleSection: post.category ?? undefined,
+                  keywords: [post.category, 'backend', 'software engineering'].filter(Boolean),
                   inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
                 },
                 getBreadcrumbStructuredData(locale, [

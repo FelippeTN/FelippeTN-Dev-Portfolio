@@ -216,7 +216,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setIsMobileMenuOpen((current) => !current)}
-              className="subtle-stroke flex h-11 w-11 items-center justify-center rounded-[1rem] bg-secondary text-foreground shadow-[0_10px_24px_-18px_rgba(17,17,17,0.08)] lg:hidden"
+              className="glass-surface flex h-11 w-11 items-center justify-center rounded-[1rem] text-foreground transition-all duration-200 active:scale-95 lg:hidden"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-4 w-4" /> : <MoreHorizontal className="h-4 w-4" />}
@@ -234,7 +234,11 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-50 overflow-y-auto bg-background px-5 pb-8 pt-5 lg:hidden"
           >
-            <div className="mx-auto w-full max-w-md">
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+              <div className="aurora-blob animate-aurora-drift -left-16 top-10 h-64 w-64 bg-brand/30" />
+              <div className="aurora-blob animate-aurora-drift -right-10 top-1/3 h-56 w-56 bg-foreground/10" style={{ animationDelay: '-6s' }} />
+            </div>
+            <div className="relative z-10 mx-auto w-full max-w-md">
               <div className="flex items-center justify-between border-b border-border/70 pb-4">
                 <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                   <span className="flex h-9 w-9 items-center justify-center overflow-hidden">
@@ -268,9 +272,9 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(false)}
                         aria-label={item.label}
                         title={item.label}
-                        className="flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.1rem] px-2 text-center text-[0.76rem] font-semibold text-muted-foreground transition-colors duration-200"
+                        className="glass-surface flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.2rem] px-2 text-center text-[0.76rem] font-semibold text-muted-foreground transition-all duration-200 hover:text-foreground active:scale-[0.97]"
                       >
-                        <Icon className="mb-1.5 h-4 w-4" />
+                        <Icon className="mb-1.5 h-[1.05rem] w-[1.05rem]" />
                         <span>{item.label}</span>
                       </a>
                     );
@@ -281,13 +285,13 @@ const Navbar = () => {
                       key={item.href}
                       to={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.1rem] px-2 text-center text-[0.76rem] font-semibold transition-colors duration-200 ${
+                      className={`glass-surface flex min-h-[4.35rem] flex-col items-center justify-center rounded-[1.2rem] px-2 text-center text-[0.76rem] font-semibold transition-all duration-200 active:scale-[0.97] ${
                         isActive
-                          ? 'bg-card text-foreground [box-shadow:0_14px_30px_-26px_rgba(17,17,17,0.18),inset_0_0_0_1.4px_rgba(17,17,17,0.12)]'
-                          : 'text-muted-foreground'
+                          ? 'text-foreground ring-1 ring-brand/45 [--glass-bg-opacity:0.11] [--glass-border-opacity:0.32]'
+                          : 'text-muted-foreground hover:text-foreground'
                       }`}
                     >
-                      <Icon className="mb-1.5 h-4 w-4" />
+                      <Icon className={`mb-1.5 h-[1.05rem] w-[1.05rem] ${isActive ? 'text-brand' : ''}`} />
                       <span>{item.label}</span>
                     </NavLink>
                   );
@@ -297,7 +301,7 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={toggleLocale}
-                className="mt-7 flex w-full items-center justify-center rounded-[0.9rem] bg-secondary px-4 py-2.5 text-xs font-extrabold uppercase tracking-[0.12em] text-muted-foreground"
+                className="glass-surface mt-7 flex w-full items-center justify-center rounded-[1rem] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.12em] text-muted-foreground transition-all duration-200 hover:text-foreground active:scale-[0.99]"
                 aria-label="Toggle language"
               >
                 {locale === 'pt' ? 'Switch to English' : 'Mudar para Portugues'}
@@ -316,7 +320,7 @@ const Navbar = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-[1rem] bg-card text-muted-foreground [box-shadow:inset_0_0_0_1px_rgba(17,17,17,0.08)]"
+                      className="glass-surface flex h-11 w-11 items-center justify-center rounded-[1rem] text-muted-foreground transition-all duration-200 hover:text-foreground active:scale-95"
                     >
                       <social.icon className="h-4 w-4" />
                     </a>
