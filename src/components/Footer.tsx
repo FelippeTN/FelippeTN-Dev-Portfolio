@@ -20,7 +20,6 @@ const Footer = () => {
             { label: 'Inicio', href: '/' },
             { label: 'Sobre', href: '/about' },
             { label: 'Blog', href: '/blog' },
-            { label: 'Projetos', href: '/projects' },
             { label: 'Contato', href: '/contact' },
           ],
         },
@@ -70,7 +69,6 @@ const Footer = () => {
             { label: 'Home', href: '/' },
             { label: 'About', href: '/about' },
             { label: 'Blog', href: '/blog' },
-            { label: 'Projects', href: '/projects' },
             { label: 'Contact', href: '/contact' },
           ],
         },
@@ -127,33 +125,33 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
-      className="px-4 pb-10 pt-16 sm:px-6"
+      className="px-4 pb-8 pt-10 sm:px-6 sm:pb-10 sm:pt-16"
     >
-      <div className="mx-auto max-w-7xl rounded-[2rem] bg-card px-6 py-8 shadow-[0_18px_45px_-30px_rgba(17,17,17,0.1)] [box-shadow:0_18px_45px_-30px_rgba(17,17,17,0.1),inset_0_0_0_1px_rgba(17,17,17,0.06)] sm:px-8 sm:py-10 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
+      <div className="mx-auto max-w-7xl rounded-[1.5rem] bg-card px-4 py-6 shadow-[0_18px_45px_-30px_rgba(17,17,17,0.1)] [box-shadow:0_18px_45px_-30px_rgba(17,17,17,0.1),inset_0_0_0_1px_rgba(17,17,17,0.06)] sm:rounded-[2rem] sm:px-8 sm:py-10 lg:px-10">
+        <div className="grid gap-7 sm:gap-10 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
           <div className="max-w-sm">
             <Link to="/" className="inline-flex items-center">
-              <span className="flex h-12 w-12 items-center justify-center overflow-hidden">
-                <img src={logo} alt="Felippe logo" className="h-10 w-10 object-contain" />
+              <span className="flex h-10 w-10 items-center justify-center overflow-hidden sm:h-12 sm:w-12">
+                <img src={logo} alt="Felippe logo" className="h-8 w-8 object-contain sm:h-10 sm:w-10" />
               </span>
               <div>
-                <p className="text-[1.35rem] font-extrabold tracking-tight text-foreground">Felippe</p>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-[1.15rem] font-extrabold tracking-tight text-foreground sm:text-[1.35rem]">Felippe</p>
+                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:text-xs sm:tracking-[0.18em]">
                   Software Engineer
                 </p>
               </div>
             </Link>
 
-            <p className="mt-5 text-[0.9rem] leading-6 text-muted-foreground sm:text-[0.94rem]">
+            <p className="mt-4 text-[0.82rem] leading-5 text-muted-foreground sm:mt-5 sm:text-[0.94rem] sm:leading-6">
               {copy.intro}
             </p>
 
-            <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="h-4 w-4" />
+            <div className="mt-4 inline-flex items-center gap-2 text-xs text-muted-foreground sm:mt-6 sm:text-sm">
+              <MapPin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span>{copy.location}</span>
             </div>
 
-            <div className="mt-7 flex flex-wrap gap-2">
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-7">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -161,9 +159,9 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground hover:text-background"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground hover:text-background sm:h-10 sm:w-10"
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </a>
               ))}
             </div>
@@ -171,8 +169,8 @@ const Footer = () => {
 
           {copy.sections.map((section) => (
             <div key={section.title}>
-              <p className="text-sm font-extrabold text-foreground">{section.title}</p>
-              <div className="mt-4 space-y-3">
+              <p className="text-[0.82rem] font-extrabold text-foreground sm:text-sm">{section.title}</p>
+              <div className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
                 {section.links.map((link) =>
                   link.external ? (
                     <a
@@ -180,7 +178,7 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-sm text-muted-foreground hover:text-foreground"
+                      className="block text-[0.82rem] text-muted-foreground hover:text-foreground sm:text-sm"
                     >
                       {link.label}
                     </a>
@@ -188,7 +186,7 @@ const Footer = () => {
                     <Link
                       key={link.label}
                       to={link.href}
-                      className="block text-sm text-muted-foreground hover:text-foreground"
+                      className="block text-[0.82rem] text-muted-foreground hover:text-foreground sm:text-sm"
                     >
                       {link.label}
                     </Link>
@@ -199,10 +197,13 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-10 h-px w-full bg-[linear-gradient(90deg,rgba(17,17,17,0.12),rgba(17,17,17,0.06),transparent)]" />
-
-        <div className="mt-6 flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>{copy.rights}</p>
+        <div className="mt-5 flex flex-col gap-3 text-[0.78rem] text-muted-foreground sm:mt-6 sm:text-sm md:flex-row md:items-center md:justify-between">
+          <div>
+            <p>{copy.rights}</p>
+            <p className="mt-1 text-[0.62rem] text-muted-foreground/70 sm:text-[0.68rem]">
+              Inspiração para o site: Augusto Galego
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-5">
             {copy.bottomLinks.map((link) => (
               <a

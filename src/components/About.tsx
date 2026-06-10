@@ -87,8 +87,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="px-4 py-10 sm:px-6">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+    <section id="about" className="px-4 py-8 sm:px-6 sm:py-10">
+      <div className="mx-auto grid max-w-7xl gap-7 sm:gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,34 +96,34 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="px-1 sm:px-2 lg:pt-6"
         >
-          <span className="inline-flex items-center rounded-full border border-border/70 bg-card px-3 py-2 text-[0.72rem] font-semibold tracking-tight text-foreground shadow-[0_10px_24px_-22px_rgba(17,17,17,0.12)]">
+          <span className="inline-flex items-center rounded-full border border-border/70 bg-card px-3 py-1.5 text-[0.66rem] font-semibold tracking-tight text-foreground shadow-[0_10px_24px_-22px_rgba(17,17,17,0.12)] sm:py-2 sm:text-[0.72rem]">
             {locale === 'pt' ? 'Sobre Felippe Toscano' : 'About Felippe Toscano'}
           </span>
 
-          <h1 className="mt-7 max-w-xl text-balance text-[2.15rem] font-extrabold leading-[0.98] tracking-tight text-foreground sm:text-[2.8rem]">
+          <h1 className="mt-5 max-w-xl text-balance text-[1.75rem] font-extrabold leading-[1] tracking-tight text-foreground sm:mt-7 sm:text-[2.8rem]">
             {locale === 'pt'
               ? 'Construindo backend robusto com foco em clareza e escala'
               : 'Building robust backend systems with clarity and scale'}
           </h1>
 
-          <p className="mt-5 text-base text-muted-foreground sm:text-[1.02rem]">{a.description}</p>
+          <p className="mt-4 text-[0.9rem] leading-6 text-muted-foreground sm:mt-5 sm:text-[1.02rem]">{a.description}</p>
 
-          <div className="mt-8 space-y-5 text-[0.94rem] leading-7 text-muted-foreground sm:text-[1rem]">
+          <div className="mt-5 space-y-3 text-[0.84rem] leading-6 text-muted-foreground sm:mt-8 sm:space-y-5 sm:text-[1rem] sm:leading-7">
             {introParagraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
-          <div className="mt-10">
-            <p className="text-base font-bold text-foreground">
+          <div className="mt-7 sm:mt-10">
+            <p className="text-sm font-bold text-foreground sm:text-base">
               {locale === 'pt' ? 'Principais destaques' : 'Key highlights'}
             </p>
 
-            <div className="mt-5 grid gap-x-8 gap-y-3 text-[0.92rem] text-foreground sm:grid-cols-2">
+            <div className="mt-4 grid gap-x-8 gap-y-2.5 text-[0.82rem] text-foreground sm:mt-5 sm:grid-cols-2 sm:text-[0.92rem]">
               {achievements.map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-foreground" />
-                  <span className="leading-6 text-muted-foreground">{item}</span>
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground sm:h-2 sm:w-2" />
+                  <span className="leading-5 text-muted-foreground sm:leading-6">{item}</span>
                 </div>
               ))}
             </div>
@@ -135,7 +135,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, delay: 0.05 }}
-          className="flex flex-col gap-4 lg:pt-6"
+          className="flex flex-col gap-3 sm:gap-4 lg:pt-6"
         >
           <div className="grid gap-4">
             {detailCards.map((card, index) => {
@@ -148,24 +148,24 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="rounded-[1.6rem] border border-border/70 bg-card px-5 py-5 shadow-[0_18px_34px_-30px_rgba(17,17,17,0.12)] sm:px-6"
+                  className="rounded-[1.25rem] border border-border/70 bg-card px-4 py-3.5 shadow-[0_18px_34px_-30px_rgba(17,17,17,0.12)] sm:rounded-[1.6rem] sm:px-6 sm:py-5"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-[1rem] bg-secondary text-foreground">
-                        <Icon className="h-[18px] w-[18px]" />
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-[0.8rem] bg-secondary text-foreground sm:h-10 sm:w-10 sm:rounded-[1rem]">
+                        <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
                       </div>
 
                       <div>
-                        <p className="text-xs font-medium text-muted-foreground">{card.label}</p>
-                        <p className="mt-1 text-[0.92rem] font-semibold text-foreground">
+                        <p className="text-[0.68rem] font-medium text-muted-foreground sm:text-xs">{card.label}</p>
+                        <p className="mt-0.5 text-[0.84rem] font-semibold text-foreground sm:mt-1 sm:text-[0.92rem]">
                           {card.value}
                         </p>
-                        <p className="mt-1 text-[0.9rem] text-muted-foreground">{card.detail}</p>
+                        <p className="mt-0.5 text-[0.78rem] text-muted-foreground sm:mt-1 sm:text-[0.9rem]">{card.detail}</p>
                       </div>
                     </div>
 
-                    <span className="text-xs text-muted-foreground">{card.meta}</span>
+                    <span className="text-[0.68rem] text-muted-foreground sm:text-xs">{card.meta}</span>
                   </div>
                 </motion.article>
               );
