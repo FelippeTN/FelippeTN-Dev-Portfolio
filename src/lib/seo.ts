@@ -3,6 +3,13 @@ import type { Locale } from '@/lib/translations';
 export const SITE_NAME = 'Felippe Toscano Nalim';
 export const SITE_TITLE_SUFFIX = 'Felippe Toscano Nalim';
 export const SITE_DEFAULT_IMAGE = '/code.svg';
+export const SITE_AUTHOR_URL = 'https://github.com/FelippeTN';
+export const SITE_SOCIAL_LINKS = [
+  'https://github.com/FelippeTN',
+  'https://www.linkedin.com/in/felippe-toscano-nalim/',
+  'https://www.instagram.com/felippetn/',
+  'https://www.youtube.com/@felippetndev',
+];
 export const SITE_URL =
   (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/+$/, '') ?? '';
 
@@ -14,6 +21,10 @@ export type SeoConfig = {
   keywords?: string[];
   noindex?: boolean;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string | null;
+  tags?: string[];
 };
 
 export function getSiteOrigin() {
@@ -56,6 +67,7 @@ export function getPersonStructuredData(locale: Locale, pathname: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${toAbsoluteUrl('/')}#person`,
     name: SITE_NAME,
     url,
     image: toAbsoluteUrl('/code.svg'),
@@ -66,12 +78,7 @@ export function getPersonStructuredData(locale: Locale, pathname: string) {
       addressCountry: 'BR',
     },
     description: getLocalizedBaseDescription(locale),
-    sameAs: [
-      'https://github.com/FelippeTN',
-      'https://www.linkedin.com/in/felippe-toscano-nalim/',
-      'https://www.instagram.com/felippetn/',
-      'https://www.youtube.com/@felippetndev',
-    ],
+    sameAs: SITE_SOCIAL_LINKS,
     alumniOf: [
       {
         '@type': 'CollegeOrUniversity',
@@ -94,6 +101,52 @@ export function getPersonStructuredData(locale: Locale, pathname: string) {
       'Cloud Infrastructure',
       'Observability',
     ],
+  };
+}
+
+export function getWebSiteStructuredData(locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${toAbsoluteUrl('/')}#website`,
+    name: 'Felippe Toscano Nalim Portfolio',
+    alternateName: ['FelippeTN', 'Felippe Toscano'],
+    url: toAbsoluteUrl('/'),
+    description: getLocalizedBaseDescription(locale),
+    inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
+    publisher: {
+      '@id': `${toAbsoluteUrl('/')}#person`,
+    },
+  };
+}
+
+export function getWebPageStructuredData({
+  locale,
+  path,
+  name,
+  description,
+  type = 'WebPage',
+}: {
+  locale: Locale;
+  path: string;
+  name: string;
+  description: string;
+  type?: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'ProfilePage';
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': type,
+    '@id': `${toAbsoluteUrl(path)}#webpage`,
+    name,
+    description,
+    url: toAbsoluteUrl(path),
+    isPartOf: {
+      '@id': `${toAbsoluteUrl('/')}#website`,
+    },
+    about: {
+      '@id': `${toAbsoluteUrl('/')}#person`,
+    },
+    inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
   };
 }
 

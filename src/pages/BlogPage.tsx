@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { usePublishedPosts } from '@/hooks/usePosts';
-import { getBreadcrumbStructuredData } from '@/lib/seo';
+import { getBreadcrumbStructuredData, getWebPageStructuredData, toAbsoluteUrl } from '@/lib/seo';
 import type { Post } from '@/lib/supabase';
 
 /** Tempo de leitura aproximado (200 palavras/min). */
@@ -115,9 +115,16 @@ const BlogPage = () => {
             '@type': 'Blog',
             name: copy.title,
             description: copy.description,
-            url: typeof window !== 'undefined' ? `${window.location.origin}/blog` : '/blog',
+            url: toAbsoluteUrl('/blog'),
             inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
           },
+          getWebPageStructuredData({
+            locale,
+            path: '/blog',
+            type: 'CollectionPage',
+            name: copy.title,
+            description: copy.description,
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
             { name: 'Blog', path: '/blog' },

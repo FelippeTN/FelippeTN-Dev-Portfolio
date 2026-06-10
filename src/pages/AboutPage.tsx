@@ -4,6 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import {
   getBreadcrumbStructuredData,
   getPersonStructuredData,
+  getWebPageStructuredData,
 } from '@/lib/seo';
 
 const AboutPage = () => {
@@ -27,14 +28,13 @@ const AboutPage = () => {
         }
         structuredData={[
           getPersonStructuredData(locale, '/about'),
-          {
-            '@context': 'https://schema.org',
-            '@type': 'ProfilePage',
+          getWebPageStructuredData({
+            locale,
+            path: '/about',
+            type: 'ProfilePage',
             name: locale === 'pt' ? 'Sobre Felippe Toscano Nalim' : 'About Felippe Toscano Nalim',
             description,
-            url: typeof window !== 'undefined' ? `${window.location.origin}/about` : '/about',
-            inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
-          },
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
             { name: locale === 'pt' ? 'Sobre' : 'About', path: '/about' },

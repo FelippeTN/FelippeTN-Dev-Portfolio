@@ -1,7 +1,7 @@
 import Education from '@/components/Education';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getBreadcrumbStructuredData } from '@/lib/seo';
+import { getBreadcrumbStructuredData, getWebPageStructuredData, toAbsoluteUrl } from '@/lib/seo';
 
 const EducationPage = () => {
   const { locale } = useLanguage();
@@ -27,8 +27,15 @@ const EducationPage = () => {
             '@type': 'EducationalOccupationalCredential',
             name: locale === 'pt' ? 'Formação e Certificações' : 'Education and Certifications',
             description,
-            url: typeof window !== 'undefined' ? `${window.location.origin}/education` : '/education',
+            url: toAbsoluteUrl('/education'),
           },
+          getWebPageStructuredData({
+            locale,
+            path: '/education',
+            type: 'CollectionPage',
+            name: locale === 'pt' ? 'Formação e Certificações' : 'Education and Certifications',
+            description,
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
             { name: locale === 'pt' ? 'Formação' : 'Education', path: '/education' },

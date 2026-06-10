@@ -1,7 +1,7 @@
 import Experience from '@/components/Experience';
 import Seo from '@/components/Seo';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getBreadcrumbStructuredData } from '@/lib/seo';
+import { getBreadcrumbStructuredData, getWebPageStructuredData } from '@/lib/seo';
 
 const ExperiencePage = () => {
   const { locale } = useLanguage();
@@ -22,14 +22,13 @@ const ExperiencePage = () => {
             : ['professional experience', 'software engineer', 'backend', 'go', 'python', 'pge-rj']
         }
         structuredData={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'CollectionPage',
+          getWebPageStructuredData({
+            locale,
+            path: '/experience',
+            type: 'CollectionPage',
             name: locale === 'pt' ? 'Experiência Profissional' : 'Professional Experience',
             description,
-            url: typeof window !== 'undefined' ? `${window.location.origin}/experience` : '/experience',
-            inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
-          },
+          }),
           getBreadcrumbStructuredData(locale, [
             { name: locale === 'pt' ? 'Início' : 'Home', path: '/' },
             { name: locale === 'pt' ? 'Experiência' : 'Experience', path: '/experience' },
